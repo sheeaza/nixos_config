@@ -9,6 +9,12 @@ let
       ./install.sh
     '';
   };
+  # gcc
+  treesitter = vimPlugins.nvim-treesitter.withPlugins (
+    plugins: with plugins; [
+      tree-sitter-c
+    ]
+  );
 in
   let
     nvim = neovim.override {
@@ -18,14 +24,10 @@ in
             lightline-vim
             onedark-vim
             nerdcommenter
-            (nvim-treesitter.withPlugins (
-              plugins: with plugins; [
-              tree-sitter-c
-              ]
-            ))
-            coc-nvim
-            coc-clangd
-            leaderf
+	    treesitter
+	    coc-nvim
+	    coc-clangd
+	    leaderf
             vim-easymotion
         ];
         customRC = builtins.readFile ./init.nvim;

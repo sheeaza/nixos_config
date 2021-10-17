@@ -25,15 +25,21 @@
       in {
         defaultPackage = mypkg;
         packages = {
-          dockerImage = upkgs.dockerTools.buildLayeredImage {
-            name = "bundle image";
-            contents = [ upkgs.fish upkgs.coreutils upkgs.gnutar upkgs.tree ];
+          dockerImage = upkgs.dockerTools.buildImage {
+            name = "bundle";
+            tag = "latest";
+            contents = [ mypkg upkgs.ncurses ];
             config = {
               Cmd = "fish";
+	      Env = [
+	        "USER=max"
+	      ];
+              extraCommands = ''
+                mkdir /tmp/
+              '';
             };
           };
         };
-	inherit mypkg;
       }
     ) // {
       nixosConfigurations = import ./nixos/configurations inputs;

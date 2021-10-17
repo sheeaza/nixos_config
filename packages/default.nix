@@ -1,6 +1,6 @@
 { self, ... }@inputs:
 let
-  upkgs = inputs.upkgs.legacyPackages.${system}
+  upkgs = inputs.upkgs.legacyPackages.x86_64-linux;
 in 
   let
     nvim = import ./nvim { pkgs = upkgs; leaderf-src = inputs.leaderf-src; };
@@ -9,17 +9,26 @@ in
     upkgs.buildEnv {
       name = "devpack";
       paths = [
-        nvim
+        #nvim
+        #upkgs.global
+        #upkgs.clang-tools
+
         tmux
-        upkgs.fzf
-        upkgs.clang-tools
-        upkgs.wget
-        upkgs.ripgrep
-        upkgs.tree
-        upkgs.tig
-        upkgs.universal-ctags
-        upkgs.global
+        upkgs.perl
+
+        #upkgs.wget
+        #upkgs.ripgrep
+        #upkgs.tree
+        #upkgs.tig
+        #upkgs.universal-ctags
         upkgs.git
+        upkgs.fzf
         upkgs.fish
+
+        upkgs.coreutils
+        upkgs.findutils
+        #upkgs.gnutar
+        #upkgs.tree
+        upkgs.bash
       ];
     }
