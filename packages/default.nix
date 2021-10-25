@@ -9,7 +9,7 @@ in
     upkgs.buildEnv {
       name = "devpack";
       paths = [
-        #nvim
+        nvim
         #upkgs.global
         #upkgs.clang-tools
 
