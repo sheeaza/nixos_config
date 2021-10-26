@@ -4,31 +4,32 @@ let
 in 
   let
     nvim = import ./nvim { pkgs = upkgs; leaderf-src = inputs.leaderf-src; };
+    clangd = import ./clangd { pkgs = upkgs; clangd-src = inputs.clangd-src; };
     tmux = import ./tmux { pkgs = upkgs; ohmytmux = inputs.ohmytmux; };
+    myfish = import ./fish { pkgs = upkgs; };
   in
     upkgs.buildEnv {
       name = "devpack";
       paths = [
         nvim
-        #upkgs.global
-        #upkgs.clang-tools
+        clangd
+        upkgs.global
+        upkgs.universal-ctags
 
         tmux
         upkgs.perl
 
-        #upkgs.wget
-        #upkgs.ripgrep
-        #upkgs.tree
-        #upkgs.tig
-        #upkgs.universal-ctags
+        myfish
+        upkgs.wget
+        upkgs.ripgrep
+        upkgs.tree
+        upkgs.tig
         upkgs.git
         upkgs.fzf
-        upkgs.fish
 
         upkgs.coreutils
         upkgs.findutils
-        #upkgs.gnutar
-        #upkgs.tree
+        upkgs.gnutar
         upkgs.bash
       ];
     }

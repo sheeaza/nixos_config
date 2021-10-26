@@ -1,12 +1,24 @@
 {
   "nodes": {
+    "clangd-src": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-QYDKnv/Rr4zXJsXzvl27f3gYIZ7/ePdBi/uxboIxUfo=",
+        "type": "tarball",
+        "url": "https://github.com/clangd/clangd/releases/download/13.0.0/clangd-linux-13.0.0.zip"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/clangd/clangd/releases/download/13.0.0/clangd-linux-13.0.0.zip"
+      }
+    },
     "flake-utils": {
       "locked": {
-        "lastModified": 1631561581,
-        "narHash": "sha256-3VQMV5zvxaVLvqqUrNz3iJelLw30mIVSfZmAaauM3dA=",
+        "lastModified": 1634851050,
+        "narHash": "sha256-N83GlSGPJJdcqhUxSCS/WwW5pksYf3VP1M13cDRTSVA=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "7e5bf3925f6fbdfaf50a2a7ca0be2879c4261d19",
+        "rev": "c91f3de5adaf1de973b797ef7485e441a65b8935",
         "type": "github"
       },
       "original": {
@@ -18,11 +30,11 @@
     "leaderf-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1633680967,
-        "narHash": "sha256-Zvp3U5MkdO+sLGEpV2Efh1NBS5DQeqHLYqWubzFDziM=",
+        "lastModified": 1635061128,
+        "narHash": "sha256-TCdDuvGlZh75pEoAj2+INXrUSDdW0G8cOdRfDtESVTg=",
         "owner": "Yggdroot",
         "repo": "LeaderF",
-        "rev": "869a4005f63eba5a9e6e175bca0c50d73be48e2d",
+        "rev": "48fbae95f5ba26affb490488eb606ff127ccb0da",
         "type": "github"
       },
       "original": {
@@ -34,11 +46,11 @@
     "ohmytmux": {
       "flake": false,
       "locked": {
-        "lastModified": 1634321256,
-        "narHash": "sha256-KfmFU6D0fpKO6QehNUVkPguRSGna4mJ/zdjETfmrwm8=",
+        "lastModified": 1634909539,
+        "narHash": "sha256-hPLX9XOwfpGzv1GXnU3R0hroWUAxZCVpHxu/XmbKFRA=",
         "owner": "gpakosz",
         "repo": ".tmux",
-        "rev": "18775e12a4ec8d4ecd7f8f9bd698f47ceedfbabd",
+        "rev": "90cdbbc32fb55017077d08f1f5e1597a0be70e73",
         "type": "github"
       },
       "original": {
@@ -49,11 +61,11 @@
     },
     "pkgs-2105": {
       "locked": {
-        "lastModified": 1634327140,
-        "narHash": "sha256-d5L7oMjUVC6VU0cQMsF0tceAPkmzuAQ51DWBFNChbEQ=",
+        "lastModified": 1635456205,
+        "narHash": "sha256-CLZxFvwec8BhFlB5tkIq08UBDNNrijOY780UF6ubJXc=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "83667ff60a88e22b76ef4b0bdf5334670b39c2b6",
+        "rev": "66d6ec6ed2ddc77d08cf677cc8230db39f051793",
         "type": "github"
       },
       "original": {
@@ -65,6 +77,7 @@
     },
     "root": {
       "inputs": {
+        "clangd-src": "clangd-src",
         "flake-utils": "flake-utils",
         "leaderf-src": "leaderf-src",
         "ohmytmux": "ohmytmux",
@@ -74,11 +87,11 @@
     },
     "upkgs": {
       "locked": {
-        "lastModified": 1634436779,
-        "narHash": "sha256-D/nrXTWpe1bPIjFy85sgiLHYqu+AeaC6v5/+KlA9PRg=",
+        "lastModified": 1635403963,
+        "narHash": "sha256-0actzfzBAXvvDJ/EvPSGbtCPXUwSObQrcq0RpsPWZgA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "9aeeb7574fb784eaf6395f4400705b5f619e6cc3",
+        "rev": "2deb07f3ac4eeb5de1c12c4ba2911a2eb1f6ed61",
         "type": "github"
       },
       "original": {
