@@ -77,6 +77,7 @@
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
     self.defaultPackage.x86_64-linux
+    pkgs.docker-compose
   ];
   environment.sessionVariables.EDITOR = "vim";
 
