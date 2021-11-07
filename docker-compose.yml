@@ -1,0 +1,27 @@
+version: 'latest'
+services:
+  dev:
+    hostname: vahala
+    image: kungfury:1.0
+    init: true
+    volumes:
+      - type: bind
+        source: ~/.ssh
+        target: /home/max/.ssh
+      - type: bind
+        source: ~/.gitconfig
+        target: /home/max/.gitconfig
+      - type: bind
+        source: ~/
+        target: /home/max/workspace
+      - type: bind
+        source: ~/bin
+        target: /home/max/hostbin
+      - type: volume
+        source: home
+        target: /home/max/
+    tty: true
+    stdin_open: true
+
+volumes:
+  home:
