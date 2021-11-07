@@ -30,13 +30,10 @@ in
     tag = "latest";
 
     contents = [
+      upkgs.busybox
       bundle
       upkgs.ncurses
-      upkgs.gnused
-      upkgs.gawk
       upkgs.openssh
-      upkgs.ps
-      upkgs.gnugrep
     ] ++ adduser { uid = 0; user = uuser; };
 
     # fakeRootCommands = ''
