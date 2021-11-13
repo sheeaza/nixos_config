@@ -1,35 +1,33 @@
-{ self, ... }@inputs:
+inputs: final: prev:
 let
-  upkgs = inputs.upkgs.legacyPackages.x86_64-linux;
-in 
-  let
-    nvim = import ./nvim { pkgs = upkgs; leaderf-src = inputs.leaderf-src; };
-    clangd = import ./clangd { pkgs = upkgs; clangd-src = inputs.clangd-src; };
-    tmux = import ./tmux { pkgs = upkgs; ohmytmux = inputs.ohmytmux; };
-    myfish = import ./fish { pkgs = upkgs; };
-  in
-    upkgs.buildEnv {
-      name = "devpack";
-      paths = [
-        nvim
-        clangd
-        upkgs.global
-        upkgs.universal-ctags
+  nvim = import ./nvim { pkgs = final; leaderf-src = inputs.leaderf-src; };
+  clangd = import ./clangd { pkgs = final; clangd-src = inputs.clangd-src; };
+  tmux = import ./tmux { pkgs = final; ohmytmux = inputs.ohmytmux; };
+  myfish = import ./fish { pkgs = final; };
+in with final.unstable; {
+  mypkg = buildEnv {
+    name = "devpack";
+    paths = [
+      nvim
+      clangd
+      global
+      universal-ctags
 
-        tmux
-        upkgs.perl
+      tmux
+      perl
 
-        myfish
-        upkgs.wget
-        upkgs.ripgrep
-        upkgs.tree
-        upkgs.tig
-        upkgs.git
-        upkgs.fzf
+      myfish
+      wget
+      ripgrep
+      tree
+      tig
+      git
+      fzf
 
-        upkgs.coreutils
-        upkgs.findutils
-        upkgs.gnutar
-        upkgs.bash
-      ];
-    }
+      coreutils
+      findutils
+      gnutar
+      bash
+    ];
+  };
+}

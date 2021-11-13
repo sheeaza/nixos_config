@@ -24,17 +24,22 @@
   outputs = { self, ... }@inputs:
     inputs.flake-utils.lib.eachDefaultSystem (system:
       let
-        upkgs = inputs.upkgs.legacyPackages.${system};
-        pkgs = inputs.pkgs-2105.legacyPackages.${system};
-        mypkg = import ./packages inputs;
+        overlay-unstable = final: prev: {
+          unstable = inputs.upkgs.legacyPackages.${prev.system};
+        };
+      in let
+        pkgs = import inputs.pkgs-2105 {
+          overlays = [
+            overlay-unstable
+            ((import ./packages) inputs)
+          ];
+          inherit system;
+        };
       in {
-        defaultPackage = mypkg;
+	inherit pkgs;
+        defaultPackage = pkgs.mypkg;
         packages = {
-          dockerImage = import ./docker {
-	    pkgs = pkgs;
-	    upkgs = upkgs;
-	    bundle = mypkg;
-	  };
+          dockerImage = import ./docker pkgs;
         };
       }
     ) // {

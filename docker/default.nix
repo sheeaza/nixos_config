@@ -1,4 +1,4 @@
-{ pkgs, upkgs, bundle }: with upkgs;
+pkgs: with pkgs;
 let
   adduser = { user, uid, gid ? uid }: [
     (
@@ -23,15 +23,15 @@ let
     )
   ];
   uuser = "max";
+  upkgs = pkgs.unstable;
 in
   pkgs.dockerTools.buildImage {
-  # pkgs.dockerTools.buildLayeredImage {
     name = "bundle";
     tag = "latest";
 
     contents = [
       upkgs.busybox
-      bundle
+      pkgs.mypkg
       upkgs.ncurses
       upkgs.openssh
     ] ++ adduser { uid = 0; user = uuser; };

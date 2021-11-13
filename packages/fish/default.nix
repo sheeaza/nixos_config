@@ -1,4 +1,4 @@
-{ pkgs }: with pkgs;
+{ pkgs }: with pkgs.unstable;
 let
   bundle = stdenv.mkDerivation {
     name = "bundle";
@@ -23,7 +23,6 @@ let
       mv $out/share/fish/vendor_functions.d/load-env.fish $out/share/fish/vendor_conf.d/load-env.fish
     '';
   };
-  wrapFish = callPackage ./wraper.nix { };
 in
   wrapFish {
     pluginPkgs = [ fzf bundle ];

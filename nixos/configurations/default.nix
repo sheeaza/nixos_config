@@ -4,9 +4,9 @@ let
     system = "x86_64-linux";
     modules = [
       {
-        _module.args = inputs;
+	_module.args = inputs;
         networking.hostName = name;
-        system.configurationRevision = self.rev or "dirty";
+	system.configurationRevision = self.rev or "dirty";
         documentation.enable = false;
       }
       (./. + "/${name}.nix")

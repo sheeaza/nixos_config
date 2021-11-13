@@ -1,4 +1,4 @@
-{ pkgs, ohmytmux }: with pkgs;
+{ pkgs, ohmytmux }: with pkgs.unstable;
 let
   tmuxconfig = stdenv.mkDerivation {
     name = "ohmytmux";

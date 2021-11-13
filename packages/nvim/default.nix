@@ -1,4 +1,4 @@
-{ pkgs, leaderf-src }: with pkgs;
+{ pkgs, leaderf-src }: with pkgs.unstable;
 let
   leaderf = vimUtils.buildVimPlugin {
     name = "leaderf";

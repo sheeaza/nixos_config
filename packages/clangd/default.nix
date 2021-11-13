@@ -1,4 +1,4 @@
-{ pkgs, clangd-src }: with pkgs;
+{ pkgs, clangd-src }: with pkgs.unstable;
 let
 in
   stdenv.mkDerivation {
