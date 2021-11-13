@@ -1,8 +1,0 @@
-FROM alpine:latest
-
-COPY store /nix/store
-COPY profile /usr/local
-
-FROM bundle:latest
-
-RUN mkdir /home/max
