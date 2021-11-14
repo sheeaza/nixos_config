@@ -31,6 +31,7 @@ in
 
     contents = [
       upkgs.busybox
+      upkgs.less
       pkgs.mypkg
       upkgs.ncurses
       upkgs.openssh

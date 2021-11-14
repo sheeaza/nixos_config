@@ -3,3 +3,4 @@
 
 !Dockerfile
 !docker-compose.yml
+!packages/nvim/coc-settings.json
