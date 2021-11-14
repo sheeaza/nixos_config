@@ -3,11 +3,11 @@ let
   tmuxconfig = stdenv.mkDerivation {
     name = "ohmytmux";
     src = ohmytmux;
-      #for file in .tmux.conf; do
     postPatch = ''
-        substituteInPlace .tmux.conf \
-          --replace "~/" "$out/" \
-          --replace "~\/" "$out\/"
+      _out=$(echo $out|sed 's/\//\\\//g')
+      substituteInPlace .tmux.conf \
+        --replace "~/" "$out/" \
+        --replace "~\/" "$_out\/"
     '';
     installPhase = ''
       mkdir -p $out/;
