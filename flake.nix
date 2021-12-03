@@ -1,7 +1,7 @@
 {
   inputs = {
     upkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    pkgs-2105.url = "github:nixos/nixpkgs/nixos-21.05";
+    pkgs-stable.url = "github:nixos/nixpkgs/nixos-21.11";
     flake-utils.url = github:numtide/flake-utils;
 
     #neovim
@@ -28,7 +28,7 @@
           unstable = inputs.upkgs.legacyPackages.${prev.system};
         };
       in let
-        pkgs = import inputs.pkgs-2105 {
+        pkgs = import inputs.pkgs-stable {
           overlays = [
             overlay-unstable
             ((import ./packages) inputs)

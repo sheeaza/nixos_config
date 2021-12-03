@@ -14,5 +14,5 @@ let
     ];
   });
 in {
-    max = mkSystem "max" inputs.pkgs-2105;
+    max = mkSystem "max" inputs.pkgs-stable;
 }
