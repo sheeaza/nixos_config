@@ -76,11 +76,21 @@ in
   
     # List packages installed in system profile. To search, run:
     environment.systemPackages = [
-      pkgs.mypkg
+      pkgs.mypkg.nvim
+
+      pkgs.mypkg.tmux
+      pkgs.unstable.perl
+
+      pkgs.mypkg.myfish
+
+      pkgs.wget
+      pkgs.tree
+      pkgs.unstable.ripgrep
+      pkgs.unstable.tig
+      pkgs.unstable.git
+      pkgs.unstable.fzf
+
       pkgs.docker-compose
-      pkgs.rust-analyzer
-      pkgs.rustc
-      pkgs.cargo
     ];
     environment.sessionVariables.EDITOR = "vim";
   
