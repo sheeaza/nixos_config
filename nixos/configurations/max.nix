@@ -78,6 +78,9 @@ in
     environment.systemPackages = [
       pkgs.mypkg
       pkgs.docker-compose
+      pkgs.rust-analyzer
+      pkgs.rustc
+      pkgs.cargo
     ];
     environment.sessionVariables.EDITOR = "vim";
   

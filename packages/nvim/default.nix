@@ -27,6 +27,7 @@ in
 	    treesitter
 	    coc-nvim
 	    coc-clangd
+	    coc-rust-analyzer
 	    leaderf
             vim-easymotion
         ];
