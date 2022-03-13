@@ -82,13 +82,14 @@ in
       pkgs.unstable.perl
 
       pkgs.mypkg.myfish
+      pkgs.bashInteractive
 
       pkgs.wget
       pkgs.tree
-      pkgs.unstable.ripgrep
-      pkgs.unstable.tig
-      pkgs.unstable.git
-      pkgs.unstable.fzf
+      pkgs.ripgrep
+      pkgs.tig
+      pkgs.git
+      pkgs.fzf
 
       pkgs.docker-compose
     ];

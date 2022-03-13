@@ -12,6 +12,7 @@ let
       pkgs.global
       pkgs.universal-ctags
 
+      pkgs.bashInteractive
       pkgs.perl
 
       pkgs.wget

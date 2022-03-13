@@ -9,6 +9,8 @@ let
 
       pkgs.mypkg.nvim
 
+      pkgs.bashInteractive
+
       pkgs.perl
 
       pkgs.wget
