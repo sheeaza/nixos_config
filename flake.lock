@@ -3,22 +3,22 @@
     "clangd-src": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-QYDKnv/Rr4zXJsXzvl27f3gYIZ7/ePdBi/uxboIxUfo=",
+        "narHash": "sha256-u9UugsKXsYhk++OtU3IAd+Q5sRw3P63WTTJBcUCZIGY=",
         "type": "tarball",
-        "url": "https://github.com/clangd/clangd/releases/download/13.0.0/clangd-linux-13.0.0.zip"
+        "url": "https://github.com/clangd/clangd/releases/download/14.0.0/clangd-linux-14.0.0.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/clangd/clangd/releases/download/13.0.0/clangd-linux-13.0.0.zip"
+        "url": "https://github.com/clangd/clangd/releases/download/14.0.0/clangd-linux-14.0.0.zip"
       }
     },
     "flake-utils": {
       "locked": {
-        "lastModified": 1644229661,
-        "narHash": "sha256-1YdnJAsNy69bpcjuoKdOYQX0YxZBiCYZo4Twxerqv7k=",
+        "lastModified": 1649676176,
+        "narHash": "sha256-OWKJratjt2RW151VUlJPRALb7OU2S5s+f0vLj4o1bHM=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "3cecb5b042f7f209c56ffd8371b2711a290ec797",
+        "rev": "a4b154ebbdc88c8498a5c7b01589addc9e9cb678",
         "type": "github"
       },
       "original": {
@@ -30,11 +30,11 @@
     "leaderf-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1646618478,
-        "narHash": "sha256-CIsRN9ywtWUzd1Iu4aXJWXwwxCs1rCX848db2c4Nk78=",
+        "lastModified": 1649832725,
+        "narHash": "sha256-Xs9T6e+UgKghJakyrXFjjN7wrrk7gz8Pqlir99266oI=",
         "owner": "Yggdroot",
         "repo": "LeaderF",
-        "rev": "58ef474453717efa9b700a22fc004756bf2ea5b9",
+        "rev": "fe8b6b0216c27d6f7f27a3ae49fff39b5963db73",
         "type": "github"
       },
       "original": {
@@ -61,11 +61,11 @@
     },
     "pkgs-stable": {
       "locked": {
-        "lastModified": 1646675913,
-        "narHash": "sha256-ZvGf51XpXM7JojKLZ5yI0XLUq8UOFX6AwZ3bhtdcpIo=",
+        "lastModified": 1650143261,
+        "narHash": "sha256-KI3IDHAtXG/7Uu1gNuuy6ovKqP/d6OhV0HwCWIKx0Aw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "9b1c7ba323732ddc85a51850a7f10ecc5269b8e9",
+        "rev": "0a862f558d4001c62f15f652b1b907002dc1e9b9",
         "type": "github"
       },
       "original": {
@@ -87,11 +87,11 @@
     },
     "upkgs": {
       "locked": {
-        "lastModified": 1646497237,
-        "narHash": "sha256-Ccpot1h/rV8MgcngDp5OrdmLTMaUTbStZTR5/sI7zW0=",
+        "lastModified": 1650161686,
+        "narHash": "sha256-70ZWAlOQ9nAZ08OU6WY7n4Ij2kOO199dLfNlvO/+pf8=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "062a0c5437b68f950b081bbfc8a699d57a4ee026",
+        "rev": "1ffba9f2f683063c2b14c9f4d12c55ad5f4ed887",
         "type": "github"
       },
       "original": {

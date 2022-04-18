@@ -30,6 +30,7 @@ set termguicolors
 syntax enable
 syntax on
 set hidden
+set laststatus=3
 
 set ttimeoutlen=100
 

@@ -10,7 +10,7 @@
       flake = false;
     };
     clangd-src = {
-      url = "https://github.com/clangd/clangd/releases/download/13.0.0/clangd-linux-13.0.0.zip";
+      url = "https://github.com/clangd/clangd/releases/download/14.0.0/clangd-linux-14.0.0.zip";
       flake = false;
     };
 
