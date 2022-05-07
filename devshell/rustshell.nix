@@ -3,7 +3,7 @@ let
   cshell = pkgs.buildEnv {
     name = "cshell";
     paths = [
-      pkgs.busybox
+      pkgs.findutils
       pkgs.less
       pkgs.ncurses
 
@@ -21,7 +21,9 @@ let
       pkgs.fzf
       pkgs.bash
 
+      pkgs.clang_13
       pkgs.rust-analyzer
+      pkgs.rustfmt
       pkgs.rustc
       pkgs.cargo
     ];

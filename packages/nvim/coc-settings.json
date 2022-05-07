@@ -1,5 +1,6 @@
 {
   "suggest.minTriggerInputLength": "2",
   "suggest.triggerCompletionWait": "0",
-  "list.source.outline.ctagsFilestypes": [ "c", "cpp" ]
+  "list.source.outline.ctagsFilestypes": [ "c", "cpp" ],
+  "rust-analyzer.server.path": "rust-analyzer"
 }
