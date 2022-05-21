@@ -21,7 +21,8 @@ let
       pkgs.fzf
       pkgs.bash
 
-      pkgs.clang_13
+      pkgs.binutils
+      pkgs.gcc
       pkgs.rust-analyzer
       pkgs.rustfmt
       pkgs.rustc

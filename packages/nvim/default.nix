@@ -13,6 +13,7 @@ let
   treesitter = vimPlugins.nvim-treesitter.withPlugins (
     plugins: with plugins; [
       tree-sitter-c
+      tree-sitter-rust
     ]
   );
 in
