@@ -33,6 +33,10 @@ in
       pkgs.unstable.less
       pkgs.unstable.ncurses
       pkgs.unstable.openssh
+      pkgs.unstable.coreutils
+      pkgs.unstable.findutils
+      pkgs.unstable.gnutar
+      pkgs.unstable.bash
 
       pkgs.mypkg.nvim
       pkgs.mypkg.clangd
