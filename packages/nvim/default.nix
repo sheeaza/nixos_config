@@ -12,8 +12,8 @@ let
   # gcc
   treesitter = vimPlugins.nvim-treesitter.withPlugins (
     plugins: with plugins; [
-      tree-sitter-c
-      tree-sitter-rust
+      tree-sitter-grammars.c
+      tree-sitter-grammars.rust
     ]
   );
 in
