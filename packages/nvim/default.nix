@@ -12,8 +12,8 @@ let
   # gcc
   treesitter = vimPlugins.nvim-treesitter.withPlugins (
     plugins: with plugins; [
-      tree-sitter-grammars.c
-      tree-sitter-grammars.rust
+      tree-sitter-c
+      tree-sitter-rust
     ]
   );
 in
@@ -21,8 +21,9 @@ in
     nvim = neovim.override {
       withNodeJs = true;
       configure = {
-        plug.plugins = with vimPlugins; [
-            lightline-vim
+        packages.mypack = with vimPlugins; {
+          start = [
+	    lightline-vim
             onedark-vim
             nerdcommenter
 	    treesitter
@@ -31,7 +32,8 @@ in
 	    coc-rust-analyzer
 	    leaderf
             vim-easymotion
-        ];
+          ];
+	};
         customRC = builtins.readFile ./init.nvim;
       };
     };
