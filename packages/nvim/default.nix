@@ -7,9 +7,10 @@ let
     buildPhase = ''
       patchShebangs .
       ./install.sh
+      rm autoload/leaderf/fuzzyMatch_C/build/ -r
+      find ./ -type f -exec strip '{}' \; 2>/dev/null
     '';
   };
-  # gcc
   treesitter = vimPlugins.nvim-treesitter.withPlugins (
     plugins: with plugins; [
       tree-sitter-c
