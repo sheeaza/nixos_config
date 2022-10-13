@@ -41,6 +41,8 @@
           dockerImage = import ./docker pkgs;
           cshell = import ./devshell/cshell.nix pkgs;
           rustshell = import ./devshell/rustshell.nix pkgs;
+          mynvim = pkgs.mypkg.nvim;
+          mytmux = pkgs.mypkg.myfish;
         };
       }
     ) // {
