@@ -20,7 +20,7 @@ let
       pkgs.ripgrep
       pkgs.tig
       pkgs.git
-      pkgs.fzf
+      pkgs.unstable.fzf
     ];
   };
 in

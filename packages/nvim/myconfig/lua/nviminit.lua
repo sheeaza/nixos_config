@@ -27,6 +27,7 @@ vim.opt.cursorcolumn = true
 vim.opt.ruler = true
 vim.opt.wrap = false
 vim.opt.relativenumber = true
+vim.opt.number = true
 vim.opt.termguicolors = true
 vim.opt.hidden = true
 vim.opt.laststatus = 3
