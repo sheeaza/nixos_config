@@ -23,7 +23,6 @@ let
   };
 in let
   nvim = neovim.override {
-    withNodeJs = true;
     configure = {
       packages.mypack = with vimPlugins; {
         start = [
@@ -31,9 +30,14 @@ in let
           onedark-vim
           nerdcommenter
           treesitter
-          coc-nvim
-          coc-clangd
-          coc-rust-analyzer
+
+	  nvim-lspconfig
+	  cmp-nvim-lsp
+	  cmp-buffer
+	  cmp-path
+	  cmp-cmdline
+	  nvim-cmp
+
           leaderf
           vim-easymotion
           nviminit
