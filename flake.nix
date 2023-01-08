@@ -1,7 +1,7 @@
 {
   inputs = {
     upkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    pkgs-stable.url = "github:nixos/nixpkgs/nixos-22.05";
+    pkgs-stable.url = "github:nixos/nixpkgs/nixos-22.11";
     flake-utils.url = github:numtide/flake-utils;
 
     #neovim
@@ -10,7 +10,7 @@
       flake = false;
     };
     clangd-src = {
-      url = "https://github.com/clangd/clangd/releases/download/14.0.3/clangd-linux-14.0.3.zip";
+      url = "https://github.com/clangd/clangd/releases/download/15.0.6/clangd-linux-15.0.6.zip";
       flake = false;
     };
 
