@@ -3,12 +3,12 @@ let
   adduser = { user, uid, gid ? uid }: [
     (
       writeTextDir "etc/shadow" ''
-	${user}:!:::::::
+        ${user}:!:::::::
       ''
     )
     (
       writeTextDir "etc/passwd" ''
-	${user}:x:0:0::/home/${user}:/bin/fish
+        ${user}:x:0:0::/home/${user}:/bin/fish
       ''
     )
     (
@@ -28,46 +28,78 @@ in
     name = "bundle";
     tag = "latest";
 
-    contents = [
-      pkgs.unstable.busybox
-      pkgs.unstable.less
-      pkgs.unstable.ncurses
-      pkgs.unstable.openssh
-      pkgs.unstable.coreutils
-      pkgs.unstable.findutils
-      pkgs.unstable.gnutar
-      pkgs.unstable.bash
+    copyToRoot = pkgs.buildEnv {
+      name = "image-root";
+      paths = [
+        (
+          pkgs.buildEnv {
+            name = "image-root";
+            paths = [
+              pkgs.unstable.less
+              pkgs.unstable.ncurses
+              pkgs.unstable.openssh
+              pkgs.unstable.coreutils
+              # pkgs.unstable.busybox
+              pkgs.unstable.gnused
+              pkgs.unstable.findutils
+              pkgs.unstable.gnutar
+              pkgs.unstable.bash
 
-      pkgs.mypkg.nvim
-      pkgs.mypkg.clangd
-      pkgs.unstable.global
-      pkgs.unstable.universal-ctags
+              pkgs.mypkg.nvim
+              pkgs.mypkg.clangd
+              pkgs.unstable.global
+              pkgs.unstable.universal-ctags
 
-      pkgs.mypkg.tmux
-      pkgs.unstable.perl
+              pkgs.mypkg.tmux
+              pkgs.unstable.perl
 
-      pkgs.mypkg.myfish
+              pkgs.mypkg.myfish
 
-      pkgs.unstable.wget
-      pkgs.unstable.tree
-      pkgs.unstable.ripgrep
-      pkgs.unstable.tig
-      pkgs.unstable.git
-      pkgs.unstable.fzf
-    ] ++ adduser { uid = 0; user = uuser; };
-
-    # fakeRootCommands = ''
-      # mkdir -p ./home/${uuser}
-      # chown 1000 ./home/$(uuser}
-    # '';
-    # runAsRoot = ''
-      # mkdir -p /data
-    # '';
-    # extraCommands = ''
-      # mkdir -p /home/max
-      # mkdir /tmp
-      # chmod 1777 /tmp
-    # '';
+              pkgs.unstable.wget
+              pkgs.unstable.tree
+              pkgs.unstable.ripgrep
+              pkgs.unstable.tig
+              pkgs.unstable.git
+              pkgs.unstable.fzf
+            ];
+            pathsToLink = [ "/bin" ];
+          }
+        )
+        (
+          pkgs.runCommand "user" { } ''
+          mkdir -p $out/etc
+          echo "hello" > $out/etc/file
+          ''
+        )
+      ];
+    };
+#    contents = [
+#      pkgs.unstable.busybox
+#      pkgs.unstable.less
+#      pkgs.unstable.ncurses
+#      pkgs.unstable.openssh
+#      pkgs.unstable.coreutils
+#      pkgs.unstable.findutils
+#      pkgs.unstable.gnutar
+#      pkgs.unstable.bash
+#
+#      pkgs.mypkg.nvim
+#      pkgs.mypkg.clangd
+#      pkgs.unstable.global
+#      pkgs.unstable.universal-ctags
+#
+#      pkgs.mypkg.tmux
+#      pkgs.unstable.perl
+#
+#      pkgs.mypkg.myfish
+#
+#      pkgs.unstable.wget
+#      pkgs.unstable.tree
+#      pkgs.unstable.ripgrep
+#      pkgs.unstable.tig
+#      pkgs.unstable.git
+#      pkgs.unstable.fzf
+#    ] ++ adduser { uid = 0; user = uuser; };
 
     config = {
       Cmd = "fish";
