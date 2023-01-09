@@ -1,28 +1,6 @@
 pkgs: with pkgs;
 let
-  adduser = { user, uid, gid ? uid }: [
-    (
-      writeTextDir "etc/shadow" ''
-        ${user}:!:::::::
-      ''
-    )
-    (
-      writeTextDir "etc/passwd" ''
-        ${user}:x:0:0::/home/${user}:/bin/fish
-      ''
-    )
-    (
-      writeTextDir "etc/group" ''
-        ${user}:x:0:
-      ''
-    )
-    (
-      writeTextDir "etc/gshadow" ''
-        ${user}:x::
-      ''
-    )
-  ];
-  uuser = "max";
+  user = "max";
 in
   pkgs.dockerTools.buildImage {
     name = "bundle";
@@ -64,45 +42,42 @@ in
             ];
             pathsToLink = [ "/bin" ];
           }
-        )
-        (
+        ) (
           pkgs.runCommand "user" { } ''
-          mkdir -p $out/etc
-          echo "hello" > $out/etc/file
+            mkdir -p $out/tmp
+            chmod 1777 $out/tmp
+            mkdir -p $out/home/${user}/.config/nvim
+            ln -s ${./../packages/nvim/coc-settings.json} $out/home/${user}/.config/nvim/coc-settings.json
+          ''
+        ) (
+          writeTextDir "etc/shadow" ''
+            ${user}:!:::::::
+          ''
+        ) (
+          writeTextDir "etc/passwd" ''
+            ${user}:x:0:0::/home/${user}:/bin/fish
+          ''
+        ) (
+          writeTextDir "etc/group" ''
+            ${user}:x:0:
+          ''
+        ) (
+          writeTextDir "etc/gshadow" ''
+            ${user}:x::
           ''
         )
+        # (
+          # pkgs.buildEnv {
+            # name = "cocconfig";
+            # paths = [ pkgs.mypkg.cocconfig ];
+            # pathsToLink = [ "/home/${user}/.config/nvim/" ];
+          # }
+        # )
       ];
     };
-#    contents = [
-#      pkgs.unstable.busybox
-#      pkgs.unstable.less
-#      pkgs.unstable.ncurses
-#      pkgs.unstable.openssh
-#      pkgs.unstable.coreutils
-#      pkgs.unstable.findutils
-#      pkgs.unstable.gnutar
-#      pkgs.unstable.bash
-#
-#      pkgs.mypkg.nvim
-#      pkgs.mypkg.clangd
-#      pkgs.unstable.global
-#      pkgs.unstable.universal-ctags
-#
-#      pkgs.mypkg.tmux
-#      pkgs.unstable.perl
-#
-#      pkgs.mypkg.myfish
-#
-#      pkgs.unstable.wget
-#      pkgs.unstable.tree
-#      pkgs.unstable.ripgrep
-#      pkgs.unstable.tig
-#      pkgs.unstable.git
-#      pkgs.unstable.fzf
-#    ] ++ adduser { uid = 0; user = uuser; };
-
     config = {
       Cmd = "fish";
+      WorkingDir = "/home/${user}";
       Env = [
       ];
     };
