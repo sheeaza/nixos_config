@@ -13,12 +13,11 @@ in
           pkgs.buildEnv {
             name = "image-root";
             paths = [
+              pkgs.unstable.busybox
               pkgs.unstable.less
               pkgs.unstable.ncurses
               pkgs.unstable.openssh
               pkgs.unstable.coreutils
-              # pkgs.unstable.busybox
-              pkgs.unstable.gnused
               pkgs.unstable.findutils
               pkgs.unstable.gnutar
               pkgs.unstable.bash
@@ -41,6 +40,7 @@ in
               pkgs.unstable.fzf
             ];
             pathsToLink = [ "/bin" ];
+            ignoreCollisions = true;
           }
         ) (
           pkgs.runCommand "user" { } ''
@@ -66,13 +66,6 @@ in
             ${user}:x::
           ''
         )
-        # (
-          # pkgs.buildEnv {
-            # name = "cocconfig";
-            # paths = [ pkgs.mypkg.cocconfig ];
-            # pathsToLink = [ "/home/${user}/.config/nvim/" ];
-          # }
-        # )
       ];
     };
     config = {
