@@ -1,10 +1,10 @@
-vim.opt.completeopt = 'menu,menuone,noselect'
+-- vim.opt.completeopt = 'menu,menuone,noselect'
 
 local cmp = require'cmp'
 cmp.setup({
   mapping = cmp.mapping.preset.insert({
-    ['<c-j>'] = cmp.mapping.select_next_item(),
-    ['<c-k>'] = cmp.mapping.select_prev_item(),
+    ['<c-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+    ['<c-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
     ['<esc>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   }),
