@@ -40,7 +40,7 @@ in
     # Select internationalisation properties.
     i18n.defaultLocale = "en_US.UTF-8";
     console = {
-      font = "Hack Nerd Font";
+      # font = "Hack Nerd Font";
       keyMap = "us";
     };
   
@@ -72,7 +72,7 @@ in
       isNormalUser = true;
       extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     };
-    users.defaultUserShell = pkgs.fish;
+    users.defaultUserShell = pkgs.mypkg.myfish;
   
     # List packages installed in system profile. To search, run:
     environment.systemPackages = [
