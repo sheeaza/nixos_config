@@ -24,6 +24,8 @@ let
     '';
   };
 in
-  wrapFish {
+  (wrapFish {
     pluginPkgs = [ fzf bundle ];
-  }
+  }).overrideAttrs (_: {
+    passthru.shellPath = "/bin/fish";
+  })

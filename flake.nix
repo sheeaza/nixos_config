@@ -1,7 +1,7 @@
 {
   inputs = {
     upkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    pkgs-stable.url = "github:nixos/nixpkgs/nixos-22.11";
+    pkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
     flake-utils.url = github:numtide/flake-utils;
 
     #neovim
@@ -10,7 +10,7 @@
       flake = false;
     };
     clangd-src = {
-      url = "https://github.com/clangd/clangd/releases/download/15.0.6/clangd-linux-15.0.6.zip";
+      url = "https://github.com/clangd/clangd/releases/download/16.0.2/clangd-linux-16.0.2.zip?narHash=sha256-3NSBktpGnSsBSUvGyroFzgNiDWokik1sAliovRYk6tA='";
       flake = false;
     };
 
