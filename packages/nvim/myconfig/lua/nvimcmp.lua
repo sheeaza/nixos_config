@@ -1,6 +1,11 @@
 -- vim.opt.completeopt = 'menu,menuone,noselect'
 
 local cmp = require'cmp'
+
+-- vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg="#fdff00", bg="NONE" })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg="#fdff00", bg="NONE" })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg="#fdff00", bg="NONE" })
+
 cmp.setup({
   mapping = cmp.mapping.preset.insert({
     ['<c-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
