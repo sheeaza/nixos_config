@@ -3,12 +3,6 @@ let
   tmuxconfig = stdenv.mkDerivation {
     name = "ohmytmux";
     src = ohmytmux;
-    postPatch = ''
-      _out=$(echo $out|sed 's/\//\\\//g')
-      substituteInPlace .tmux.conf \
-        --replace "~/" "$out/" \
-        --replace "~\/" "$_out\/"
-    '';
     installPhase = ''
       mkdir -p $out/;
       cp .tmux.conf $out/
@@ -23,6 +17,7 @@ in
       buildInputs = [ makeWrapper ];
       postBuild = ''
       wrapProgram $out/bin/tmux \
+      --set TMUX_CONF ${tmuxconfig}/.tmux.conf \
       --add-flags "-f ${tmuxconfig}/.tmux.conf"
       '';
     };
