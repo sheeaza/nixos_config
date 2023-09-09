@@ -42,7 +42,7 @@
           cshell = import ./devshell/cshell.nix pkgs;
           rustshell = import ./devshell/rustshell.nix pkgs;
           mynvim = pkgs.mypkg.nvim;
-          mytmux = pkgs.mypkg.myfish;
+          mytmux = pkgs.mypkg.tmux;
         };
       }
     ) // {
