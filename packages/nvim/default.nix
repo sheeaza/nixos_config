@@ -28,6 +28,8 @@ let
           nvim-cmp
 
           LeaderF
+          telescope-nvim
+          telescope-fzf-native-nvim
           vim-easymotion
           nviminit
         ];
