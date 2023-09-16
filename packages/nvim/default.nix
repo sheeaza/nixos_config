@@ -8,7 +8,7 @@ let
       patchShebangs .
       ./install.sh
       rm autoload/leaderf/fuzzyMatch_C/build/ -r
-      find ./ -type f -exec strip '{}' \; 2>/dev/null
+      find ./ -type f -name '*.so' -exec strip '{}' \; 2>/dev/null
     '';
   };
   treesitter = vimPlugins.nvim-treesitter.withPlugins (
