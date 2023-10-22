@@ -1,16 +1,5 @@
-{ pkgs, leaderf-src }: with pkgs.unstable;
+{ pkgs }: with pkgs.unstable;
 let
-  leaderf = vimUtils.buildVimPlugin {
-    name = "leaderf";
-    src = leaderf-src;
-    buildInputs = [ python3 ];
-    buildPhase = ''
-      patchShebangs .
-      ./install.sh
-      rm autoload/leaderf/fuzzyMatch_C/build/ -r
-      find ./ -type f -name '*.so' -exec strip '{}' \; 2>/dev/null
-    '';
-  };
   treesitter = vimPlugins.nvim-treesitter.withPlugins (
     plugins: with plugins; [
       tree-sitter-c
@@ -34,7 +23,7 @@ in let
           coc-nvim
           coc-clangd
           coc-rust-analyzer
-          leaderf
+          LeaderF
           vim-easymotion
           nviminit
         ];

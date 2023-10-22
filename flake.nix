@@ -5,10 +5,6 @@
     flake-utils.url = github:numtide/flake-utils;
 
     #neovim
-    leaderf-src = {
-      url = "github:Yggdroot/LeaderF";
-      flake = false;
-    };
     clangd-src = {
       url = "https://github.com/clangd/clangd/releases/download/16.0.2/clangd-linux-16.0.2.zip?narHash=sha256-3NSBktpGnSsBSUvGyroFzgNiDWokik1sAliovRYk6tA='";
       flake = false;
