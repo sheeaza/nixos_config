@@ -34,7 +34,7 @@ in
     # networking.proxy.default = "http://user:password@proxy:port/";
     # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   
-    fonts.fonts = with pkgs; [
+    fonts.packages = with pkgs; [
       (nerdfonts.override { fonts = [ "Hack" ]; })
     ];
     # Select internationalisation properties.

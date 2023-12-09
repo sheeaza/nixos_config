@@ -1,7 +1,7 @@
 {
   inputs = {
     upkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    pkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
+    pkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     flake-utils.url = github:numtide/flake-utils;
 
     #neovim

@@ -3,7 +3,7 @@
     "clangd-src": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-3NSBktpGnSsBSUvGyroFzgNiDWokik1sAliovRYk6tA='",
+        "narHash": "sha256-3NSBktpGnSsBSUvGyroFzgNiDWokik1sAliovRYk6tA=",
         "type": "tarball",
         "url": "https://github.com/clangd/clangd/releases/download/16.0.2/clangd-linux-16.0.2.zip?narHash=sha256-3NSBktpGnSsBSUvGyroFzgNiDWokik1sAliovRYk6tA%3D%27"
       },
@@ -34,11 +34,11 @@
     "ohmytmux": {
       "flake": false,
       "locked": {
-        "lastModified": 1681567899,
-        "narHash": "sha256-LkoRWds7PHsteJCDvsBpZ80zvlLtFenLU3CPAxdEHYA=",
+        "lastModified": 1701210492,
+        "narHash": "sha256-em3n7xqjljtCstuUjHxpd/9tY5i3Xi8memqI/YiuDfY=",
         "owner": "gpakosz",
         "repo": ".tmux",
-        "rev": "fd1bbb56148101f4b286ddafd98f2ac2dcd69cd8",
+        "rev": "42adc354b68ffe210264f6522e47d60cfc1e3e9f",
         "type": "github"
       },
       "original": {
@@ -49,16 +49,16 @@
     },
     "pkgs-stable": {
       "locked": {
-        "lastModified": 1697777081,
-        "narHash": "sha256-n2vQARhKevRGyeo+LAa8g+CdUQsdH/caNk8jnylcPhY=",
+        "lastModified": 1701389149,
+        "narHash": "sha256-rU1suTIEd5DGCaAXKW6yHoCfR1mnYjOXQFOaH7M23js=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "679cadfdfed2b90311a247b2d6ef6dfd3d6cab73",
+        "rev": "5de0b32be6e85dc1a9404c75131316e4ffbc634c",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-23.05",
+        "ref": "nixos-23.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -89,11 +89,11 @@
     },
     "upkgs": {
       "locked": {
-        "lastModified": 1697723726,
-        "narHash": "sha256-SaTWPkI8a5xSHX/rrKzUe+/uVNy6zCGMXgoeMb7T9rg=",
+        "lastModified": 1701253981,
+        "narHash": "sha256-ztaDIyZ7HrTAfEEUt9AtTDNoCYxUdSd6NrRHaYOIxtk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "7c9cc5a6e5d38010801741ac830a3f8fd667a7a0",
+        "rev": "e92039b55bcd58469325ded85d4f58dd5a4eaf58",
         "type": "github"
       },
       "original": {
