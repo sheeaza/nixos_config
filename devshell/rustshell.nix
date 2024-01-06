@@ -26,10 +26,11 @@ let
       pkgs.unstable.fzf
       pkgs.bash
 
-      pkgs.binutils
-      pkgs.gcc
-      pkgs.gdb
-      pkgs.gdbgui
+      # pkgs.binutils
+      # pkgs.gcc
+      # pkgs.gdb
+      # pkgs.gdbgui
+      pkgs.clang
       pkgs.rust-analyzer
       pkgs.rustfmt
       pkgs.rustc
