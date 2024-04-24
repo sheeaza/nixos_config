@@ -6,7 +6,7 @@
 
     #neovim
     clangd-src = {
-      url = "https://github.com/clangd/clangd/releases/download/16.0.2/clangd-linux-16.0.2.zip?narHash=sha256-3NSBktpGnSsBSUvGyroFzgNiDWokik1sAliovRYk6tA='";
+      url = "https://github.com/clangd/clangd/releases/download/18.1.3/clangd-linux-18.1.3.zip?narHash=sha256-6d1P510uHtXJ8fOyi2OZFyILDS8XgK6vsWFewKFVvq4%3D";
       flake = false;
     };
 
