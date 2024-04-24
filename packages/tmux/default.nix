@@ -1,4 +1,4 @@
-{ tmux, stdenv, symlinkJoin,  ohmytmux }:
+{ tmux, stdenv, symlinkJoin, makeWrapper, ohmytmux }:
 let
   tmuxconfig = stdenv.mkDerivation {
     name = "ohmytmux";
