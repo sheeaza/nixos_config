@@ -3,8 +3,10 @@ let
   tmuxconfig = stdenv.mkDerivation {
     name = "ohmytmux";
     src = ohmytmux;
+    # mkdir empty plugins to prevent error outputs
     installPhase = ''
       mkdir -p $out/;
+      mkdir -p $out/plugins
       cp .tmux.conf $out/
       cp ${./tmuxlocal} $out/.tmux.conf.local
     '';
