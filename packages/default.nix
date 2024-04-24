@@ -1,10 +1,8 @@
-inputs: final: prev:
-let
-in with final.unstable; {
+inputs: final: prev: {
   mypkg = {
-    nvim = import ./nvim { pkgs = final; };
-    clangd = import ./clangd { pkgs = final; clangd-src = inputs.clangd-src; };
-    tmux = import ./tmux { pkgs = final; ohmytmux = inputs.ohmytmux; };
-    myfish = import ./fish { pkgs = final; };
+    nvim = final.unstable.callPackage ./nvim {};
+    clangd = final.unstable.callPackage ./clangd { clangd-src = inputs.clangd-src; };
+    tmux = final.unstable.callPackage ./tmux { ohmytmux = inputs.ohmytmux; };
+    myfish = final.unstable.callPackage ./fish {};
   };
 }
