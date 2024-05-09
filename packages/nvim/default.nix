@@ -1,4 +1,4 @@
-{ pkgs }: with pkgs.unstable;
+{ neovim, vimPlugins, vimUtils }:
 let
   treesitter = vimPlugins.nvim-treesitter.withPlugins (
     plugins: with plugins; [

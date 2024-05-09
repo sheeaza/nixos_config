@@ -1,4 +1,4 @@
-{ pkgs }: with pkgs.unstable;
+{ wrapFish, stdenv, fzf }:
 let
   bundle = stdenv.mkDerivation {
     name = "bundle";
