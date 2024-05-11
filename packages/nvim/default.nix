@@ -20,12 +20,12 @@ in let
           nerdcommenter
           treesitter
 
-	  nvim-lspconfig
-	  cmp-nvim-lsp
-	  cmp-buffer
-	  cmp-path
-	  cmp-cmdline
-	  nvim-cmp
+	        nvim-lspconfig
+	        cmp-nvim-lsp
+	        cmp-buffer
+	        cmp-path
+	        cmp-cmdline
+	        nvim-cmp
 
           LeaderF
           vim-easymotion
