@@ -1,11 +1,6 @@
 { neovim, vimPlugins, vimUtils }:
 let
-  treesitter = vimPlugins.nvim-treesitter.withPlugins (
-    plugins: with plugins; [
-      tree-sitter-c
-      tree-sitter-rust
-    ]
-  );
+  treesitter = vimPlugins.nvim-treesitter.withAllGrammars;
   nviminit = vimUtils.buildVimPlugin {
     name = "nviminit";
     src = ./myconfig;
@@ -37,5 +32,4 @@ in let
       '';
     };
   };
-in
-  nvim
+in nvim

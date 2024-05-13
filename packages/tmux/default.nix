@@ -11,17 +11,15 @@ let
       cp ${./tmuxlocal} $out/.tmux.conf.local
     '';
   };
-in
-  let
-    wraptmux = symlinkJoin {
-      name = "tmux";
-      paths = [ tmux ];
-      buildInputs = [ makeWrapper ];
-      postBuild = ''
+in let
+  wraptmux = symlinkJoin {
+    name = "tmux";
+    paths = [ tmux ];
+    buildInputs = [ makeWrapper ];
+    postBuild = ''
       wrapProgram $out/bin/tmux \
       --set TMUX_CONF ${tmuxconfig}/.tmux.conf \
       --add-flags "-f ${tmuxconfig}/.tmux.conf"
-      '';
-    };
-  in
-    wraptmux
+    '';
+  };
+in wraptmux
