@@ -28,5 +28,4 @@ in let
       '';
     };
   };
-in
-  nvim
+in nvim

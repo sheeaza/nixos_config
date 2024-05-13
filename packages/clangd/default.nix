@@ -3,15 +3,9 @@ stdenv.mkDerivation {
   name = "clangd";
   src = clangd-src;
 
-  buildInputs = [
-    bashInteractive
-    gcc
-  ];
+  buildInputs = [ bashInteractive gcc ];
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-    unzip
-  ];
+  nativeBuildInputs = [ autoPatchelfHook unzip ];
 
   # sourceRoot = ".";
   installPhase = ''
