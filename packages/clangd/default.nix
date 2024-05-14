@@ -1,11 +1,24 @@
-{ stdenv, bashInteractive, gcc, autoPatchelfHook, unzip, clangd-src }:
+{
+  stdenv,
+  bashInteractive,
+  gcc,
+  autoPatchelfHook,
+  unzip,
+  clangd-src,
+}:
 stdenv.mkDerivation {
   name = "clangd";
   src = clangd-src;
 
-  buildInputs = [ bashInteractive gcc ];
+  buildInputs = [
+    bashInteractive
+    gcc
+  ];
 
-  nativeBuildInputs = [ autoPatchelfHook unzip ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+    unzip
+  ];
 
   # sourceRoot = ".";
   installPhase = ''

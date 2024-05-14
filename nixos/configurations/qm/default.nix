@@ -2,10 +2,16 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, self, ... }:
-let pkgs = self.pkgs.x86_64-linux;
-in {
-  imports = [ ];
+{
+  config,
+  pkgs,
+  host,
+  ...
+}:
+{
+  imports = [ ./hardware.nix ];
+
+  documentation.enable = false;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -27,6 +33,7 @@ in {
   # replicates the default behaviour.
   networking.useDHCP = false;
   networking.interfaces.ens33.useDHCP = true;
+  networking.hostName = host;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -62,9 +69,12 @@ in {
   services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.max = {
+  users.users.${host} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "adbusers"
+    ]; # Enable ‘sudo’ for the user.
   };
   users.defaultUserShell = pkgs.mypkg.myfish;
 
@@ -96,6 +106,7 @@ in {
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+  programs.adb.enable = true;
 
   # List services that you want to enable:
 
@@ -116,10 +127,8 @@ in {
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05"; # Did you read the comment?
 
-  nix = {
-    package = pkgs.nixUnstable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 }

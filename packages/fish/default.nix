@@ -1,4 +1,8 @@
-{ wrapFish, stdenv, fzf }:
+{
+  wrapFish,
+  stdenv,
+  fzf,
+}:
 let
   bundle = stdenv.mkDerivation {
     name = "bundle";
@@ -23,5 +27,13 @@ let
       mv $out/share/fish/vendor_functions.d/load-env.fish $out/share/fish/vendor_conf.d/load-env.fish
     '';
   };
-in (wrapFish { pluginPkgs = [ fzf bundle ]; }).overrideAttrs
-(_: { passthru.shellPath = "/bin/fish"; })
+in
+(wrapFish {
+  pluginPkgs = [
+    fzf
+    bundle
+  ];
+}).overrideAttrs
+  (_: {
+    passthru.shellPath = "/bin/fish";
+  })

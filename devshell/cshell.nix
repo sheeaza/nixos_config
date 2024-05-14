@@ -23,4 +23,5 @@ let
       pkgs.unstable.fzf
     ];
   };
-in cshell
+in
+cshell
