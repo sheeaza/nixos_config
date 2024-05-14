@@ -1,4 +1,10 @@
-{ tmux, stdenv, symlinkJoin, makeWrapper, ohmytmux }:
+{
+  tmux,
+  stdenv,
+  symlinkJoin,
+  makeWrapper,
+  ohmytmux,
+}:
 let
   tmuxconfig = stdenv.mkDerivation {
     name = "ohmytmux";
@@ -11,7 +17,8 @@ let
       cp ${./tmuxlocal} $out/.tmux.conf.local
     '';
   };
-in let
+in
+let
   wraptmux = symlinkJoin {
     name = "tmux";
     paths = [ tmux ];
@@ -22,4 +29,5 @@ in let
       --add-flags "-f ${tmuxconfig}/.tmux.conf"
     '';
   };
-in wraptmux
+in
+wraptmux

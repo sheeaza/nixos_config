@@ -2,7 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, host, ... }:
+{
+  config,
+  pkgs,
+  host,
+  ...
+}:
 {
   imports = [ ./hardware.nix ];
 
@@ -66,7 +71,10 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${host} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "adbusers" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "adbusers"
+    ]; # Enable ‘sudo’ for the user.
   };
   users.defaultUserShell = pkgs.mypkg.myfish;
 
@@ -119,5 +127,8 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05"; # Did you read the comment?
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 }

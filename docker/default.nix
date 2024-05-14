@@ -1,7 +1,9 @@
 pkgs:
 with pkgs;
-let user = "max";
-in pkgs.dockerTools.buildImage {
+let
+  user = "max";
+in
+pkgs.dockerTools.buildImage {
   name = "bundle";
   tag = "latest";
 
@@ -44,9 +46,7 @@ in pkgs.dockerTools.buildImage {
         mkdir -p $out/tmp
         chmod 1777 $out/tmp
         mkdir -p $out/home/${user}/.config/nvim
-        ln -s ${
-          ./../packages/nvim/coc-settings.json
-        } $out/home/${user}/.config/nvim/coc-settings.json
+        ln -s ${./../packages/nvim/coc-settings.json} $out/home/${user}/.config/nvim/coc-settings.json
       '')
       (writeTextDir "etc/shadow" ''
         ${user}:!:::::::
