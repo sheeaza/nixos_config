@@ -1,9 +1,9 @@
-inputs: final: prev: {
+{ clangd-src, ohmytmux }: final: prev: {
   mypkg = {
     nvim = final.unstable.callPackage ./nvim { };
     clangd =
-      final.unstable.callPackage ./clangd { clangd-src = inputs.clangd-src; };
-    tmux = final.unstable.callPackage ./tmux { ohmytmux = inputs.ohmytmux; };
+      final.unstable.callPackage ./clangd { inherit clangd-src; };
+    tmux = final.unstable.callPackage ./tmux { inherit ohmytmux; };
     myfish = final.unstable.callPackage ./fish { };
   };
 }
