@@ -46,7 +46,6 @@ pkgs.dockerTools.buildImage {
         mkdir -p $out/tmp
         chmod 1777 $out/tmp
         mkdir -p $out/home/${user}/.config/nvim
-        ln -s ${./../packages/nvim/coc-settings.json} $out/home/${user}/.config/nvim/coc-settings.json
       '')
       (writeTextDir "etc/shadow" ''
         ${user}:!:::::::

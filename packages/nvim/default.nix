@@ -2,12 +2,26 @@
   neovim,
   vimPlugins,
   vimUtils,
+  stdenv,
 }:
 let
   treesitter = vimPlugins.nvim-treesitter.withAllGrammars;
   nviminit = vimUtils.buildVimPlugin {
     name = "nviminit";
     src = ./myconfig;
+  };
+  cocsetting = stdenv.mkDerivation {
+    name = "coc-setting";
+    src = ./.;
+    phases = [
+      "unpackPhase"
+      "installPhase"
+    ];
+    # mkdir empty plugins to prevent error outputs
+    installPhase = ''
+      mkdir -p $out;
+      cp $src/coc-settings.json $out/
+    '';
   };
 in
 let
@@ -29,6 +43,7 @@ let
         ];
       };
       customRC = ''
+        lua vim.g.coc_config_home='${cocsetting}'
         lua require('nviminit')
       '';
     };
