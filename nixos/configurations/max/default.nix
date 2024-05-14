@@ -2,9 +2,11 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, host, ... }:
 {
-  imports = [ ];
+  imports = [ ./hardware.nix ];
+
+  documentation.enable = false;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -26,6 +28,7 @@
   # replicates the default behaviour.
   networking.useDHCP = false;
   networking.interfaces.ens33.useDHCP = true;
+  networking.hostName = host;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -61,7 +64,7 @@
   services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.max = {
+  users.users.${host} = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };

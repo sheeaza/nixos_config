@@ -37,10 +37,10 @@
         mynvim = pkgs.mypkg.nvim;
         mytmux = pkgs.mypkg.tmux;
       };
-      nixosConfigurations = import ./nixos/configurations {
+      nixosConfigurations = pkgs.lib.genAttrs [ "max" ] (import ./nixos/configurations {
         fpkgs = pkgs-stable;
         inherit system;
         overlays = [ unstable-ov mypack-ov ];
-      };
+      });
     };
 }
