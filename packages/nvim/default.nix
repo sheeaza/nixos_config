@@ -30,7 +30,7 @@ let
     configure = {
       packages.mypack = with vimPlugins; {
         start = [
-          lightline-vim
+          lualine-nvim
           onedark-vim
           nerdcommenter
           treesitter

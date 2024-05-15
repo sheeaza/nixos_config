@@ -73,7 +73,7 @@ vim.api.nvim_create_user_command(
 
 -- plugin config section
 require('leaderf')
-require('lightline')
+require('lline')
 require('easymotion')
 require('treesitter')
 require('nerdco')
