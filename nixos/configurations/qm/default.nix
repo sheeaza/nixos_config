@@ -96,6 +96,8 @@
     pkgs.unstable.fzf
 
     pkgs.docker-compose
+
+    pkgs.sshfs
   ];
   environment.sessionVariables.EDITOR = "vim";
 
