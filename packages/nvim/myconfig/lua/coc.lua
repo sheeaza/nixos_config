@@ -1,6 +1,8 @@
 -- Remap keys for gotos
 vim.keymap.set('n', 'gd', '<Plug>(coc-definition)', {noremap = true, silent = true})
 vim.keymap.set('n', 'gr', '<Plug>(coc-references)', {noremap = true, silent = true})
+vim.keymap.set("n", "gD", "<Plug>(coc-type-definition)", {silent = true})
+vim.keymap.set("n", "gi", "<Plug>(coc-implementation)", {silent = true})
 -- Find symbol of current document
 vim.keymap.set('n', 'gs', ':<C-u>CocList outline<cr>', {noremap = true, silent = true})
 
