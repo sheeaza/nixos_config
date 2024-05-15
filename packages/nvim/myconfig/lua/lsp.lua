@@ -1,30 +1,30 @@
+-- key mapping
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
-  callback = function()
+  callback = function(ev)
     local bufmap = function(mode, lhs, rhs)
-      local opts = {buffer = true}
+      local opts = {buffer = ev.buf, silent = true}
       vim.keymap.set(mode, lhs, rhs, opts)
     end
+    local builtin = require('telescope.builtin')
 
-    -- Displays hover information about the symbol under the cursor
-    bufmap('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<cr>')
+    bufmap('n', 'gh', vim.lsp.buf.hover)
+    bufmap('n', 'gd', builtin.lsp_definitions)
+    bufmap('n', 'gD', vim.lsp.buf.declaration)
+    bufmap('n', 'gi', builtin.lsp_implementations)
+    bufmap('n', 'go', builtin.lsp_type_definitions)
+    bufmap('n', 'gr', builtin.lsp_references)
+    bufmap('n', '<F2>', vim.lsp.buf.rename)
 
-    -- Jump to the definition
-    bufmap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
-
-    -- Jump to declaration
-    bufmap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
-
-    -- Lists all the implementations for the symbol under the cursor
-    bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
-
-    -- Jumps to the definition of the type symbol
-    bufmap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
-
-    -- Lists all the references
-    bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
-
-    -- Renames all references to the symbol under the cursor
-    bufmap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
+    bufmap('n', 'gs', builtin.lsp_document_symbols)
+    bufmap('n', 'gw', builtin.lsp_workspace_symbols)
+    bufmap('n', '<leader>d', builtin.diagnostics)
   end
+})
+
+vim.diagnostic.config({
+  virtual_text = false,
+  float = {
+    source = "always",  -- Or "if_many"
+  },
 })
