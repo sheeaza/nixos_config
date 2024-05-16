@@ -15,7 +15,7 @@ let
     p.rust        
     p.cpp 
   ]);
-    nviminit = vimUtils.buildVimPlugin {
+  nviminit = vimUtils.buildVimPlugin {
     name = "nviminit";
     src = ./myconfig;
   };
