@@ -19,12 +19,23 @@ vim.api.nvim_create_autocmd('LspAttach', {
     bufmap('n', 'gs', builtin.lsp_document_symbols)
     bufmap('n', 'gw', builtin.lsp_workspace_symbols)
     bufmap('n', '<leader>d', builtin.diagnostics)
+
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    client.server_capabilities.semanticTokensProvider = nil
   end
 })
 
-vim.diagnostic.config({
-  virtual_text = false,
-  float = {
-    source = "always",  -- Or "if_many"
-  },
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = false,
+    -- Disable a feature
+    update_in_insert = false,
+  }
+)
+
+vim.api.nvim_create_autocmd("CursorHold", {
+  pattern = "*",
+  callback = function(ev)
+    vim.diagnostic.open_float()
+  end
 })
