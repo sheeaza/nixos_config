@@ -25,7 +25,7 @@ vim.keymap.set('i', '<c-d>', 'coc#pum#visible() ? coc#pum#scroll(1) : "<c-d>"', 
 vim.keymap.set('i', '<c-u>', 'coc#pum#visible() ? coc#pum#scroll(0) : "<c-u>"', opts)
 vim.keymap.set('i', '<cr>', [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
 -- -- Escape: exit autocompletion, go to Normal mode
-vim.keymap.set('i', '<Esc>', [[coc#pum#visible() ? coc#pum#cancel() : "\<Esc>"]], opts)
+vim.keymap.set('i', '<Esc>', [[coc#pum#visible() ? "\<C-r>=coc#pum#cancel()\<CR>\<ESC>" : "\<Esc>"]], opts)
 
 function _G.show_docs()
     local cw = vim.fn.expand('<cword>')
