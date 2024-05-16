@@ -8,12 +8,12 @@ let
   # treesitter = vimPlugins.nvim-treesitter.withAllGrammars; #this will cause lag
   treesitter = vimPlugins.nvim-treesitter.withPlugins (p: [
     # these are mandatory,
-    p.c                                                                    
-    p.lua                  
-    p.vimdoc        
-                                                                           
-    p.rust        
-    p.cpp 
+    p.c
+    p.lua
+    p.vimdoc
+
+    p.rust
+    p.cpp
   ]);
   nviminit = vimUtils.buildVimPlugin {
     name = "nviminit";
