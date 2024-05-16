@@ -5,6 +5,7 @@ vim.keymap.set("n", "gD", "<Plug>(coc-type-definition)", {silent = true})
 vim.keymap.set("n", "gi", "<Plug>(coc-implementation)", {silent = true})
 -- Find symbol of current document
 vim.keymap.set('n', 'gs', ':<C-u>CocList outline<cr>', {noremap = true, silent = true})
+vim.keymap.set("n", "gw", ":<C-u>CocList -I symbols<cr>", {silent = true, nowait = true})
 
 -- Formatting selected code.
 vim.keymap.set('x', '<leader>=', '<Plug>(coc-format-selected)')
