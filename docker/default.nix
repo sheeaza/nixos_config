@@ -24,7 +24,6 @@ pkgs.dockerTools.buildImage {
 
           pkgs.mypkg.nvim
           pkgs.mypkg.clangd
-          pkgs.unstable.global
           pkgs.unstable.universal-ctags
 
           pkgs.mypkg.tmux

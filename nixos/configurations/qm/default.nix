@@ -81,6 +81,8 @@
   # List packages installed in system profile. To search, run:
   environment.systemPackages = [
     pkgs.mypkg.nvim
+    pkgs.mypkg.clangd
+    pkgs.universal-ctags
 
     pkgs.mypkg.tmux
     pkgs.unstable.perl

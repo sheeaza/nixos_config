@@ -9,7 +9,6 @@ let
 
       pkgs.mypkg.nvim
       pkgs.mypkg.clangd
-      pkgs.global
       pkgs.universal-ctags
 
       pkgs.bashInteractive
