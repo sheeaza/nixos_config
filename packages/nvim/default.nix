@@ -26,6 +26,7 @@ let
           cmp-path
           cmp-cmdline
           nvim-cmp
+          luasnip
 
           LeaderF
           telescope-nvim
