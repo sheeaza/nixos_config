@@ -30,11 +30,14 @@
       mypack-ov = import ./packages { inherit clangd-src ohmytmux; };
     in
     let
+      pkg-ov = [
+        unstable-ov
+        mypack-ov
+      ];
+    in
+    let
       pkgs = import pkgs-stable {
-        overlays = [
-          unstable-ov
-          mypack-ov
-        ];
+        overlays = pkg-ov;
         inherit system;
       };
     in
@@ -56,10 +59,7 @@
             import ./nixos/configurations {
               fpkgs = pkgs-stable;
               inherit system;
-              overlays = [
-                unstable-ov
-                mypack-ov
-              ];
+              overlays = pkg-ov;
             }
           );
     };
