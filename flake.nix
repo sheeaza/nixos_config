@@ -14,6 +14,10 @@
       url = "github:gpakosz/.tmux";
       flake = false;
     };
+    tele-src = {
+      url = "git+file:////home/max/project/telescope.nvim";
+      flake = false;
+    };
   };
 
   outputs =
@@ -23,11 +27,12 @@
       pkgs-stable,
       clangd-src,
       ohmytmux,
+      tele-src,
     }:
     let
       system = "x86_64-linux";
       unstable-ov = final: prev: { unstable = upkgs.legacyPackages.${prev.system}; };
-      mypack-ov = import ./packages { inherit clangd-src ohmytmux; };
+      mypack-ov = import ./packages { inherit clangd-src ohmytmux tele-src; };
     in
     let
       pkg-ov = [

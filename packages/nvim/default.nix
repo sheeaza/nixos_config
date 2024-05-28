@@ -3,6 +3,7 @@
   vimPlugins,
   vimUtils,
   stdenv,
+  tele-src,
 }:
 let
   # treesitter = vimPlugins.nvim-treesitter.withAllGrammars; #this will cause lag
@@ -18,6 +19,10 @@ let
   nviminit = vimUtils.buildVimPlugin {
     name = "nviminit";
     src = ./myconfig;
+  };
+  tele = vimUtils.buildVimPlugin {
+    name = "tele";
+    src = tele-src;
   };
   cocsetting = stdenv.mkDerivation {
     name = "coc-setting";
@@ -47,8 +52,10 @@ let
           coc-clangd
           coc-rust-analyzer
           LeaderF
+          tele
           vim-easymotion
           nviminit
+          plenary-nvim
         ];
       };
       customRC = ''

@@ -50,7 +50,24 @@
         "clangd-src": "clangd-src",
         "ohmytmux": "ohmytmux",
         "pkgs-stable": "pkgs-stable",
+        "tele-src": "tele-src",
         "upkgs": "upkgs"
+      }
+    },
+    "tele-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1716198917,
+        "narHash": "sha256-TAkfOpnfqykNJ0IaJ42g7Mr29M/CjP3KnHLJrexH3hY=",
+        "ref": "refs/heads/master",
+        "rev": "4aed63995a69e343b068c7469491a8d1592c339f",
+        "revCount": 1394,
+        "type": "git",
+        "url": "file:////home/max/project/telescope.nvim"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:////home/max/project/telescope.nvim"
       }
     },
     "upkgs": {
