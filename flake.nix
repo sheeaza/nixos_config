@@ -44,6 +44,7 @@
     {
       packages."${system}" = {
         dockerImage = import ./docker pkgs;
+        dockerimg2 = import ./docker/q.nix pkgs;
         cshell = import ./devshell/cshell.nix pkgs;
         rustshell = import ./devshell/rustshell.nix pkgs;
         mynvim = pkgs.mypkg.nvim;
