@@ -1,8 +1,7 @@
-version: '3.8'
 services:
   dev:
     hostname: vahala
-    image: kungfury:1.0
+    image: bundle:latest
     init: true
     volumes:
       - type: bind
@@ -11,12 +10,6 @@ services:
       - type: bind
         source: ~/.gitconfig
         target: /home/qm/.gitconfig
-      - type: bind
-        source: ~/
-        target: /home/qm/workspace
-      - type: bind
-        source: ~/bin
-        target: /home/qm/hostbin
       - type: bind
         source: /local/mnt/workspace
         target: /local/mnt/workspace
