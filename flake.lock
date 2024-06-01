@@ -57,11 +57,10 @@
     "tele-src": {
       "flake": false,
       "locked": {
+        "dirtyRev": "4aed63995a69e343b068c7469491a8d1592c339f-dirty",
+        "dirtyShortRev": "4aed639-dirty",
         "lastModified": 1716198917,
-        "narHash": "sha256-TAkfOpnfqykNJ0IaJ42g7Mr29M/CjP3KnHLJrexH3hY=",
-        "ref": "refs/heads/master",
-        "rev": "4aed63995a69e343b068c7469491a8d1592c339f",
-        "revCount": 1394,
+        "narHash": "sha256-dGhzUBtDuosgM3FkZHLXrysem18FDHGWmuVt4cAqaao=",
         "type": "git",
         "url": "file:////home/max/project/telescope.nvim"
       },
