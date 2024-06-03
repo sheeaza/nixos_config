@@ -1,7 +1,12 @@
 {
+  nixConfig = {
+    extra-substituters = [
+      "https://mirror.sjtu.edu.cn/nix-channels/store"
+    ];
+  };
   inputs = {
     upkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    pkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    pkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
     #neovim
     clangd-src = {
