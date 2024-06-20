@@ -36,6 +36,7 @@ in
 let
   nvim = neovim.override {
     withNodeJs = true;
+    withRuby = false;
     configure = {
       packages.mypack = with vimPlugins; {
         start = [
