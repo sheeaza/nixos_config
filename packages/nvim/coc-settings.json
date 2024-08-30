@@ -2,6 +2,7 @@
   "suggest.minTriggerInputLength": "2",
   "suggest.triggerCompletionWait": "0",
   "suggest.noselect": true,
+  "inlayHint.enable": false,
   "list.source.outline.ctagsFilestypes": [ "c", "cpp" ],
   "rust-analyzer.server.path": "rust-analyzer",
   "rust-analyzer.updates.prompt": false,
