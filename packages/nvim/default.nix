@@ -48,7 +48,7 @@ let
           coc-clangd
           coc-rust-analyzer
           LeaderF
-          vim-easymotion
+          flash-nvim
           nviminit
         ];
       };
