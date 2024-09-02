@@ -41,7 +41,7 @@ let
       packages.mypack = with vimPlugins; {
         start = [
           lualine-nvim
-          onedark-vim
+          onedark-nvim
           nerdcommenter
           treesitter
           coc-nvim
