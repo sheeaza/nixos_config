@@ -29,9 +29,14 @@
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.ens33.useDHCP = true;
-  networking.hostName = host;
+  # Enable networking
+  networking = {
+    networkmanager.enable = true;
+    useDHCP = false;
+    interfaces.ens33.useDHCP = true;
+    hostName = host;
+    firewall.enable = false;
+  };
 
   fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "Hack" ]; }) ];
   # Select internationalisation properties.
@@ -41,23 +46,32 @@
     keyMap = "us";
   };
 
-  # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Enable the Plasma 5 Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
+  # for open vm tools, using x11
+  services.displayManager.defaultSession = "plasmax11";
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    plasma-browser-integration
+    elisa
+    kate
+    okular
+    gwenview
+    kwallet
+  ];
 
   # Configure keymap in X11
-  services.xserver.layout = "us";
-  services.xserver.xkbOptions = "eurosign:e";
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
+  };
 
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${host} = {
@@ -98,8 +112,6 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
-  networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
