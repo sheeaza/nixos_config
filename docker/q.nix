@@ -65,6 +65,6 @@ pkgs.dockerTools.buildImage {
   config = {
     Cmd = "fish";
     WorkingDir = "/home/${user}";
-    Env = [ ];
+    Env = [ "PERL_BADLANG=0" ];
   };
 }
