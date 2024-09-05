@@ -13,7 +13,7 @@ let
     installPhase = ''
       mkdir -p $out/;
       mkdir -p $out/plugins
-      cp .tmux.conf $out/
+      cp ${./.tmux.conf} $out/.tmux.conf
       cp ${./tmuxlocal} $out/.tmux.conf.local
     '';
   };
@@ -26,6 +26,7 @@ let
     postBuild = ''
       wrapProgram $out/bin/tmux \
       --set TMUX_CONF ${tmuxconfig}/.tmux.conf \
+      --set TMUX_PROGRAM ${tmux}/bin/tmux \
       --add-flags "-f ${tmuxconfig}/.tmux.conf"
     '';
   };

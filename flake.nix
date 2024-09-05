@@ -25,9 +25,12 @@
       ohmytmux,
     }:
     let
+      tig-ov = final: prev: { tig = prev.tig.override { git = prev.gitMinimal; };};
+    in
+    let
       system = "x86_64-linux";
-      unstable-ov = final: prev: { unstable = upkgs.legacyPackages.${prev.system}; };
       mypack-ov = import ./packages { inherit clangd-src ohmytmux; };
+      unstable-ov = final: prev: { unstable = import upkgs { overlays = [ tig-ov ]; system = prev.system; };};
     in
     let
       pkg-ov = [
@@ -49,6 +52,7 @@
         rustshell = import ./devshell/rustshell.nix pkgs;
         mynvim = pkgs.mypkg.nvim;
         mytmux = pkgs.mypkg.tmux;
+        mytig = pkgs.unstable.tig;
       };
       nixosConfigurations =
         pkgs.lib.genAttrs
