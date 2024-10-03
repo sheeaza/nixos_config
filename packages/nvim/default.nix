@@ -3,7 +3,15 @@
   vimPlugins,
   vimUtils,
   stdenv,
+  lua-language-server,
+  substituteAll,
 }:
+let
+  coccfg = substituteAll {
+    src = ./coc-settings.json;
+    luals = "${lua-language-server}";
+  };
+in
 let
   # treesitter = vimPlugins.nvim-treesitter.withAllGrammars; #this will cause lag
   treesitter = vimPlugins.nvim-treesitter.withPlugins (p: [
@@ -29,7 +37,7 @@ let
     # mkdir empty plugins to prevent error outputs
     installPhase = ''
       mkdir -p $out;
-      cp $src/coc-settings.json $out/
+      cp ${coccfg} $out/coc-settings.json
     '';
   };
 in
@@ -47,6 +55,7 @@ let
           coc-nvim
           coc-clangd
           coc-rust-analyzer
+          coc-sumneko-lua
           LeaderF
           flash-nvim
           nviminit

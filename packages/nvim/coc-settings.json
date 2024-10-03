@@ -3,8 +3,16 @@
   "suggest.triggerCompletionWait": "0",
   "suggest.noselect": true,
   "inlayHint.enable": false,
-  "list.source.outline.ctagsFilestypes": [ "c", "cpp" ],
   "rust-analyzer.server.path": "rust-analyzer",
   "rust-analyzer.updates.prompt": false,
-  "rust-analyzer.inlayHints.closureReturnTypeHints.enable": false
+  "rust-analyzer.inlayHints.closureReturnTypeHints.enable": false,
+  "Lua.misc.parameters": [
+    "--metapath",
+    "~/.cache/sumneko_lua/meta",
+    "--logpath",
+    "~/.cache/sumneko_lua/log"
+  ],
+  "sumneko-lua.serverDir": "@luals@/share/lua-language-server",
+  "sumneko-lua.enableNvimLuaDev": true,
+  "Lua.runtime.version": "LuaJIT"
 }
