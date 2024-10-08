@@ -23,11 +23,9 @@ let
     name = "tmux";
     paths = [ tmux ];
     buildInputs = [ makeWrapper ];
-    #TMUX_PROGRAM, https://github.com/gpakosz/.tmux/issues/761, could be removed after fixed
     postBuild = ''
       wrapProgram $out/bin/tmux \
       --set TMUX_CONF ${tmuxconfig}/.tmux.conf \
-      --set TMUX_PROGRAM ${tmux}/bin/tmux \
       --add-flags "-f ${tmuxconfig}/.tmux.conf"
     '';
   };
