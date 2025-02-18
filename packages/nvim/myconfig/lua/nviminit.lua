@@ -3,7 +3,7 @@
 vim.cmd[[filetype plugin indent on]]
 vim.cmd[[syntax enable]]
 vim.cmd[[syntax on]]
-require('theme')
+require('ttheme')
 require('basekey')
 
 vim.opt.expandtab = false

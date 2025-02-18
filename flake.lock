@@ -3,24 +3,25 @@
     "clangd-src": {
       "flake": false,
       "locked": {
+        "lastModified": 1712315800,
         "narHash": "sha256-6d1P510uHtXJ8fOyi2OZFyILDS8XgK6vsWFewKFVvq4=",
         "type": "tarball",
-        "url": "https://github.com/clangd/clangd/releases/download/18.1.3/clangd-linux-18.1.3.zip?narHash=sha256-6d1P510uHtXJ8fOyi2OZFyILDS8XgK6vsWFewKFVvq4%3D"
+        "url": "https://github.com/clangd/clangd/releases/download/18.1.3/clangd-linux-18.1.3.zip"
       },
       "original": {
         "narHash": "sha256-6d1P510uHtXJ8fOyi2OZFyILDS8XgK6vsWFewKFVvq4=",
         "type": "tarball",
-        "url": "https://github.com/clangd/clangd/releases/download/18.1.3/clangd-linux-18.1.3.zip?narHash=sha256-6d1P510uHtXJ8fOyi2OZFyILDS8XgK6vsWFewKFVvq4%3D"
+        "url": "https://github.com/clangd/clangd/releases/download/18.1.3/clangd-linux-18.1.3.zip"
       }
     },
     "ohmytmux": {
       "flake": false,
       "locked": {
-        "lastModified": 1728379013,
-        "narHash": "sha256-ljnCLp1CNKktNhbGIP4GUU7jYtoAywfL7xAEM6d0Tek=",
+        "lastModified": 1739109764,
+        "narHash": "sha256-tSfpHxH+emz0F5bXICfVXv0IOLrvNh01rdbOTT8Qemc=",
         "owner": "gpakosz",
         "repo": ".tmux",
-        "rev": "bd171fabc3934273856364bf85ec72b92c0d4094",
+        "rev": "babf1c1fc611d28c3f2c3710c494b4e23a77ba72",
         "type": "github"
       },
       "original": {
@@ -31,16 +32,16 @@
     },
     "pkgs-stable": {
       "locked": {
-        "lastModified": 1728193676,
-        "narHash": "sha256-PbDWAIjKJdlVg+qQRhzdSor04bAPApDqIv2DofTyynk=",
+        "lastModified": 1739624908,
+        "narHash": "sha256-f84lBmLl4tkDp1ZU5LBTSFzlxXP4926DVW3KnXrke10=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "ecbc1ca8ffd6aea8372ad16be9ebbb39889e55b6",
+        "rev": "a60651b217d2e529729cbc7d989c19f3941b9250",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-24.05",
+        "ref": "nixos-24.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -55,11 +56,11 @@
     },
     "upkgs": {
       "locked": {
-        "lastModified": 1728241625,
-        "narHash": "sha256-yumd4fBc/hi8a9QgA9IT8vlQuLZ2oqhkJXHPKxH/tRw=",
+        "lastModified": 1739580444,
+        "narHash": "sha256-+/bSz4EAVbqz8/HsIGLroF8aNaO8bLRL7WfACN+24g4=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c31898adf5a8ed202ce5bea9f347b1c6871f32d1",
+        "rev": "8bb37161a0488b89830168b81c48aed11569cb93",
         "type": "github"
       },
       "original": {

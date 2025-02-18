@@ -26,6 +26,12 @@ let
   nviminit = vimUtils.buildVimPlugin {
     name = "nviminit";
     src = ./myconfig;
+    dependencies = with vimPlugins; [
+      lualine-nvim
+      onedark-nvim
+      flash-nvim
+      treesitter
+    ];
   };
   cocsetting = stdenv.mkDerivation {
     name = "coc-setting";
@@ -48,16 +54,12 @@ let
     configure = {
       packages.mypack = with vimPlugins; {
         start = [
-          lualine-nvim
-          onedark-nvim
           nerdcommenter
-          treesitter
           coc-nvim
           coc-clangd
           coc-rust-analyzer
           coc-sumneko-lua
           LeaderF
-          flash-nvim
           nviminit
         ];
       };
