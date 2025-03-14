@@ -27,11 +27,15 @@
     let
       system = "x86_64-linux";
       unstable-ov = final: prev: { unstable = upkgs.legacyPackages.${prev.system}; };
-      mypack-ov = import ./packages { inherit clangd-src ohmytmux; };
+      clangd-src-ov = final: prev: { inherit clangd-src; };
+      ohmytmux-ov = final: prev: { inherit ohmytmux; };
+      mypack-ov = import ./packages;
     in
     let
       pkg-ov = [
         unstable-ov
+        clangd-src-ov
+        ohmytmux-ov
         mypack-ov
       ];
     in
