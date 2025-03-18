@@ -53,7 +53,7 @@
         rustshell = import ./devshell/rustshell.nix pkgs;
         mynvim = pkgs.unstable.neovim;
         mytmux = pkgs.unstable.tmux;
-        myfish = pkgs.unstable.fish;
+        myfish = pkgs.unstable.myfish;
         myfzf = pkgs.unstable.fzf;
       };
       nixosConfigurations =
