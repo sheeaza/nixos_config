@@ -77,18 +77,15 @@
       "adbusers"
     ]; # Enable ‘sudo’ for the user.
   };
-  users.defaultUserShell = pkgs.mypkg.fish;
+  users.defaultUserShell = pkgs.unstable.fish;
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = [
-    pkgs.mypkg.nvim
-    pkgs.mypkg.clangd
-    pkgs.universal-ctags
+    pkgs.unstable.neovim
 
-    pkgs.mypkg.tmux
-    pkgs.unstable.perl
+    pkgs.unstable.tmux
 
-    pkgs.mypkg.fish
+    pkgs.unstable.fish
     pkgs.bashInteractive
 
     pkgs.wget

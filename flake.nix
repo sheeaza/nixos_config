@@ -26,22 +26,22 @@
     }:
     let
       system = "x86_64-linux";
-      unstable-ov = final: prev: { unstable = upkgs.legacyPackages.${prev.system}; };
-      clangd-src-ov = final: prev: { inherit clangd-src; };
-      ohmytmux-ov = final: prev: { inherit ohmytmux; };
-      mypack-ov = import ./packages;
     in
     let
-      pkg-ov = [
-        unstable-ov
-        clangd-src-ov
-        ohmytmux-ov
-        mypack-ov
-      ];
+      unstable-ov = final: prev: {
+        unstable = import upkgs {
+          overlays = [
+            (final: prev: { inherit clangd-src; })
+            (final: prev: { inherit ohmytmux; })
+            (import ./packages)
+          ];
+          inherit system;
+        };
+      };
     in
     let
       pkgs = import pkgs-stable {
-        overlays = pkg-ov;
+        overlays = [ unstable-ov ];
         inherit system;
       };
     in
@@ -51,8 +51,10 @@
         dockerimg2 = import ./docker/q.nix pkgs;
         cshell = import ./devshell/cshell.nix pkgs;
         rustshell = import ./devshell/rustshell.nix pkgs;
-        mynvim = pkgs.mypkg.nvim;
-        mytmux = pkgs.mypkg.tmux;
+        mynvim = pkgs.unstable.neovim;
+        mytmux = pkgs.unstable.tmux;
+        myfish = pkgs.unstable.fish;
+        myfzf = pkgs.unstable.fzf;
       };
       nixosConfigurations =
         pkgs.lib.genAttrs
@@ -64,7 +66,7 @@
             import ./nixos/configurations {
               fpkgs = pkgs-stable;
               inherit system;
-              overlays = pkg-ov;
+              overlays = pkgs.overlays;
             }
           );
     };

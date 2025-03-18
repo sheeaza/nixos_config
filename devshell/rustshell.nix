@@ -9,9 +9,9 @@ pkgs.buildEnv {
     pkgs.gnused
     pkgs.procps
 
-    pkgs.mypkg.tmux
-    pkgs.mypkg.fish
-    pkgs.mypkg.nvim
+    pkgs.unstable.tmux
+    pkgs.unstable.fish
+    pkgs.unstable.neovim
 
     pkgs.bashInteractive
 
