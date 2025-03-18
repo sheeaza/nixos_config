@@ -4,7 +4,15 @@
   symlinkJoin,
   makeWrapper,
   ohmytmux,
+  perl,
+  substituteAll,
 }:
+let
+  tmuxlocalconf = substituteAll {
+    src = ./tmuxlocal;
+    perl = "${perl}";
+  };
+in
 let
   tmuxconfig = stdenv.mkDerivation {
     name = "ohmytmux";
@@ -14,7 +22,7 @@ let
       mkdir -p $out/;
       mkdir -p $out/plugins
       cp .tmux.conf $out/
-      cp ${./tmuxlocal} $out/.tmux.conf.local
+      cp ${tmuxlocalconf} $out/.tmux.conf.local
     '';
   };
 in
