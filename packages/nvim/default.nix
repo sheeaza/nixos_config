@@ -5,11 +5,16 @@
   stdenv,
   lua-language-server,
   substituteAll,
+  ripgrep,
 }:
 let
   coccfg = substituteAll {
     src = ./coc-settings.json;
     luals = "${lua-language-server}";
+  };
+  leaderf-lua = substituteAll {
+    src = ./myconfig/lua/leaderf.lua;
+    rg = "${ripgrep}/bin/rg";
   };
 in
 let
@@ -26,6 +31,9 @@ let
   nviminit = vimUtils.buildVimPlugin {
     name = "nviminit";
     src = ./myconfig;
+    postInstall = ''
+      cp ${leaderf-lua} $out/lua/leaderf.lua
+    '';
     dependencies = with vimPlugins; [
       lualine-nvim
       onedark-nvim
