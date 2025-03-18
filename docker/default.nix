@@ -18,7 +18,6 @@ pkgs.dockerTools.buildImage {
           pkgs.unstable.openssh
           pkgs.unstable.coreutils
           pkgs.unstable.findutils
-          pkgs.unstable.gnutar
 
           pkgs.mypkg.nvim
           pkgs.mypkg.clangd
