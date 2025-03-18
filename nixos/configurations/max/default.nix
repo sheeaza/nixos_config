@@ -74,7 +74,7 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
-  users.defaultUserShell = pkgs.unstable.fish;
+  users.defaultUserShell = pkgs.unstable.myfish;
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = [
@@ -83,8 +83,7 @@
 
     pkgs.unstable.tmux
 
-    pkgs.unstable.fish
-    pkgs.bashInteractive
+    pkgs.unstable.myfish
 
     pkgs.wget
     pkgs.tree
