@@ -12,7 +12,6 @@ let
       pkgs.universal-ctags
 
       pkgs.bashInteractive
-      pkgs.perl
 
       pkgs.wget
       pkgs.tree

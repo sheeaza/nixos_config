@@ -15,19 +15,16 @@ pkgs.dockerTools.buildImage {
         paths = [
           pkgs.unstable.busybox
           pkgs.unstable.less
-          pkgs.unstable.ncurses
           pkgs.unstable.openssh
           pkgs.unstable.coreutils
           pkgs.unstable.findutils
           pkgs.unstable.gnutar
-          pkgs.unstable.bash
 
           pkgs.mypkg.nvim
           pkgs.mypkg.clangd
           pkgs.unstable.universal-ctags
 
           pkgs.mypkg.tmux
-          pkgs.unstable.perl
 
           pkgs.mypkg.myfish
 
