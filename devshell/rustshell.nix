@@ -10,7 +10,7 @@ pkgs.buildEnv {
     pkgs.procps
 
     pkgs.mypkg.tmux
-    pkgs.mypkg.myfish
+    pkgs.mypkg.fish
     pkgs.mypkg.nvim
 
     pkgs.bashInteractive

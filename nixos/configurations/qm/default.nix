@@ -77,7 +77,7 @@
       "adbusers"
     ]; # Enable ‘sudo’ for the user.
   };
-  users.defaultUserShell = pkgs.mypkg.myfish;
+  users.defaultUserShell = pkgs.mypkg.fish;
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = [
@@ -88,7 +88,7 @@
     pkgs.mypkg.tmux
     pkgs.unstable.perl
 
-    pkgs.mypkg.myfish
+    pkgs.mypkg.fish
     pkgs.bashInteractive
 
     pkgs.wget
