@@ -17,17 +17,11 @@ pkgs.dockerTools.buildImage {
           pkgs.unstable.less
           pkgs.unstable.openssh
           pkgs.unstable.coreutils
-          pkgs.unstable.findutils
 
-          pkgs.mypkg.nvim
-          pkgs.mypkg.clangd
-          pkgs.unstable.universal-ctags
+          pkgs.unstable.neovim
+          pkgs.unstable.tmux
+          pkgs.unstable.fish
 
-          pkgs.mypkg.tmux
-
-          pkgs.mypkg.fish
-
-          pkgs.unstable.wget
           pkgs.unstable.tree
           pkgs.unstable.ripgrep
           pkgs.unstable.tig

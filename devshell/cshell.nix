@@ -7,8 +7,8 @@ let
       pkgs.less
       pkgs.ncurses
 
-      pkgs.mypkg.nvim
-      pkgs.mypkg.clangd
+      pkgs.unstable.neovim
+      pkgs.unstable.clangd
       pkgs.universal-ctags
 
       pkgs.bashInteractive

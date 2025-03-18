@@ -6,15 +6,19 @@
   lua-language-server,
   substituteAll,
   ripgrep,
+  clangd,
+  universal-ctags,
 }:
 let
   coccfg = substituteAll {
     src = ./coc-settings.json;
     luals = "${lua-language-server}";
+    clangd = "${clangd}/bin/clangd";
   };
   leaderf-lua = substituteAll {
     src = ./myconfig/lua/leaderf.lua;
     rg = "${ripgrep}/bin/rg";
+    ctags = "${universal-ctags}/bin/ctags";
   };
 in
 let

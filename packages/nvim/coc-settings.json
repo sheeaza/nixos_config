@@ -3,6 +3,7 @@
   "suggest.triggerCompletionWait": "0",
   "suggest.noselect": true,
   "inlayHint.enable": false,
+  "clangd.path": "@clangd@",
   "rust-analyzer.server.path": "rust-analyzer",
   "rust-analyzer.updates.prompt": false,
   "rust-analyzer.inlayHints.closureReturnTypeHints.enable": false,

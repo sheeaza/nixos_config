@@ -14,6 +14,7 @@ vim.g.Lf_PreviewResult = {
 	Buffer = 0,
 }
 vim.g.Lf_Rg = "@rg@"
+vim.g.Lf_Ctags = "@ctags@"
 
 -- search word under cursor, the pattern is treated as regex, and enter normal mode directly
 vim.keymap.set('n', '<leader>g', ':<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<CR>', {noremap = true})
