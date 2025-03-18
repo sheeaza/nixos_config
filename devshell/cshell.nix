@@ -8,8 +8,6 @@ let
       pkgs.ncurses
 
       pkgs.unstable.neovim
-      pkgs.unstable.clangd
-      pkgs.universal-ctags
 
       pkgs.bashInteractive
 
