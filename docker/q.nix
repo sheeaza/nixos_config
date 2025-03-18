@@ -20,7 +20,7 @@ pkgs.dockerTools.buildImage {
 
           pkgs.unstable.neovim
           pkgs.unstable.tmux
-          pkgs.unstable.fish
+          pkgs.unstable.myfish
 
           pkgs.unstable.tree
           pkgs.unstable.ripgrep
