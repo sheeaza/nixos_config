@@ -26,7 +26,7 @@ pkgs.dockerTools.buildImage {
 
           pkgs.mypkg.tmux
 
-          pkgs.mypkg.myfish
+          pkgs.mypkg.fish
 
           pkgs.unstable.wget
           pkgs.unstable.tree

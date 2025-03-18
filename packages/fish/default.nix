@@ -2,13 +2,26 @@
   wrapFish,
   stdenv,
   fzf,
+  busybox,
+  substitute,
 }:
+let
+  fishprompt = substitute {
+    name = "fish_prompt.fish";
+    src = ./fish_prompt.fish;
+    substitutions = [
+      "--replace-fail"
+      " sed "
+      " ${busybox}/bin/sed "
+    ];
+  };
+in
 let
   bundle = stdenv.mkDerivation {
     name = "bundle";
     phases = [ "installPhase" ];
     src = [
-      ./fish_prompt.fish
+      "${fishprompt}"
       ./l.fish
       ./la.fish
       ./ll.fish
