@@ -5,7 +5,6 @@ let
     paths = [
       pkgs.busybox
       pkgs.less
-      pkgs.ncurses
 
       pkgs.unstable.neovim
 
