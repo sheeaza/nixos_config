@@ -4,7 +4,6 @@ pkgs.buildEnv {
   paths = [
     pkgs.findutils
     pkgs.less
-    pkgs.ncurses
     pkgs.coreutils
     pkgs.gnused
     pkgs.procps
@@ -14,8 +13,6 @@ pkgs.buildEnv {
     pkgs.unstable.neovim
 
     pkgs.bashInteractive
-
-    pkgs.perl
 
     pkgs.wget
     pkgs.tree
