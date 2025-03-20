@@ -3,14 +3,8 @@ let
   cshell = pkgs.buildEnv {
     name = "cshell";
     paths = [
-      pkgs.busybox
-      pkgs.less
-
       pkgs.unstable.neovim
 
-      pkgs.bashInteractive
-
-      pkgs.wget
       pkgs.tree
       pkgs.ripgrep
       pkgs.tig
