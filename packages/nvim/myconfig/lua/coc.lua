@@ -39,11 +39,3 @@ function _G.show_docs()
     end
 end
 vim.keymap.set('n', 'gh', '<CMD>lua _G.show_docs()<CR>', {noremap = true, silent = true})
-
--- Highlight symbol under cursor on CursorHold
-vim.api.nvim_create_augroup("CocGroup", {})
-vim.api.nvim_create_autocmd("CursorHold", {
-    group = "CocGroup",
-    command = "silent call CocActionAsync('highlight')",
-    desc = "Highlight symbol under cursor on CursorHold"
-})
