@@ -8,6 +8,7 @@
   ripgrep,
   clangd,
   universal-ctags,
+  fzf,
 }:
 let
   coccfg = substituteAll {
@@ -19,6 +20,16 @@ let
     src = ./myconfig/lua/leaderf.lua;
     rg = "${ripgrep}/bin/rg";
     ctags = "${universal-ctags}/bin/ctags";
+  };
+  fzf-lua-cfg = substituteAll {
+    src = ./myconfig/lua/fzf_lua.lua;
+    rg = "${ripgrep}/bin/rg";
+    fzf = "${fzf}/bin/fzf";
+    ctag = "${universal-ctags}/bin/ctags";
+  };
+  lsp-cfg = substituteAll {
+    src = ./myconfig/lua/lsp_cfg.lua;
+    clangd = "${clangd}/bin/clangd";
   };
 in
 let
@@ -37,12 +48,16 @@ let
     src = ./myconfig;
     postInstall = ''
       cp ${leaderf-lua} $out/lua/leaderf.lua
+      cp ${fzf-lua-cfg} $out/lua/fzf_lua.lua
+      cp ${lsp-cfg} $out/lua/lsp_cfg.lua
     '';
     dependencies = with vimPlugins; [
       lualine-nvim
       onedark-nvim
       flash-nvim
       treesitter
+      fzf-lua
+      blink-cmp
     ];
   };
   cocsetting = stdenv.mkDerivation {
@@ -67,11 +82,10 @@ let
       packages.mypack = with vimPlugins; {
         start = [
           nerdcommenter
-          coc-nvim
-          coc-clangd
-          coc-rust-analyzer
-          coc-sumneko-lua
-          LeaderF
+          # coc-nvim
+          # coc-clangd
+          # coc-rust-analyzer
+          # coc-sumneko-lua
           nviminit
         ];
       };
