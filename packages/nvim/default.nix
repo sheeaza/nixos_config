@@ -43,6 +43,7 @@ let
       onedark-nvim
       flash-nvim
       treesitter
+      fzf-lua
     ];
   };
   cocsetting = stdenv.mkDerivation {

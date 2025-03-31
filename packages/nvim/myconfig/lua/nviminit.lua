@@ -73,6 +73,7 @@ vim.api.nvim_create_user_command(
 
 -- plugin config section
 require('leaderf')
+require('fzf_lua')
 require('lline')
 require('fflash')
 require('treesitter')
