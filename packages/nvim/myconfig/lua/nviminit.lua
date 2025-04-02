@@ -79,11 +79,4 @@ require('fflash')
 require('treesitter')
 require('nerdco')
 require('coc')
-
-vim.lsp.config.clangd = {
-  cmd = { 'clangd', '--background-index' },
-  root_markers = { 'compile_commands.json', 'compile_flags.txt' },
-  filetypes = { 'c', 'cpp' },
-}
-
-vim.lsp.enable({'clangd'})
+require('lsp_cfg')

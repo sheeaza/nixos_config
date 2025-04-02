@@ -8,6 +8,7 @@
   ripgrep,
   clangd,
   universal-ctags,
+  fzf,
 }:
 let
   coccfg = substituteAll {
@@ -19,6 +20,11 @@ let
     src = ./myconfig/lua/leaderf.lua;
     rg = "${ripgrep}/bin/rg";
     ctags = "${universal-ctags}/bin/ctags";
+  };
+  fzf-lua-cfg = substituteAll {
+    src = ./myconfig/lua/fzf_lua.lua;
+    rg = "${ripgrep}/bin/rg";
+    fzf = "${fzf}/bin/fzf";
   };
 in
 let
@@ -37,6 +43,7 @@ let
     src = ./myconfig;
     postInstall = ''
       cp ${leaderf-lua} $out/lua/leaderf.lua
+      cp ${fzf-lua-cfg} $out/lua/fzf_lua.lua
     '';
     dependencies = with vimPlugins; [
       lualine-nvim
