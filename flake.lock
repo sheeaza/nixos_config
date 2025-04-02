@@ -17,11 +17,11 @@
     "ohmytmux": {
       "flake": false,
       "locked": {
-        "lastModified": 1739109764,
-        "narHash": "sha256-tSfpHxH+emz0F5bXICfVXv0IOLrvNh01rdbOTT8Qemc=",
+        "lastModified": 1740648245,
+        "narHash": "sha256-BpifKdw1RvFYxpTh6dLeL7w3pYvPqbOSkl6WJ+aw9tI=",
         "owner": "gpakosz",
         "repo": ".tmux",
-        "rev": "babf1c1fc611d28c3f2c3710c494b4e23a77ba72",
+        "rev": "d84f6bd5683644def265e39797d810cba25440c9",
         "type": "github"
       },
       "original": {
@@ -32,11 +32,11 @@
     },
     "pkgs-stable": {
       "locked": {
-        "lastModified": 1742136038,
-        "narHash": "sha256-DDe16FJk18sadknQKKG/9FbwEro7A57tg9vB5kxZ8kY=",
+        "lastModified": 1743367904,
+        "narHash": "sha256-sOos1jZGKmT6xxPvxGQyPTApOunXvScV4lNjBCXd/CI=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "a1185f4064c18a5db37c5c84e5638c78b46e3341",
+        "rev": "7ffe0edc685f14b8c635e3d6591b0bbb97365e6c",
         "type": "github"
       },
       "original": {
@@ -56,11 +56,11 @@
     },
     "upkgs": {
       "locked": {
-        "lastModified": 1739580444,
-        "narHash": "sha256-+/bSz4EAVbqz8/HsIGLroF8aNaO8bLRL7WfACN+24g4=",
+        "lastModified": 1743315132,
+        "narHash": "sha256-6hl6L/tRnwubHcA4pfUUtk542wn2Om+D4UnDhlDW9BE=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "8bb37161a0488b89830168b81c48aed11569cb93",
+        "rev": "52faf482a3889b7619003c0daec593a1912fddc1",
         "type": "github"
       },
       "original": {
