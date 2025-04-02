@@ -26,6 +26,10 @@ let
     rg = "${ripgrep}/bin/rg";
     fzf = "${fzf}/bin/fzf";
   };
+  lsp-cfg = substituteAll {
+    src = ./myconfig/lua/lsp_cfg.lua;
+    clangd = "${clangd}/bin/clangd";
+  };
 in
 let
   # treesitter = vimPlugins.nvim-treesitter.withAllGrammars; #this will cause lag
@@ -44,6 +48,7 @@ let
     postInstall = ''
       cp ${leaderf-lua} $out/lua/leaderf.lua
       cp ${fzf-lua-cfg} $out/lua/fzf_lua.lua
+      cp ${lsp-cfg} $out/lua/lsp_cfg.lua
     '';
     dependencies = with vimPlugins; [
       lualine-nvim
