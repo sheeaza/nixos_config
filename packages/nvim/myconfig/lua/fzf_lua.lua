@@ -14,6 +14,11 @@ require("fzf-lua").setup {
             layout = "vertical",
         },
     },
+    files = {
+        actions = {
+            ["enter"] = FzfLua.actions.file_edit,
+        }
+    },
 }
 
 -- Remap keys for gotos
@@ -27,6 +32,16 @@ vim.keymap.set("n", "gw", "<cmd>FzfLua lsp_workspace_symbols<cr>", {silent = tru
 
 vim.keymap.set('n', '<leader>g', ':<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<CR>', {noremap = true})
 vim.keymap.set('n', '<leader>lg', ':<C-U><C-R>=printf("Leaderf rg %s -e %s ", expand("%:p:h"), expand("<cword>"))<CR>', {noremap = true})
-vim.keymap.set('n', '<leader>lf', '<cmd>printf("FzfLua files cwd=%s", expand("%:p:h"))<CR><CR>', {noremap = true})
+vim.keymap.set('n', '<leader>lf', '<cmd>lua require("fzf-lua").files({ cwd = vim.fn.expand("%:p:h")})<cr>', {noremap = true})
 vim.keymap.set('n', '<leader>f', '<cmd>FzfLua files<CR>', {noremap = true})
 vim.keymap.set('n', '<leader>t', ':rg<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>', {noremap = true})
+
+local function wrap_fzf_grep(args)
+    print(args)
+    require('fzf-lua').live_grep({ cmd="rg xx" })
+end
+vim.api.nvim_create_user_command('Fzfgrep',
+function(opts)
+    wrap_fzf_grep(opts.fargs)
+end,
+{ nargs = '*' })
