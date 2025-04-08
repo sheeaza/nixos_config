@@ -11,11 +11,6 @@
   fzf,
 }:
 let
-  coccfg = substituteAll {
-    src = ./coc-settings.json;
-    luals = "${lua-language-server}";
-    clangd = "${clangd}/bin/clangd";
-  };
   fzf-lua-cfg = substituteAll {
     src = ./myconfig/lua/fzf_lua.lua;
     rg = "${ripgrep}/bin/rg";
@@ -54,37 +49,19 @@ let
       blink-cmp
     ];
   };
-  cocsetting = stdenv.mkDerivation {
-    name = "coc-setting";
-    src = ./.;
-    phases = [
-      "unpackPhase"
-      "installPhase"
-    ];
-    # mkdir empty plugins to prevent error outputs
-    installPhase = ''
-      mkdir -p $out;
-      cp ${coccfg} $out/coc-settings.json
-    '';
-  };
 in
 let
   nvim = neovim.override {
-    withNodeJs = true;
+    withNodeJs = false;
     withRuby = false;
     configure = {
       packages.mypack = with vimPlugins; {
         start = [
           nerdcommenter
-          # coc-nvim
-          # coc-clangd
-          # coc-rust-analyzer
-          # coc-sumneko-lua
           nviminit
         ];
       };
       customRC = ''
-        lua vim.g.coc_config_home='${cocsetting}'
         lua require('nviminit')
       '';
     };
