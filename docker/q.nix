@@ -25,7 +25,7 @@ pkgs.dockerTools.buildImage {
           pkgs.unstable.tree
           pkgs.unstable.ripgrep
           pkgs.unstable.tig
-          pkgs.unstable.git
+          pkgs.unstable.gitMinimal
           pkgs.unstable.fzf
         ];
         pathsToLink = [ "/bin" ];

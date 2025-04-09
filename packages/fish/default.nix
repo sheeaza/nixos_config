@@ -4,6 +4,7 @@
   fzf,
   busybox,
   substitute,
+  fishMinimal,
 }:
 let
   fishprompt = substitute {
@@ -41,7 +42,12 @@ let
     '';
   };
 in
-(wrapFish {
+let
+_wrapFish = wrapFish.override {
+  fish = fishMinimal;
+};
+in
+(_wrapFish {
   pluginPkgs = [
     fzf
     bundle

@@ -54,7 +54,6 @@
         mynvim = pkgs.unstable.neovim;
         mytmux = pkgs.unstable.tmux;
         myfish = pkgs.unstable.myfish;
-        myfzf = pkgs.unstable.fzf;
       };
       nixosConfigurations =
         pkgs.lib.genAttrs

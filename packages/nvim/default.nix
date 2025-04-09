@@ -52,7 +52,7 @@ let
 in
 let
   nvim = neovim.override {
-    withNodeJs = false;
+    withPython3 = false;
     withRuby = false;
     configure = {
       packages.mypack = with vimPlugins; {
