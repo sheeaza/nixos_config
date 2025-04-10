@@ -27,9 +27,14 @@ let
   };
 in
 let
+  _tmux = tmux.override {
+    withSystemd = false;
+  };
+in
+let
   wraptmux = symlinkJoin {
     name = "tmux";
-    paths = [ tmux ];
+    paths = [ _tmux ];
     buildInputs = [ makeWrapper ];
     postBuild = ''
       wrapProgram $out/bin/tmux \
