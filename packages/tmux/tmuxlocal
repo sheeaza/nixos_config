@@ -418,5 +418,4 @@ tmux_conf_uninstall_plugins_on_reload=true
 # # /!\ do not remove the previous line
 
 set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'
-setenv -g PATH "$PATH:@perl@/bin"
 set -g default-terminal "xterm-256color"

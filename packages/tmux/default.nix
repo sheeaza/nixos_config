@@ -10,7 +10,6 @@
 let
   tmuxlocalconf = substituteAll {
     src = ./tmuxlocal;
-    perl = "${perl}";
   };
 in
 let
@@ -21,7 +20,7 @@ let
     installPhase = ''
       mkdir -p $out/;
       mkdir -p $out/plugins
-      cp .tmux.conf $out/
+      sed 's#\bperl#${perl}/bin/perl#g' .tmux.conf > $out/.tmux.conf
       cp ${tmuxlocalconf} $out/.tmux.conf.local
     '';
   };
