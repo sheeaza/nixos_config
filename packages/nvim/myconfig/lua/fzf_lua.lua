@@ -37,7 +37,7 @@ vim.keymap.set("n", "gD", "<cmd>FzfLua lsp_typedefs<cr>", {silent = true})
 vim.keymap.set("n", "gi", "<cmd>FzfLua lsp_implementations<cr>", {silent = true})
 -- Find symbol of current document
 vim.keymap.set('n', 'gs', '<cmd>FzfLua lsp_document_symbols<cr>', {noremap = true, silent = true})
-vim.keymap.set("n", "gw", "<cmd>FzfLua lsp_workspace_symbols<cr>", {silent = true, nowait = true})
+vim.keymap.set("n", "gw", "<cmd>FzfLua lsp_live_workspace_symbols<cr>", {silent = true, nowait = true})
 
 vim.keymap.set('n', '<leader>g', ':<C-U><C-R>=printf("Fzfgrep -e %s ", expand("<cword>"))<CR>', {noremap = true})
 vim.keymap.set('n', '<leader>lg', ':<C-U><C-R>=printf("Fzfgrep %s -e %s ", expand("%:p:h"), expand("<cword>"))<CR>', {noremap = true})
