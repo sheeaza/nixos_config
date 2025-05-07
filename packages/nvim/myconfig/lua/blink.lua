@@ -61,4 +61,5 @@ require('blink.cmp').setup({
         },
     },
 })
-vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { fg="#1E90FF", bg="NONE" })
+-- cause dup char in tmux alactty
+-- vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { fg="#1E90FF", bg="NONE" })
