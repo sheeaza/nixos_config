@@ -4,6 +4,7 @@ vim.lsp.config.clangd = {
   filetypes = { 'c', 'cpp' },
 }
 vim.lsp.enable({'clangd'})
+vim.lsp.set_log_level("off") -- prevent large log file
 
 vim.keymap.del('n', 'grn')
 vim.keymap.del({'n', 'v'}, 'gra')
