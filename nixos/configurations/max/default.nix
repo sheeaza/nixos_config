@@ -38,7 +38,7 @@
     firewall.enable = false;
   };
 
-  fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "Hack" ]; }) ];
+  fonts.packages = [ pkgs.nerd-fonts.hack ];
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
