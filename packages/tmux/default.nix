@@ -5,11 +5,10 @@
   makeWrapper,
   ohmytmux,
   perl,
-  substituteAll,
+  replaceVars,
 }:
 let
-  tmuxlocalconf = substituteAll {
-    src = ./tmuxlocal;
+  tmuxlocalconf = replaceVars ./tmuxlocal {
   };
 in
 let

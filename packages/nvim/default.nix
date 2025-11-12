@@ -4,21 +4,19 @@
   vimUtils,
   stdenv,
   lua-language-server,
-  substituteAll,
+  replaceVars,
   ripgrep,
   clangd,
   universal-ctags,
   fzf,
 }:
 let
-  fzf-lua-cfg = substituteAll {
-    src = ./myconfig/lua/fzf_lua.lua;
+  fzf-lua-cfg = replaceVars ./myconfig/lua/fzf_lua.lua {
     rg = "${ripgrep}/bin/rg";
     fzf = "${fzf}/bin/fzf";
     ctag = "${universal-ctags}/bin/ctags";
   };
-  lsp-cfg = substituteAll {
-    src = ./myconfig/lua/lsp_cfg.lua;
+  lsp-cfg = replaceVars ./myconfig/lua/lsp_cfg.lua {
     clangd = "${clangd}/bin/clangd";
   };
 in

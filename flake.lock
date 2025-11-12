@@ -16,11 +16,11 @@
     "ohmytmux": {
       "flake": false,
       "locked": {
-        "lastModified": 1743583190,
-        "narHash": "sha256-2mdbOKCiwkr3FgjjyThezL+VVf5nm3+04idMETBLeao=",
+        "lastModified": 1762762468,
+        "narHash": "sha256-TR7YfNnxkuzgBd7M4ztNWFKPPlF9b3XQVjdPXW4oEfg=",
         "owner": "gpakosz",
         "repo": ".tmux",
-        "rev": "94df58b12c1fda2ba92bfdc0092661d1a7895777",
+        "rev": "3ab67a5ae3df4f6747b20313e1a8e96a14056328",
         "type": "github"
       },
       "original": {
@@ -55,11 +55,11 @@
     },
     "upkgs": {
       "locked": {
-        "lastModified": 1745794561,
-        "narHash": "sha256-T36rUZHUART00h3dW4sV5tv4MrXKT7aWjNfHiZz7OHg=",
+        "lastModified": 1762844143,
+        "narHash": "sha256-SlybxLZ1/e4T2lb1czEtWVzDCVSTvk9WLwGhmxFmBxI=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "5461b7fa65f3ca74cef60be837fd559a8918eaa0",
+        "rev": "9da7f1cf7f8a6e2a7cb3001b048546c92a8258b4",
         "type": "github"
       },
       "original": {
