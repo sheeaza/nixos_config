@@ -1,7 +1,7 @@
 {
   wrapFish,
   stdenv,
-  fzf,
+  fishPlugins,
   busybox,
   substitute,
   fishMinimal,
@@ -49,7 +49,7 @@ _wrapFish = wrapFish.override {
 in
 (_wrapFish {
   pluginPkgs = [
-    fzf
+    fishPlugins.fzf
     bundle
   ];
 }).overrideAttrs
