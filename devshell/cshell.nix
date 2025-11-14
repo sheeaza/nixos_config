@@ -3,13 +3,10 @@ let
   cshell = pkgs.buildEnv {
     name = "cshell";
     paths = [
-      pkgs.unstable.neovim
-
-      pkgs.tree
-      pkgs.ripgrep
-      pkgs.tig
-      pkgs.git
-      pkgs.unstable.fzf
+      pkgs.gcc
+      pkgs.gdb
+      pkgs.cmake
+      pkgs.gnumake
     ];
   };
 in

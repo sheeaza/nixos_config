@@ -3,14 +3,14 @@
     "clangd-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1743952180,
-        "narHash": "sha256-OViTyV5D8ijKfzQAlUU3eifUNwwTfjxOks0nkZxv6k0=",
+        "lastModified": 1756228504,
+        "narHash": "sha256-siaiMe9Vm7MC1sXPgenS08kV6MHnJwRPoeXP4od8vQw=",
         "type": "tarball",
-        "url": "https://github.com/clangd/clangd/releases/download/snapshot_20250406/clangd-linux-snapshot_20250406.zip"
+        "url": "https://github.com/clangd/clangd/releases/download/21.1.0/clangd-linux-21.1.0.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/clangd/clangd/releases/download/snapshot_20250406/clangd-linux-snapshot_20250406.zip"
+        "url": "https://github.com/clangd/clangd/releases/download/21.1.0/clangd-linux-21.1.0.zip"
       }
     },
     "ohmytmux": {
