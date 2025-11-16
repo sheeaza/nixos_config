@@ -9,6 +9,7 @@ vim.lsp.set_log_level("off") -- prevent large log file
 vim.keymap.del('n', 'grn')
 vim.keymap.del({'n', 'v'}, 'gra')
 vim.keymap.del('n', 'grr')
+vim.keymap.del('n', 'grt')
 vim.keymap.del('n', 'gri')
 vim.keymap.del('i', '<c-s>')
 -- vim.keymap.del('n', 'K')
