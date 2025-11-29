@@ -14,6 +14,7 @@
       url = "github:gpakosz/.tmux";
       flake = false;
     };
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
 
   outputs =
@@ -23,6 +24,7 @@
       pkgs-stable,
       clangd-src,
       ohmytmux,
+      vscode-server,
     }:
     let
       system = "x86_64-linux";
@@ -63,6 +65,7 @@
           ]
           (
             import ./nixos/configurations {
+              vsc-server = vscode-server;
               fpkgs = pkgs-stable;
               inherit system;
               overlays = pkgs.overlays;

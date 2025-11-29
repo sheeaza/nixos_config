@@ -95,6 +95,10 @@
     pkgs.docker-compose
   ];
   environment.sessionVariables.EDITOR = "vim";
+  services.vscode-server.enable = true;
+  systemd.user.services.auto-fix-vscode-server = {
+      enable = true;
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

@@ -2,11 +2,13 @@
   fpkgs,
   system,
   overlays,
+  vsc-server,
 }:
 user:
 fpkgs.lib.nixosSystem {
   inherit system;
   modules = [
+    vsc-server.nixosModules.default
     (
       { config, pkgs, ... }:
       {
