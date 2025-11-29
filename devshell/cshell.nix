@@ -7,6 +7,10 @@ let
       pkgs.gdb
       pkgs.cmake
       pkgs.gnumake
+      pkgs.meson
+      pkgs.ninja
+      pkgs.python3
+      pkgs.clang-tools
     ];
   };
 in
