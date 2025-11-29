@@ -40,7 +40,7 @@ let
     '';
     dependencies = with vimPlugins; [
       lualine-nvim
-      onedark-nvim
+      onedarkpro-nvim
       flash-nvim
       treesitter
       fzf-lua
