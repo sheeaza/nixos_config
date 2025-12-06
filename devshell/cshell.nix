@@ -11,6 +11,8 @@ let
       pkgs.ninja
       pkgs.python3
       pkgs.clang-tools
+      pkgs.valgrind
+      # pkgs.clang
     ];
   };
 in
