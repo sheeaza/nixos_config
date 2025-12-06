@@ -3,7 +3,7 @@ let
   cshell = pkgs.buildEnv {
     name = "cshell";
     paths = [
-      pkgs.gcc
+      # pkgs.gcc
       pkgs.gdb
       pkgs.cmake
       pkgs.gnumake
@@ -12,7 +12,7 @@ let
       pkgs.python3
       pkgs.clang-tools
       pkgs.valgrind
-      # pkgs.clang
+      pkgs.clang
     ];
   };
 in

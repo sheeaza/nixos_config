@@ -1,7 +1,7 @@
 {
   inputs = {
     upkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    pkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    pkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
     #neovim
     clangd-src = {
