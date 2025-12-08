@@ -2,6 +2,7 @@
   inputs = {
     upkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     pkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     #neovim
     clangd-src = {
@@ -22,6 +23,7 @@
       self,
       upkgs,
       pkgs-stable,
+      nixos-wsl,
       clangd-src,
       ohmytmux,
       vscode-server,
@@ -62,12 +64,14 @@
           [
             "max"
             "qm"
+            "qmwsl"
           ]
           (
             import ./nixos/configurations {
               vsc-server = vscode-server;
               fpkgs = pkgs-stable;
               inherit system;
+              inherit nixos-wsl;
               overlays = pkgs.overlays;
             }
           );
