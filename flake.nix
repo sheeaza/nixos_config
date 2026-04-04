@@ -6,7 +6,7 @@
 
     #neovim
     clangd-src = {
-      url = "https://github.com/clangd/clangd/releases/download/21.1.0/clangd-linux-21.1.0.zip";
+      url = "https://github.com/clangd/clangd/releases/download/22.1.0/clangd-linux-22.1.0.zip";
       flake = false;
     };
 
