@@ -1,4 +1,5 @@
-{
+let
+localfunc = {
   stdenv,
   bashInteractive,
   gcc,
@@ -25,4 +26,10 @@ stdenv.mkDerivation {
     mkdir -p $out/bin
     cp $src/bin/clangd $out/bin/
   '';
+};
+in
+{
+  flake.overlays.clangd = final: prev: {
+    clangd = final.callPackage localfunc {};
+  };
 }

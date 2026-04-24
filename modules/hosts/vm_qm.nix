@@ -4,37 +4,43 @@
 
 {
   config,
-  pkgs,
-  host,
+  inputs,
   ...
 }:
-{
-  imports = [
-    ./hardware.nix
-    ../common/boot.nix
-    ../common/config1.nix
-  ];
-
+let local_config = { pkgs, ... }: {
   # enable open vm tool
   virtualisation.vmware.guest.enable = true;
 
   # docker
   virtualisation.docker.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${host} = {
-    extraGroups = [
-      "adbusers"
-    ]; # Enable ‘sudo’ for the user.
-  };
-  users.defaultUserShell = pkgs.unstable.myfish;
-
   # List packages installed in system profile. To search, run:
   environment.systemPackages = [
-    pkgs.unstable.neovim
     pkgs.bashInteractive
     pkgs.sshfs
   ];
+
   programs.adb.enable = true;
 
+  networking = {
+    hostName = "vm";
+  };
+};
+in
+{
+  flake.nixosConfigurations.vm_qm = inputs.pkgs-stable.lib.nixosSystem {
+    system = "x86_64-linux";
+    modules = [
+      config.flake.modules.nixos.boot
+      config.flake.nixosModules.vm_hw
+      config.flake.nixosModules.os_cfg1
+      config.flake.nixosModules.qm
+      local_config
+      {
+        nixpkgs.overlays = [
+          config.flake.overlays.unstable
+        ];
+      }
+    ];
+  };
 }

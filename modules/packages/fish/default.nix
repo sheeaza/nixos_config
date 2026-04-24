@@ -1,4 +1,5 @@
-{
+let
+localfunc = {
   wrapFish,
   stdenv,
   fishPlugins,
@@ -55,4 +56,10 @@ in
 }).overrideAttrs
   (_: {
     passthru.shellPath = "/bin/fish";
-  })
+  });
+in
+{
+  flake.overlays.fish = final: prev: {
+    myfish = final.callPackage localfunc {};
+  };
+}

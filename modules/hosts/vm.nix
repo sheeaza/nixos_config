@@ -4,17 +4,10 @@
 
 {
   config,
-  pkgs,
-  host,
+  inputs,
   ...
 }:
-{
-  imports = [
-    ./hardware.nix
-    ../common/boot.nix
-    ../common/config1.nix
-  ];
-
+let local_config = { pkgs, ... }: {
   # enable open vm tool
   virtualisation.vmware.guest.enable = true;
 
@@ -25,8 +18,26 @@
   environment.systemPackages = [
     pkgs.unstable.lua-language-server
   ];
-  services.vscode-server.enable = true;
-  systemd.user.services.auto-fix-vscode-server = {
-      enable = true;
+
+  networking = {
+    hostName = "vm";
+  };
+};
+in
+{
+  flake.nixosConfigurations.vm = inputs.pkgs-stable.lib.nixosSystem {
+    system = "x86_64-linux";
+    modules = [
+      config.flake.modules.nixos.boot
+      config.flake.nixosModules.vm_hw
+      config.flake.nixosModules.os_cfg1
+      config.flake.nixosModules.max
+      local_config
+      {
+        nixpkgs.overlays = [
+          config.flake.overlays.unstable
+        ];
+      }
+    ];
   };
 }

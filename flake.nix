@@ -2,7 +2,16 @@
   inputs = {
     upkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     pkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL/main";
+      inputs.nixpkgs.follows = "pkgs-stable";
+    };
+
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "pkgs-stable";
+    };
+    import-tree.url = "github:vic/import-tree";
 
     #neovim
     clangd-src = {
@@ -15,65 +24,14 @@
       url = "github:gpakosz/.tmux";
       flake = false;
     };
-    vscode-server.url = "github:nix-community/nixos-vscode-server";
+    vscode-server = {
+      url = "github:nix-community/nixos-vscode-server";
+      inputs.nixpkgs.follows = "pkgs-stable";
+    };
   };
 
-  outputs =
-    {
-      self,
-      upkgs,
-      pkgs-stable,
-      nixos-wsl,
-      clangd-src,
-      ohmytmux,
-      vscode-server,
-    }:
-    let
-      system = "x86_64-linux";
-    in
-    let
-      unstable-ov = final: prev: {
-        unstable = import upkgs {
-          overlays = [
-            (final: prev: { inherit clangd-src; })
-            (final: prev: { inherit ohmytmux; })
-            (import ./packages)
-          ];
-          inherit system;
-        };
-      };
-    in
-    let
-      pkgs = import pkgs-stable {
-        overlays = [ unstable-ov ];
-        inherit system;
-      };
-    in
-    {
-      packages."${system}" = {
-        dockerImage = import ./docker pkgs;
-        dockerimg2 = import ./docker/q.nix pkgs;
-        cshell = import ./devshell/cshell.nix pkgs;
-        rustshell = import ./devshell/rustshell.nix pkgs;
-        mynvim = pkgs.unstable.neovim;
-        mytmux = pkgs.unstable.tmux;
-        myfish = pkgs.unstable.myfish;
-      };
-      nixosConfigurations =
-        pkgs.lib.genAttrs
-          [
-            "max"
-            "qm"
-            "qmwsl"
-          ]
-          (
-            import ./nixos/configurations {
-              vsc-server = vscode-server;
-              fpkgs = pkgs-stable;
-              inherit system;
-              inherit nixos-wsl;
-              overlays = pkgs.overlays;
-            }
-          );
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [ (inputs.import-tree ./modules) ];
     };
 }

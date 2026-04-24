@@ -1,4 +1,5 @@
-{
+let
+localfunc = {
   neovim,
   vimPlugins,
   vimUtils,
@@ -65,4 +66,10 @@ let
     };
   };
 in
-nvim
+nvim;
+in
+{
+  flake.overlays.neovim = final: prev: {
+    neovim = final.callPackage localfunc { neovim = prev.neovim; };
+  };
+}

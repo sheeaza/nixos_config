@@ -1,4 +1,5 @@
-{
+let
+localfunc = {
   tmux,
   stdenv,
   symlinkJoin,
@@ -41,4 +42,10 @@ let
     '';
   };
 in
-wraptmux
+wraptmux;
+in
+{
+  flake.overlays.tmux = final: prev: {
+    tmux = final.callPackage localfunc { tmux = prev.tmux; };
+  };
+}
