@@ -2,10 +2,11 @@ let
 localfunc = {
   wrapFish,
   stdenv,
-  fishPlugins,
   busybox,
   substitute,
   fishMinimal,
+  fzf,
+  replaceVars,
 }:
 let
   fishprompt = substitute {
@@ -17,6 +18,9 @@ let
       " ${busybox}/bin/sed "
     ];
   };
+  fzf-key = replaceVars ./fish_user_key_bindings.fish {
+    fzf = "${fzf}";
+  };
 in
 let
   bundle = stdenv.mkDerivation {
@@ -24,6 +28,7 @@ let
     phases = [ "installPhase" ];
     src = [
       "${fishprompt}"
+      "${fzf-key}"
       ./l.fish
       ./la.fish
       ./ll.fish
@@ -50,7 +55,6 @@ _wrapFish = wrapFish.override {
 in
 (_wrapFish {
   pluginPkgs = [
-    fishPlugins.fzf
     bundle
   ];
 }).overrideAttrs

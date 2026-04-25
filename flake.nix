@@ -1,4 +1,9 @@
 {
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [ (inputs.import-tree ./modules) ];
+    };
+
   inputs = {
     upkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     pkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
@@ -28,10 +33,14 @@
       url = "github:nix-community/nixos-vscode-server";
       inputs.nixpkgs.follows = "pkgs-stable";
     };
-  };
 
-  outputs = inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ (inputs.import-tree ./modules) ];
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "upkgs";
     };
+    dgop = {
+      url = "github:AvengeMedia/dgop";
+      inputs.nixpkgs.follows = "upkgs";
+    };
+  };
 }
