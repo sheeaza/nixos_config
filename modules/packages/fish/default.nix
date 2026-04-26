@@ -7,6 +7,7 @@ localfunc = {
   fishMinimal,
   fzf,
   replaceVars,
+  ripgrep,
 }:
 let
   fishprompt = substitute {
@@ -19,7 +20,7 @@ let
     ];
   };
   fzf-key = replaceVars ./fish_user_key_bindings.fish {
-    fzf = "${fzf}";
+    rg = "${ripgrep}/bin/rg";
   };
 in
 let
