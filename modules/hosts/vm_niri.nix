@@ -27,6 +27,7 @@ in
       config.flake.modules.nixos.boot
       config.flake.nixosModules.vm_hw
       config.flake.nixosModules.os_niri
+      config.flake.nixosModules.sddm_niri
       config.flake.nixosModules.max
       local_config
       {

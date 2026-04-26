@@ -1,6 +1,6 @@
 { inputs, ...}:
 {
-  flake.nixosModules.os_niri = { pkgs, lib, ... }: {
+  flake.nixosModules.os_niri = { config, pkgs, ... }: {
     imports = [
       inputs.dms.nixosModules.dank-material-shell
     ];
@@ -45,9 +45,12 @@
         Environment = "";
       };
     };
+    environment.sessionVariables = {
+      XCURSOR_THEME = "Bibata-Modern-Ice";
+      XCURSOR_SIZE = "24";
+      # XCURSOR_PATH = ${pkgs.catppuccin-cursors};
+    };
 
-    services.displayManager.sddm.enable = true;
-    services.displayManager.sddm.wayland.enable = true;
     services.displayManager.defaultSession = "niri";
 
     # Configure keymap in X11

@@ -17,16 +17,6 @@ let
     ];
   };
 in
-let
-  niri-config = stdenv.mkDerivation {
-    name = "nifi_cfg";
-    phases = [ "installPhase" ];
-    installPhase = ''
-      mkdir -p $out/;
-      cp ${niri-kdl} $out/config.kdl;
-    '';
-  };
-in
 niri-kdl;
 in
 {
