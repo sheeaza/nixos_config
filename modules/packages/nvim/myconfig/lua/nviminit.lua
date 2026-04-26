@@ -6,14 +6,14 @@ vim.cmd[[syntax on]]
 require('ttheme')
 require('basekey')
 
-vim.opt.expandtab = false
-vim.opt.softtabstop = 8
-vim.opt.tabstop=8
-vim.opt.shiftwidth = 8
--- vim.opt.expandtab = true
--- vim.opt.softtabstop=4
--- vim.opt.tabstop=4
--- vim.opt.shiftwidth=4
+-- vim.opt.expandtab = false
+-- vim.opt.softtabstop = 8
+-- vim.opt.tabstop=8
+-- vim.opt.shiftwidth = 8
+vim.opt.expandtab = true
+vim.opt.softtabstop=4
+vim.opt.tabstop=4
+vim.opt.shiftwidth=4
 vim.opt.smartindent = true
 vim.opt.smartcase = true
 vim.opt.splitbelow = true
