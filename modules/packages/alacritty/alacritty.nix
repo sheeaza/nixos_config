@@ -15,7 +15,6 @@ in
 let
   alacrittyconfig = stdenv.mkDerivation {
     name = "alacritty_cfg";
-    # src = alac_toml;
     phases = [ "installPhase" ];
     installPhase = ''
       mkdir -p $out/;
