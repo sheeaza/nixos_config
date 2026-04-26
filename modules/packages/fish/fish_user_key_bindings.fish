@@ -189,21 +189,21 @@ function fzf_key_bindings
       '--bind=\'shift-delete:execute-silent(for i in (string split0 -- <{+f}); eval builtin history delete --exact --case-sensitive -- (string escape -n -- $i | string replace -r "^\d*\\\\\\t" ""); end)+reload(eval $FZF_DEFAULT_COMMAND)\'' \
       '--bind="alt-enter:become(string join0 -- (string collect -- {+2..} | fish_indent -i))"' \
       "--bind=ctrl-r:toggle-sort,alt-r:toggle-raw --highlight-line $FZF_CTRL_R_OPTS" \
-      '--accept-nth=1.. --read0 --print0 --with-shell='(status fish-path)\\ -c)
+      '--accept-nth=1.. --delimiter="\t" --tabstop=4 --read0 --print0 --with-shell='(status fish-path)\\ -c)
 
     # Add dynamic preview options if preview command isn't already set by user
     if string match -qvr -- '--preview[= ]' "$FZF_DEFAULT_OPTS"
       # Convert the highlighted timestamp using the date command if available
       set -l -- date_cmd '{1}'
-      if type -q date
-        if date -d @0 '+%s' 2>/dev/null | string match -q 0
-          # GNU date
-          set -- date_cmd '(date -d @{1} \\"+%F %a %T\\")'
-        else if date -r 0 '+%s' 2>/dev/null | string match -q 0
-          # BSD date
-          set -- date_cmd '(date -r {1} \\"+%F %a %T\\")'
-        end
-      end
+      # if type -q date
+        # if date -d @0 '+%s' 2>/dev/null | string match -q 0
+          # # GNU date
+          # set -- date_cmd '(date -d @{1} \\"+%F %a %T\\")'
+        # else if date -r 0 '+%s' 2>/dev/null | string match -q 0
+          # # BSD date
+          # set -- date_cmd '(date -r {1} \\"+%F %a %T\\")'
+        # end
+      # end
 
       # Prepend the options to allow user customizations
       set -p -- FZF_DEFAULT_OPTS \
