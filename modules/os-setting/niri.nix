@@ -46,25 +46,15 @@
       };
     };
 
-    services.xserver.enable = true;
     services.displayManager.sddm.enable = true;
-    services.desktopManager.plasma6.enable = true;
-    # for open vm tools, using x11
-    services.displayManager.defaultSession = "plasmax11";
-    environment.plasma6.excludePackages = with pkgs.kdePackages; [
-      plasma-browser-integration
-      elisa
-      kate
-      okular
-      gwenview
-      kwallet
-    ];
+    services.displayManager.sddm.wayland.enable = true;
+    services.displayManager.defaultSession = "niri";
 
     # Configure keymap in X11
-    services.xserver.xkb = {
-      layout = "us";
-      variant = "";
-    };
+    # services.xserver.xkb = {
+      # layout = "us";
+      # variant = "";
+    # };
 
     # Enable touchpad support (enabled default in most desktopManager).
     services.libinput.enable = true;
@@ -90,7 +80,6 @@
 
       pkgs.docker-compose
 
-      pkgs.kdePackages.polkit-kde-agent-1
       pkgs.xwayland-satellite
       pkgs.unstable.alacritty
     ];
