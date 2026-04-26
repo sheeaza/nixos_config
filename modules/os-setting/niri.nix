@@ -1,6 +1,6 @@
 { inputs, ...}:
 {
-  flake.nixosModules.os_niri = { pkgs, ... }: {
+  flake.nixosModules.os_niri = { pkgs, lib, ... }: {
     imports = [
       inputs.dms.nixosModules.dank-material-shell
     ];
@@ -35,6 +35,15 @@
       enable = true;
       enableSystemMonitoring = true;
       dgop.package = inputs.dgop.packages.${pkgs.system}.default;
+    };
+    systemd.user.services.niri = {
+      serviceConfig = {
+        ExecStart = [
+          ""
+          "${pkgs.unstable.niri}/bin/niri -c ${pkgs.unstable.niri-cfg} -- --session"
+        ];
+        Environment = "";
+      };
     };
 
     services.xserver.enable = true;

@@ -3,10 +3,8 @@ localfunc = {
   symlinkJoin,
   makeWrapper,
   stdenv,
-  niri,
   alacritty,
   substitute,
-  nix-update-script,
 }:
 let
   niri-kdl = substitute {
@@ -29,25 +27,10 @@ let
     '';
   };
 in
-let
-  wrap_niri = symlinkJoin {
-    name = "niri";
-    paths = [ niri ];
-    buildInputs = [ makeWrapper ];
-    postBuild = ''
-      wrapProgram $out/bin/niri \
-      --add-flags "-c ${niri-config}/config.kdl"
-    '';
-    passthru = {
-      providedSessions = [ "niri" ];
-      updateScript = nix-update-script { };
-    };
-  };
-in
-wrap_niri;
+niri-kdl;
 in
 {
-  flake.overlays.niri = final: prev: {
-    niri = final.callPackage localfunc { niri = prev.niri; };
+  flake.overlays.niri-cfg = final: prev: {
+    niri-cfg = final.callPackage localfunc {};
   };
 }
