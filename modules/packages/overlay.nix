@@ -17,6 +17,7 @@
           config.flake.overlays.fish
           config.flake.overlays.clangd
           config.flake.overlays.tmux
+          config.flake.overlays.alacritty
         ];
       };
     };

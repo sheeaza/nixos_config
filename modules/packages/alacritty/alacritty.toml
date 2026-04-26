@@ -1,0 +1,22 @@
+general.import = [
+    "@ala-theme@/share/alacritty-theme/one_dark.toml"
+]
+
+[window]
+decorations           = "None"
+
+[font]
+size = 12.0
+[font.normal]
+family = "Hack Nerd Font"
+style = "Regular"
+
+[keyboard]
+bindings = [
+{ key = "F11", action = "ToggleFullscreen" },
+{ key = "F", mods = "Control|Shift", action = "ReceiveChar"},
+{ key = "B", mods = "Control|Shift", action = "ReceiveChar"},
+]
+
+[mouse]
+hide_when_typing      = true

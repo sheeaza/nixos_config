@@ -23,6 +23,7 @@
       mynvim = pkgs.unstable.neovim;
       mytmux = pkgs.unstable.tmux;
       myfish = pkgs.unstable.myfish;
+      myalacritty = pkgs.unstable.alacritty;
     };
   };
 }

@@ -71,6 +71,7 @@
 
       pkgs.unstable.myfish
 
+      pkgs.nix-tree
       pkgs.wget
       pkgs.tree
       pkgs.ripgrep
@@ -82,7 +83,7 @@
 
       pkgs.kdePackages.polkit-kde-agent-1
       pkgs.xwayland-satellite
-      pkgs.alacritty
+      pkgs.unstable.alacritty
     ];
     environment.sessionVariables.EDITOR = "vim";
 
