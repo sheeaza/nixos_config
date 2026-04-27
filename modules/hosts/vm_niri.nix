@@ -18,24 +18,19 @@ let local_config = { pkgs, ... }: {
   networking = {
     hostName = "vm";
   };
+
+  nixpkgs.hostPlatform = "x86_64-linux";
 };
 in
 {
   flake.nixosConfigurations.vm_niri = inputs.pkgs-stable.lib.nixosSystem {
-    system = "x86_64-linux";
     modules = [
+      config.flake.nixosModules.nixpkgs
       config.flake.modules.nixos.boot
       config.flake.nixosModules.vm_hw
       config.flake.nixosModules.os_niri
-      config.flake.nixosModules.sddm_niri
       config.flake.nixosModules.max
       local_config
-      {
-        nixpkgs.overlays = [
-          config.flake.overlays.unstable
-        ];
-      }
     ];
   };
 }
-

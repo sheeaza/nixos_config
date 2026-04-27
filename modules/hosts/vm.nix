@@ -22,22 +22,18 @@ let local_config = { pkgs, ... }: {
   networking = {
     hostName = "vm";
   };
+  nixpkgs.hostPlatform = "x86_64-linux";
 };
 in
 {
   flake.nixosConfigurations.vm = inputs.pkgs-stable.lib.nixosSystem {
-    system = "x86_64-linux";
     modules = [
+      config.flake.nixosModules.nixpkgs
       config.flake.modules.nixos.boot
       config.flake.nixosModules.vm_hw
       config.flake.nixosModules.os_cfg1
       config.flake.nixosModules.max
       local_config
-      {
-        nixpkgs.overlays = [
-          config.flake.overlays.unstable
-        ];
-      }
     ];
   };
 }

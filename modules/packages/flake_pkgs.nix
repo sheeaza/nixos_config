@@ -1,4 +1,4 @@
-{ self, inputs, ... }:
+{ self, inputs, config, ... }:
 {
   perSystem = { system, ... }:
   let
@@ -25,6 +25,7 @@
       myfish = pkgs.unstable.myfish;
       myalacritty = pkgs.unstable.alacritty;
       myniricfg = pkgs.unstable.niri-cfg;
+      wsl_arm64-tarball = config.flake.nixosConfigurations.wsl_arm64.config.system.build.tarballBuilder;
     };
   };
 }

@@ -1,8 +1,9 @@
-{ inputs, ...}:
+{ inputs, config, ...}:
 {
-  flake.nixosModules.os_niri = { config, pkgs, ... }: {
+  flake.nixosModules.os_niri = { pkgs, ... }: {
     imports = [
       inputs.dms.nixosModules.dank-material-shell
+      config.flake.nixosModules.sddm_niri
     ];
     documentation.enable = false;
 
@@ -34,7 +35,7 @@
     programs.dank-material-shell = {
       enable = true;
       enableSystemMonitoring = true;
-      dgop.package = inputs.dgop.packages.${pkgs.system}.default;
+      dgop.package = inputs.dgop.packages.${pkgs.stdenv.hostPlatform.system}.default;
     };
     systemd.user.services.niri = {
       serviceConfig = {

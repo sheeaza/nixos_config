@@ -19,20 +19,16 @@ let local_config = { pkgs, ... }: {
   networking = {
     hostName = "wsl";
   };
+  nixpkgs.hostPlatform = "x86_64-linux";
 };
 in
 {
   flake.nixosConfigurations.wsl = inputs.pkgs-stable.lib.nixosSystem {
-    system = "x86_64-linux";
     modules = [
+      config.flake.nixosModules.nixpkgs
       config.flake.nixosModules.os_cfg1
       config.flake.nixosModules.qm
       local_config
-      {
-        nixpkgs.overlays = [
-          config.flake.overlays.unstable
-        ];
-      }
       inputs.nixos-wsl.nixosModules.default
     ];
   };
