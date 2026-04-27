@@ -3,7 +3,7 @@
   flake.nixosModules.os_niri = { pkgs, ... }: {
     imports = [
       inputs.dms.nixosModules.dank-material-shell
-      config.flake.nixosModules.sddm_niri
+      config.flake.nixosModules.dms_greeter
     ];
     documentation.enable = false;
 
@@ -85,6 +85,7 @@
 
       pkgs.xwayland-satellite
       pkgs.unstable.alacritty
+      pkgs.bibata-cursors
     ];
     environment.sessionVariables.EDITOR = "vim";
 
