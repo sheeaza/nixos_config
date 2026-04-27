@@ -3,7 +3,7 @@
   flake.nixosModules.sddm_niri = { pkgs, ... }:
     let
       custom-sddm-astronaut = pkgs.sddm-astronaut.override {
-        embeddedTheme = "pixel_sakura";
+        embeddedTheme = "astronaut";
       };
     in {
       services.displayManager.sddm = {
@@ -26,9 +26,9 @@
         ];
       };
 
-      environment.systemPackages = with pkgs; [
+      environment.systemPackages = [
         custom-sddm-astronaut
-        kdePackages.qtmultimedia
+        pkgs.bibata-cursors
       ];
     };
 }

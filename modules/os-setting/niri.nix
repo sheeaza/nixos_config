@@ -46,12 +46,11 @@
         Environment = "";
       };
     };
+
     environment.sessionVariables = {
       XCURSOR_THEME = "Bibata-Modern-Ice";
-      XCURSOR_SIZE = "24";
-      # XCURSOR_PATH = ${pkgs.catppuccin-cursors};
+      XCURSOR_SIZE = "20";
     };
-
     services.displayManager.defaultSession = "niri";
 
     # Configure keymap in X11

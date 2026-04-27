@@ -70,8 +70,8 @@ input {
 }
 
 cursor {
-    xcursor-theme "Adwaita"
-    xcursor-size 24
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 20
 }
 
 // You can configure outputs by their name, which you can find
