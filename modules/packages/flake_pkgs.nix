@@ -5,11 +5,11 @@
     pkgs = import inputs.pkgs-stable {
       inherit system;
       overlays = [
-        self.overlays.unstable
-        self.overlays.ov_cshell
-        self.overlays.ov_rustshell
-        self.overlays.ov_container_devc
-        self.overlays.ov_container_devc_q
+        config.internal.overlays.unstable
+        config.internal.overlays.ov_cshell
+        config.internal.overlays.ov_rustshell
+        config.internal.overlays.ov_container_devc
+        config.internal.overlays.ov_container_devc_q
       ];
     };
   in
