@@ -2,7 +2,10 @@
 {
   flake.nixosModules.os_niri = { pkgs, ... }: {
     imports = [
-      inputs.dms.nixosModules.dank-material-shell
+      { disabledModules = [ "programs/wayland/niri.nix" ]; }
+      "${inputs.upkgs}/nixos/modules/programs/wayland/niri.nix"
+
+      "${inputs.upkgs}/nixos/modules/programs/wayland/dms-shell.nix"
       config.flake.nixosModules.dms_greeter
     ];
     documentation.enable = false;
@@ -30,12 +33,6 @@
 
     programs.niri = {
       enable = true;
-      package = pkgs.unstable.niri;
-    };
-    programs.dank-material-shell = {
-      enable = true;
-      enableSystemMonitoring = true;
-      dgop.package = inputs.dgop.packages.${pkgs.stdenv.hostPlatform.system}.default;
     };
     systemd.user.services.niri = {
       serviceConfig = {
@@ -45,6 +42,12 @@
         ];
         Environment = "";
       };
+    };
+
+    programs.dms-shell = {
+      enable = true;
+      enableSystemMonitoring = true;
+      systemd.enable = false;
     };
 
     environment.sessionVariables = {
