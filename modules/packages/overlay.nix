@@ -24,6 +24,7 @@ let
   dms-ov = final: prev: {
     dms-shell = final.unstable.dms-shell;
     dgop = final.unstable.dgop;
+    quickshell = final.unstable.quickshell;
   };
 in
 {

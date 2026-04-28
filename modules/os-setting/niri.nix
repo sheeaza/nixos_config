@@ -6,7 +6,7 @@
       "${inputs.upkgs}/nixos/modules/programs/wayland/niri.nix"
 
       "${inputs.upkgs}/nixos/modules/programs/wayland/dms-shell.nix"
-      config.internal.nixosModules.dms_greeter
+      "${inputs.upkgs}/nixos/modules/services/display-managers/dms-greeter.nix"
     ];
     documentation.enable = false;
 
@@ -38,7 +38,7 @@
       serviceConfig = {
         ExecStart = [
           ""
-          "${pkgs.unstable.niri}/bin/niri -c ${pkgs.unstable.niri-cfg} -- --session"
+          "${pkgs.unstable.niri}/bin/niri --session -c ${pkgs.unstable.niri-cfg}"
         ];
         Environment = "";
       };
@@ -47,14 +47,22 @@
     programs.dms-shell = {
       enable = true;
       enableSystemMonitoring = true;
-      systemd.enable = false;
     };
-
-    environment.sessionVariables = {
-      XCURSOR_THEME = "Bibata-Modern-Ice";
-      XCURSOR_SIZE = "20";
+    services.displayManager.dms-greeter = {
+      enable = true;
+      compositor = {
+        name = "niri";
+        customConfig = ''
+          cursor {
+            xcursor-theme "Bibata-Modern-Ice"
+            xcursor-size 20
+          }
+          hotkey-overlay {
+              skip-at-startup
+          }
+        '';
+      };
     };
-    services.displayManager.defaultSession = "niri";
 
     # Configure keymap in X11
     # services.xserver.xkb = {

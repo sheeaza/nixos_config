@@ -33,14 +33,5 @@
       url = "github:nix-community/nixos-vscode-server";
       inputs.nixpkgs.follows = "pkgs-stable";
     };
-
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell/stable";
-      inputs.nixpkgs.follows = "upkgs";
-    };
-    dgop = {
-      url = "github:AvengeMedia/dgop";
-      inputs.nixpkgs.follows = "upkgs";
-    };
   };
 }
