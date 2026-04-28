@@ -26,9 +26,9 @@ in
 {
   flake.nixosConfigurations.wsl_niri_arm64 = inputs.pkgs-stable.lib.nixosSystem {
     modules = [
-      config.flake.nixosModules.nixpkgs
-      config.flake.nixosModules.os_niri
-      config.flake.nixosModules.nixos
+      config.internal.nixosModules.nixpkgs
+      config.internal.nixosModules.os_niri
+      config.internal.nixosModules.nixos
       inputs.nixos-wsl.nixosModules.default
       local_config
     ];

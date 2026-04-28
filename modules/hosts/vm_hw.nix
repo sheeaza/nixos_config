@@ -6,7 +6,7 @@
   ...
 }:
 {
-  flake.nixosModules.vm_hw = { config, ... }: {
+  internal.nixosModules.vm_hw = { config, ... }: {
     boot.initrd.availableKernelModules = [
       "ata_piix"
       "mptspi"

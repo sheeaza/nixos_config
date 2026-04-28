@@ -29,7 +29,7 @@ stdenv.mkDerivation {
 };
 in
 {
-  flake.overlays.clangd = final: prev: {
+  internal.overlays.clangd = final: prev: {
     clangd = final.callPackage localfunc {};
   };
 }

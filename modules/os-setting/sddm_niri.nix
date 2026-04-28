@@ -1,6 +1,6 @@
 { ...}:
 {
-  flake.nixosModules.sddm_niri = { pkgs, ... }:
+  internal.nixosModules.sddm_niri = { pkgs, ... }:
     let
       custom-sddm-astronaut = pkgs.sddm-astronaut.override {
         embeddedTheme = "astronaut";

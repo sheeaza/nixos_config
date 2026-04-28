@@ -1,12 +1,12 @@
 { inputs, config, ...}:
 {
-  flake.nixosModules.os_niri = { pkgs, ... }: {
+  internal.nixosModules.os_niri = { pkgs, ... }: {
     imports = [
       { disabledModules = [ "programs/wayland/niri.nix" ]; }
       "${inputs.upkgs}/nixos/modules/programs/wayland/niri.nix"
 
       "${inputs.upkgs}/nixos/modules/programs/wayland/dms-shell.nix"
-      config.flake.nixosModules.dms_greeter
+      config.internal.nixosModules.dms_greeter
     ];
     documentation.enable = false;
 

@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.nixosModules.vs-code = {
+  internal.nixosModules.vs-code = {
     imports = [
       inputs.vscode-server.nixosModules.default
     ];

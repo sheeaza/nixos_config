@@ -69,7 +69,7 @@ in
 nvim;
 in
 {
-  flake.overlays.neovim = final: prev: {
+  internal.overlays.neovim = final: prev: {
     neovim = final.callPackage localfunc { neovim = prev.neovim; };
   };
 }

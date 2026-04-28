@@ -25,11 +25,11 @@ in
 {
   flake.nixosConfigurations.vm_niri = inputs.pkgs-stable.lib.nixosSystem {
     modules = [
-      config.flake.nixosModules.nixpkgs
-      config.flake.modules.nixos.boot
-      config.flake.nixosModules.vm_hw
-      config.flake.nixosModules.os_niri
-      config.flake.nixosModules.max
+      config.internal.nixosModules.nixpkgs
+      config.internal.nixosModules.boot
+      config.internal.nixosModules.vm_hw
+      config.internal.nixosModules.os_niri
+      config.internal.nixosModules.max
       local_config
     ];
   };

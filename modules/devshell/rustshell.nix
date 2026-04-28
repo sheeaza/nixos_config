@@ -1,5 +1,5 @@
 {
-  flake.overlays.ov_rustshell = final: prev: {
+  internal.overlays.ov_rustshell = final: prev: {
     rustshell = final.buildEnv {
       name = "rustshell";
       paths = [

@@ -64,7 +64,7 @@ in
   });
 in
 {
-  flake.overlays.fish = final: prev: {
+  internal.overlays.fish = final: prev: {
     myfish = final.callPackage localfunc {};
   };
 }

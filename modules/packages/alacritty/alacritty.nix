@@ -36,7 +36,7 @@ in
 wrap_alacritty;
 in
 {
-  flake.overlays.alacritty = final: prev: {
+  internal.overlays.alacritty = final: prev: {
     alacritty = final.callPackage localfunc { alacritty = prev.alacritty; };
   };
 }

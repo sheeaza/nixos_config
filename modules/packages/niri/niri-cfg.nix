@@ -20,7 +20,7 @@ in
 niri-kdl;
 in
 {
-  flake.overlays.niri-cfg = final: prev: {
+  internal.overlays.niri-cfg = final: prev: {
     niri-cfg = final.callPackage localfunc {};
   };
 }

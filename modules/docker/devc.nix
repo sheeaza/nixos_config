@@ -2,7 +2,7 @@ let
   user = "max";
 in
 {
-  flake.overlays.ov_container_devc = final: prev: {
+  internal.overlays.ov_container_devc = final: prev: {
     container_devc = final.dockerTools.buildImage {
       name = "bundle";
       tag = "latest";

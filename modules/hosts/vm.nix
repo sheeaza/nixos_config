@@ -28,11 +28,11 @@ in
 {
   flake.nixosConfigurations.vm = inputs.pkgs-stable.lib.nixosSystem {
     modules = [
-      config.flake.nixosModules.nixpkgs
-      config.flake.modules.nixos.boot
-      config.flake.nixosModules.vm_hw
-      config.flake.nixosModules.os_cfg1
-      config.flake.nixosModules.max
+      config.internal.nixosModules.nixpkgs
+      config.internal.nixosModules.boot
+      config.internal.nixosModules.vm_hw
+      config.internal.nixosModules.os_cfg1
+      config.internal.nixosModules.max
       local_config
     ];
   };

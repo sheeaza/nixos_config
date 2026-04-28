@@ -2,7 +2,7 @@ let
   user = "qm";
 in
 {
-  flake.overlays.ov_container_devc_q = final: prev: {
+  internal.overlays.ov_container_devc_q = final: prev: {
     container_devc_q = final.dockerTools.buildImage {
       name = "bundle";
       tag = "latest";

@@ -45,7 +45,7 @@ in
 wraptmux;
 in
 {
-  flake.overlays.tmux = final: prev: {
+  internal.overlays.tmux = final: prev: {
     tmux = final.callPackage localfunc { tmux = prev.tmux; };
   };
 }

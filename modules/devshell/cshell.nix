@@ -1,5 +1,5 @@
 {
-  flake.overlays.ov_cshell = final: prev: {
+  internal.overlays.ov_cshell = final: prev: {
     cshell = final.buildEnv {
       name = "cshell";
       paths = [

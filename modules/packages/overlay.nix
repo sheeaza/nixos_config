@@ -12,12 +12,12 @@ let
            git = final.gitMinimal;
          };}
         )
-        config.flake.overlays.neovim
-        config.flake.overlays.fish
-        config.flake.overlays.clangd
-        config.flake.overlays.tmux
-        config.flake.overlays.alacritty
-        config.flake.overlays.niri-cfg
+        config.internal.overlays.neovim
+        config.internal.overlays.fish
+        config.internal.overlays.clangd
+        config.internal.overlays.tmux
+        config.internal.overlays.alacritty
+        config.internal.overlays.niri-cfg
       ];
     };
   };
@@ -27,8 +27,8 @@ let
   };
 in
 {
-  flake.overlays.unstable = unstable_ov;
-  flake.nixosModules.nixpkgs = {
+  internal.overlays.unstable = unstable_ov;
+  internal.nixosModules.nixpkgs = {
     nixpkgs.overlays = [ unstable_ov dms-ov ];
   };
 }

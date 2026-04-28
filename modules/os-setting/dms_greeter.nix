@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.nixosModules.dms_greeter = { pkgs, ... }:
+  internal.nixosModules.dms_greeter = { pkgs, ... }:
   {
     imports = [
       inputs.dms.nixosModules.greeter
