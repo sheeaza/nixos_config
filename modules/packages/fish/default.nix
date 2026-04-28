@@ -21,6 +21,7 @@ let
   };
   fzf-key = replaceVars ./fish_user_key_bindings.fish {
     rg = "${ripgrep}/bin/rg";
+    sed = "${busybox}/bin/sed";
   };
 in
 let

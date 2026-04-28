@@ -167,7 +167,7 @@ function fzf_key_bindings
       "--reverse --walker=file,dir,follow,hidden --scheme=path" \
       "--multi $FZF_CTRL_T_OPTS --print0")
 
-    set -lx FZF_CTRL_T_COMMAND '@rg@ --follow --files --hidden --glob "!.git/*"'
+    set -lx FZF_CTRL_T_COMMAND "@rg@ --follow --files --hidden --glob '!.git/*' $dir| @sed@ '1d; s#^\./##'"
 
     set -lx FZF_DEFAULT_COMMAND "$FZF_CTRL_T_COMMAND"
     set -lx FZF_DEFAULT_OPTS_FILE
