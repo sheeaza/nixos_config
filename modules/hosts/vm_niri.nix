@@ -7,9 +7,6 @@ let local_config = { pkgs, ... }: {
   # enable open vm tool
   virtualisation.vmware.guest.enable = true;
 
-  # docker
-  virtualisation.docker.enable = true;
-
   # List packages installed in system profile. To search, run:
   environment.systemPackages = [
     pkgs.unstable.lua-language-server
@@ -27,8 +24,11 @@ in
     modules = [
       config.internal.nixosModules.nixpkgs
       config.internal.nixosModules.boot
-      config.internal.nixosModules.vm_hw
+      config.internal.nixosModules.hw_vm
       config.internal.nixosModules.os_niri
+      config.internal.nixosModules.os_base1
+      config.internal.nixosModules.os_docker
+      config.internal.nixosModules.os_pkgs1
       config.internal.nixosModules.max
       local_config
     ];

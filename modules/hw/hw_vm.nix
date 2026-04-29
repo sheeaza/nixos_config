@@ -6,7 +6,7 @@
   ...
 }:
 {
-  internal.nixosModules.vm_hw = { config, ... }: {
+  internal.nixosModules.hw_vm = { config, ... }: {
     boot.initrd.availableKernelModules = [
       "ata_piix"
       "mptspi"

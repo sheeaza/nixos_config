@@ -1,8 +1,5 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  internal.nixosModules.os_cfg1 = { pkgs, ... }: {
+  internal.nixosModules.os_base1 = { pkgs, ... }: {
     documentation.enable = false;
 
     # Set your time zone.
@@ -25,51 +22,11 @@
     console = {
       keyMap = "us";
     };
-
-    services.xserver.enable = true;
-    services.displayManager.sddm.enable = true;
-    services.desktopManager.plasma6.enable = true;
-    # for open vm tools, using x11
-    services.displayManager.defaultSession = "plasmax11";
-    environment.plasma6.excludePackages = with pkgs.kdePackages; [
-      plasma-browser-integration
-      elisa
-      kate
-      okular
-      gwenview
-      kwallet
-    ];
-
-    # Configure keymap in X11
-    services.xserver.xkb = {
-      layout = "us";
-      variant = "";
-    };
-
     # Enable touchpad support (enabled default in most desktopManager).
     services.libinput.enable = true;
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.defaultUserShell = pkgs.unstable.myfish;
-
-    # List packages installed in system profile. To search, run:
-    environment.systemPackages = [
-      pkgs.unstable.neovim
-
-      pkgs.unstable.tmux
-
-      pkgs.unstable.myfish
-
-      pkgs.wget
-      pkgs.tree
-      pkgs.ripgrep
-      pkgs.tig
-      pkgs.git
-      pkgs.unstable.fzf
-
-      pkgs.docker-compose
-    ];
-    environment.sessionVariables.EDITOR = "vim";
 
     # Enable the OpenSSH daemon.
     services.openssh.enable = true;

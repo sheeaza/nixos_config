@@ -30,6 +30,8 @@ in
       config.internal.nixosModules.os_niri
       config.internal.nixosModules.nixos
       config.internal.nixosModules.wsl_niri_dms
+      config.internal.nixosModules.os_base1
+      config.internal.nixosModules.os_pkgs1
       inputs.nixos-wsl.nixosModules.default
       local_config
     ];
