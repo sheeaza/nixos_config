@@ -29,6 +29,7 @@ in
       config.internal.nixosModules.nixpkgs
       config.internal.nixosModules.os_niri
       config.internal.nixosModules.nixos
+      config.internal.nixosModules.wsl_niri_dms
       inputs.nixos-wsl.nixosModules.default
       local_config
     ];

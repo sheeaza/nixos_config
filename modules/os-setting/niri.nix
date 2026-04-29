@@ -40,7 +40,6 @@
           ""
           "${pkgs.unstable.niri}/bin/niri --session -c ${pkgs.unstable.niri-cfg}"
         ];
-        Environment = "";
       };
     };
 
