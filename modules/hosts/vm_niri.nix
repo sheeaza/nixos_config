@@ -10,20 +10,6 @@ let local_config = { pkgs, ... }: {
   # List packages installed in system profile. To search, run:
   environment.systemPackages = [
     pkgs.unstable.lua-language-server
-
-      pkgs.unstable.neovim
-
-      pkgs.unstable.tmux
-
-      pkgs.unstable.myfish
-
-      pkgs.nix-tree
-      pkgs.wget
-      pkgs.tree
-      pkgs.ripgrep
-      pkgs.tig
-      pkgs.git
-      pkgs.unstable.fzf
   ];
 
   networking = {
@@ -41,8 +27,8 @@ in
       config.internal.nixosModules.hw_vm
       config.internal.nixosModules.os_niri
       config.internal.nixosModules.os_base1
-      # config.internal.nixosModules.os_docker
-      # config.internal.nixosModules.os_pkgs1
+      config.internal.nixosModules.os_docker
+      config.internal.nixosModules.os_pkgs1
       config.internal.nixosModules.max
       local_config
     ];
