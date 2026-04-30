@@ -1,6 +1,6 @@
 { inputs, ...}:
 {
-  internal.nixosModules.os_niri = { pkgs, ... }: {
+  internal.nixosModules.os_niri = { pkgs, lib, ... }: {
     imports = [
       { disabledModules = [ "programs/wayland/niri.nix" ]; }
       "${inputs.upkgs}/nixos/modules/programs/wayland/niri.nix"
@@ -17,8 +17,8 @@
           ""
           "${pkgs.unstable.niri}/bin/niri --session -c ${pkgs.unstable.niri-cfg}"
         ];
-        Environment = ""; # put here, to prevent overrite shell var
       };
+      path = lib.mkForce [ ];
     };
 
     programs.dms-shell = {
