@@ -51,7 +51,7 @@ in
         ];
       };
       config = {
-        Cmd = "fish";
+        Cmd = [ "fish" ];
         WorkingDir = "/home/${user}";
       };
     };
