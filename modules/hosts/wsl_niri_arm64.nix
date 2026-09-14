@@ -14,8 +14,10 @@ let local_config = { pkgs, ... }: {
     pkgs.bashInteractive
     pkgs.sshfs
     pkgs.xclip
+    pkgs.claude-code
   ];
 
+  nixpkgs.config.allowUnfree = true;
   networking = {
     hostName = "wsl";
   };

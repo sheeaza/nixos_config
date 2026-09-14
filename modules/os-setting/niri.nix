@@ -1,13 +1,6 @@
 { inputs, ...}:
 {
   internal.nixosModules.os_niri = { pkgs, lib, ... }: {
-    imports = [
-      { disabledModules = [ "programs/wayland/niri.nix" ]; }
-      "${inputs.upkgs}/nixos/modules/programs/wayland/niri.nix"
-
-      "${inputs.upkgs}/nixos/modules/programs/wayland/dms-shell.nix"
-      "${inputs.upkgs}/nixos/modules/services/display-managers/dms-greeter.nix"
-    ];
     programs.niri = {
       enable = true;
     };
@@ -15,7 +8,7 @@
       serviceConfig = {
         ExecStart = [
           ""
-          "${pkgs.unstable.niri}/bin/niri --session -c ${pkgs.unstable.niri-cfg}"
+          "${pkgs.niri}/bin/niri --session -c ${pkgs.unstable.niri-cfg}"
         ];
       };
       path = lib.mkForce [ ];

@@ -17,7 +17,7 @@
       serviceConfig = {
         ExecStart = [
           ""
-          "${pkgs.unstable.niri}/bin/niri -c ${pkgs.unstable.niri-cfg}"
+          "${pkgs.niri}/bin/niri -c ${pkgs.unstable.niri-cfg}"
         ];
       };
       environment = {

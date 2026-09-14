@@ -6,7 +6,7 @@
 
   inputs = {
     upkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    pkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    pkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "pkgs-stable";
@@ -31,7 +31,6 @@
     };
     vscode-server = {
       url = "github:nix-community/nixos-vscode-server";
-      inputs.nixpkgs.follows = "pkgs-stable";
     };
   };
 }
