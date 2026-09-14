@@ -31,6 +31,12 @@ in
             pathsToLink = [ "/bin" ];
             ignoreCollisions = true;
           })
+          (final.buildEnv {
+            name = "image-root";
+            paths = [ final.unstable.cacert ];
+            pathsToLink = [ "/etc/ssl" ];
+            ignoreCollisions = true;
+          })
           (final.runCommand "user" { } ''
             mkdir -p $out/tmp
             chmod 1777 $out/tmp
@@ -47,6 +53,10 @@ in
           '')
           (final.writeTextDir "etc/gshadow" ''
             ${user}:x::
+          '')
+          (final.writeTextDir "etc/gitconfig" ''
+            [http]
+                sslCAInfo = /etc/ssl/certs/ca-bundle.crt
           '')
         ];
       };
