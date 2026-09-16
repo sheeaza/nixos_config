@@ -5,11 +5,24 @@ localfunc = {
   symlinkJoin,
   makeWrapper,
   ohmytmux,
-  perl,
+  bashInteractive,
   replaceVars,
 }:
 let
   tmuxlocalconf = replaceVars ./tmuxlocal {
+  };
+in
+let
+  tmuxBlank = stdenv.mkDerivation {
+    name = "tmux-blank";
+    dontUnpack = true;
+    buildPhase = ''
+      $CC -O2 -Wall -o blank ${./blank.c}
+    '';
+    installPhase = ''
+      mkdir -p $out/bin
+      cp blank $out/bin/blank
+    '';
   };
 in
 let
@@ -20,7 +33,8 @@ let
     installPhase = ''
       mkdir -p $out/;
       mkdir -p $out/plugins
-      sed 's#\bperl#${perl}/bin/perl#g' .tmux.conf > $out/.tmux.conf
+      sh ${./rewrite-perl.sh} .tmux.conf
+      sed -e 's#@bash@#${bashInteractive}/bin/bash#g' -e 's#@blank@#${tmuxBlank}/bin/blank#g' .tmux.conf > $out/.tmux.conf
       cp ${tmuxlocalconf} $out/.tmux.conf.local
     '';
   };
@@ -38,7 +52,9 @@ let
     postBuild = ''
       wrapProgram $out/bin/tmux \
       --set TMUX_CONF ${tmuxconfig}/.tmux.conf \
-      --add-flags "-f ${tmuxconfig}/.tmux.conf"
+      --add-flags "-f ${tmuxconfig}/.tmux.conf" \
+      --set-default LANG C.UTF-8 \
+      --set-default LC_ALL C.UTF-8
     '';
   };
 in
