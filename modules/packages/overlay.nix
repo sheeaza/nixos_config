@@ -9,10 +9,12 @@ let
         (final: prev: { ohmytmux = inputs.ohmytmux; })
         (final: prev: {
          tig = prev.tig.override {
-           git = final.gitMinimal;
+           git = final.gitSlim;
          };}
         )
+        config.internal.overlays.git-minimal
         config.internal.overlays.neovim
+        config.internal.overlays.openssh-minimal
         config.internal.overlays.fish
         config.internal.overlays.clangd
         config.internal.overlays.tmux
