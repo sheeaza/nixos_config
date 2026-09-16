@@ -15,17 +15,17 @@ in
             paths = [
               final.unstable.busybox
               final.unstable.less
-              final.unstable.openssh
+              final.unstable.openssh-minimal
               final.unstable.coreutils
 
-              final.unstable.neovim
+              final.unstable.neovim-headless
               final.unstable.tmux
               final.unstable.myfish
 
               final.unstable.tree
               final.unstable.ripgrep
               final.unstable.tig
-              final.unstable.gitMinimal
+              final.unstable.gitSlim
               final.unstable.fzf
             ];
             pathsToLink = [ "/bin" ];
