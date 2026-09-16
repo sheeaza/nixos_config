@@ -51,8 +51,15 @@ let
   };
 in
 let
+  fishNoMan = fishMinimal.overrideAttrs (old: {
+    propagatedBuildInputs = builtins.filter (
+      p: (p.pname or "") != "man-db"
+    ) old.propagatedBuildInputs;
+  });
+in
+let
 _wrapFish = wrapFish.override {
-  fish = fishMinimal;
+  fish = fishNoMan;
 };
 in
 (_wrapFish {
