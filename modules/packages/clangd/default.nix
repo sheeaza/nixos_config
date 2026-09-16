@@ -25,6 +25,8 @@ stdenv.mkDerivation {
   installPhase = ''
     mkdir -p $out/bin
     cp $src/bin/clangd $out/bin/
+    chmod u+w $out/bin/clangd
+    strip $out/bin/clangd
   '';
 };
 in
