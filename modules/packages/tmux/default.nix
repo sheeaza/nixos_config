@@ -7,19 +7,6 @@ localfunc = {
   bashInteractive,
 }:
 let
-  tmuxBlank = stdenv.mkDerivation {
-    name = "tmux-blank";
-    dontUnpack = true;
-    buildPhase = ''
-      $CC -O2 -Wall -o blank ${./blank.c}
-    '';
-    installPhase = ''
-      mkdir -p $out/bin
-      cp blank $out/bin/blank
-    '';
-  };
-in
-let
   _tmux = tmux.override {
     withSystemd = false;
   };
@@ -32,7 +19,6 @@ let
       mkdir -p $out
       sedArgs=(
         -e 's#@bash@#${bashInteractive}/bin/bash#g'
-        -e 's#@blank@#${tmuxBlank}/bin/blank#g'
         -e 's#@sh@#'"$out"'/tmux.sh#g'
         -e 's#@tmux_conf@#'"$out"'/.tmux.conf#g'
         -e 's#@tmux_program@#${_tmux}/bin/tmux#g'
