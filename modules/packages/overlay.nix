@@ -6,7 +6,6 @@ let
 
       overlays = [
         (final: prev: { clangd-src = inputs.clangd-src; })
-        (final: prev: { ohmytmux = inputs.ohmytmux; })
         (final: prev: {
          tig = prev.tig.override {
            git = final.gitSlim;

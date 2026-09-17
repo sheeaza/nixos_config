@@ -4,14 +4,8 @@ localfunc = {
   stdenv,
   symlinkJoin,
   makeWrapper,
-  ohmytmux,
   bashInteractive,
-  replaceVars,
 }:
-let
-  tmuxlocalconf = replaceVars ./tmuxlocal {
-  };
-in
 let
   tmuxBlank = stdenv.mkDerivation {
     name = "tmux-blank";
@@ -26,22 +20,27 @@ let
   };
 in
 let
-  tmuxconfig = stdenv.mkDerivation {
-    name = "ohmytmux";
-    src = ohmytmux;
-    # mkdir empty plugins to prevent error outputs
-    installPhase = ''
-      mkdir -p $out/;
-      mkdir -p $out/plugins
-      sh ${./rewrite-perl.sh} .tmux.conf
-      sed -e 's#@bash@#${bashInteractive}/bin/bash#g' -e 's#@blank@#${tmuxBlank}/bin/blank#g' .tmux.conf > $out/.tmux.conf
-      cp ${tmuxlocalconf} $out/.tmux.conf.local
-    '';
+  _tmux = tmux.override {
+    withSystemd = false;
   };
 in
 let
-  _tmux = tmux.override {
-    withSystemd = false;
+  tmuxconfig = stdenv.mkDerivation {
+    name = "ohmytmux";
+    dontUnpack = true;
+    installPhase = ''
+      mkdir -p $out
+      sedArgs=(
+        -e 's#@bash@#${bashInteractive}/bin/bash#g'
+        -e 's#@blank@#${tmuxBlank}/bin/blank#g'
+        -e 's#@sh@#'"$out"'/tmux.sh#g'
+        -e 's#@tmux_conf@#'"$out"'/.tmux.conf#g'
+        -e 's#@tmux_program@#${_tmux}/bin/tmux#g'
+      )
+      sed "''${sedArgs[@]}" ${./tmuxconf} > $out/.tmux.conf
+      sed "''${sedArgs[@]}" ${./tmuxconf.sh} > $out/tmux.sh
+      chmod +x $out/tmux.sh
+    '';
   };
 in
 let
@@ -51,7 +50,6 @@ let
     buildInputs = [ makeWrapper ];
     postBuild = ''
       wrapProgram $out/bin/tmux \
-      --set TMUX_CONF ${tmuxconfig}/.tmux.conf \
       --add-flags "-f ${tmuxconfig}/.tmux.conf" \
       --set-default LANG C.UTF-8 \
       --set-default LC_ALL C.UTF-8

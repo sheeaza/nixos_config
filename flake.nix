@@ -24,11 +24,6 @@
       flake = false;
     };
 
-    #tmux
-    ohmytmux = {
-      url = "github:gpakosz/.tmux";
-      flake = false;
-    };
     vscode-server = {
       url = "github:nix-community/nixos-vscode-server";
     };

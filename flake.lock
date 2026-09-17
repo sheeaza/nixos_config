@@ -119,22 +119,6 @@
         "type": "github"
       }
     },
-    "ohmytmux": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1786203437,
-        "narHash": "sha256-YDzbZVFhrAMBhOI8HVDxR3rEPkrEwG57IUbnZicmfn4=",
-        "owner": "gpakosz",
-        "repo": ".tmux",
-        "rev": "58a3dcc0d718ec0fa1c0d5a2fddd640a1ad7a5b7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "gpakosz",
-        "repo": ".tmux",
-        "type": "github"
-      }
-    },
     "pkgs-stable": {
       "locked": {
         "lastModified": 1789114715,
@@ -157,7 +141,6 @@
         "flake-parts": "flake-parts",
         "import-tree": "import-tree",
         "nixos-wsl": "nixos-wsl",
-        "ohmytmux": "ohmytmux",
         "pkgs-stable": "pkgs-stable",
         "upkgs": "upkgs",
         "vscode-server": "vscode-server"
