@@ -92,11 +92,6 @@ bind Tab last-window                                    # move to last active wi
 bind m set -gF mouse '#{?mouse,off,on}' \; display "mouse: #{?mouse,on,off}"
 
 
-# -- facebook pathpicker -------------------------------------------------------
-
-bind F run "@sh@ _fpp '#{pane_id}'"
-
-
 # -- copy mode -----------------------------------------------------------------
 
 bind Enter copy-mode # enter copy mode
@@ -234,16 +229,16 @@ set -g status-right "#[fg=#080808,bg=#080808,none]\
 #[fg=#d70000,bg=#080808,none]\
 #[fg=#e4e4e4,bg=#d70000,none]\
  \
-#(@sh@ _username '#{pane_pid}' '#{b:pane_tty}' false '#D')\
+#(@sh@ _username '#{pane_pid}' false)\
 #[fg=none]#[bg=none]#[bold,blink]\
-#{?#{==:#(@sh@ _username '#{pane_pid}' '#{b:pane_tty}' false '#D'),root},!,}\
+#{?#{==:#(@sh@ _username '#{pane_pid}' false),root},!,}\
 #[default]\
 #[fg=#e4e4e4,bg=#d70000,none]\
  \
 #[fg=#e4e4e4,bg=#d70000,none]\
 #[fg=#080808,bg=#e4e4e4,bold]\
  \
-#(@sh@ _hostname '#{pane_pid}' '#{b:pane_tty}' false false '#h' '#D')\
+#(@sh@ _hostname '#{pane_pid}' false false '#h')\
  "
 
 
