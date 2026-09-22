@@ -22,15 +22,10 @@ let
       ];
     };
   };
-  dms-ov = final: prev: {
-    dms-shell = final.unstable.dms-shell;
-    dgop = final.unstable.dgop;
-    quickshell = final.unstable.quickshell;
-  };
 in
 {
   internal.overlays.unstable = unstable_ov;
   internal.nixosModules.nixpkgs = {
-    nixpkgs.overlays = [ unstable_ov dms-ov ];
+    nixpkgs.overlays = [ unstable_ov ];
   };
 }
