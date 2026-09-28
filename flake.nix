@@ -18,12 +18,6 @@
     };
     import-tree.url = "github:vic/import-tree";
 
-    #neovim
-    clangd-src = {
-      url = "https://github.com/clangd/clangd/releases/download/22.1.0/clangd-linux-22.1.0.zip";
-      flake = false;
-    };
-
     vscode-server = {
       url = "github:nix-community/nixos-vscode-server";
     };

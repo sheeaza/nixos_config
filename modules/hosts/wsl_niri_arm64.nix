@@ -33,6 +33,7 @@ in
       config.internal.nixosModules.nixos
       config.internal.nixosModules.wsl_niri_dms
       config.internal.nixosModules.os_base1
+      config.internal.nixosModules.os_docker
       config.internal.nixosModules.os_pkgs1
       config.internal.nixosModules.vs-code
       inputs.nixos-wsl.nixosModules.default

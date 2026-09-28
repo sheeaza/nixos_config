@@ -5,7 +5,6 @@ let
       system = final.stdenv.hostPlatform.system;
 
       overlays = [
-        (final: prev: { clangd-src = inputs.clangd-src; })
         (final: prev: {
          tig = prev.tig.override {
            git = final.gitSlim;

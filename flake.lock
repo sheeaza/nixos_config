@@ -1,18 +1,5 @@
 {
   "nodes": {
-    "clangd-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1772326268,
-        "narHash": "sha256-F4yOFlmviPSM1WS5V89EDG5dXIi3l7/97dX8F6LOHPE=",
-        "type": "tarball",
-        "url": "https://github.com/clangd/clangd/releases/download/22.1.0/clangd-linux-22.1.0.zip"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/clangd/clangd/releases/download/22.1.0/clangd-linux-22.1.0.zip"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -137,7 +124,6 @@
     },
     "root": {
       "inputs": {
-        "clangd-src": "clangd-src",
         "flake-parts": "flake-parts",
         "import-tree": "import-tree",
         "nixos-wsl": "nixos-wsl",
