@@ -1,69 +1,83 @@
 let
-  user = "max";
-in
-{
-  internal.overlays.ov_container_devc = final: prev: {
-    container_devc = final.dockerTools.buildImage {
+  mkDevcImage =
+    { pkgs, user, extraPaths ? [ ] }:
+    pkgs.dockerTools.buildImage {
       name = "bundle";
       tag = "latest";
 
-      copyToRoot = final.buildEnv {
+      copyToRoot = pkgs.buildEnv {
         name = "image-root";
         paths = [
-          (final.buildEnv {
+          (pkgs.buildEnv {
             name = "image-root";
             paths = [
-              final.unstable.busybox
-              final.unstable.less
-              final.unstable.openssh-minimal
-              final.unstable.coreutils
+              pkgs.unstable.busybox
+              pkgs.unstable.less
+              pkgs.unstable.openssh-minimal
+              pkgs.unstable.coreutils
 
-              final.unstable.neovim-headless
-              final.unstable.tmux
-              final.unstable.myfish
+              pkgs.unstable.neovim-headless
+              pkgs.unstable.tmux
+              pkgs.unstable.myfish
 
-              final.unstable.tree
-              final.unstable.ripgrep
-              final.unstable.tig
-              final.unstable.gitSlim
-              final.unstable.fzf
+              pkgs.unstable.tree
+              pkgs.unstable.ripgrep
+              pkgs.unstable.tig
+              pkgs.unstable.gitSlim
+              pkgs.unstable.fzf
             ];
             pathsToLink = [ "/bin" ];
             ignoreCollisions = true;
           })
-          (final.buildEnv {
+          (pkgs.buildEnv {
             name = "image-root";
-            paths = [ final.unstable.cacert ];
+            paths = [ pkgs.unstable.cacert ];
             pathsToLink = [ "/etc/ssl" ];
             ignoreCollisions = true;
           })
-          (final.runCommand "user" { } ''
+          (pkgs.runCommand "user" { } ''
             mkdir -p $out/tmp
             chmod 1777 $out/tmp
             mkdir -p $out/home/${user}/.config/nvim
           '')
-          (final.writeTextDir "etc/shadow" ''
+          (pkgs.writeTextDir "etc/shadow" ''
             ${user}:!:::::::
           '')
-          (final.writeTextDir "etc/passwd" ''
+          (pkgs.writeTextDir "etc/passwd" ''
             ${user}:x:0:0::/home/${user}:/bin/fish
           '')
-          (final.writeTextDir "etc/group" ''
+          (pkgs.writeTextDir "etc/group" ''
             ${user}:x:0:
           '')
-          (final.writeTextDir "etc/gshadow" ''
+          (pkgs.writeTextDir "etc/gshadow" ''
             ${user}:x::
           '')
-          (final.writeTextDir "etc/gitconfig" ''
+          (pkgs.writeTextDir "etc/gitconfig" ''
             [http]
                 sslCAInfo = /etc/ssl/certs/ca-bundle.crt
           '')
-        ];
+        ] ++ extraPaths;
       };
       config = {
         Cmd = [ "fish" ];
         WorkingDir = "/home/${user}";
       };
+    };
+in
+{
+  internal.overlays.ov_container_devc = final: prev: {
+    container_devc = mkDevcImage { pkgs = final; user = "max"; };
+  };
+
+  internal.overlays.ov_container_devc_q = final: prev: {
+    container_devc_q = mkDevcImage {
+      pkgs = final;
+      user = "qm";
+      extraPaths = [
+        (final.runCommand "workspace-dir" { } ''
+          mkdir -p $out/local/mnt/workspace
+        '')
+      ];
     };
   };
 }
