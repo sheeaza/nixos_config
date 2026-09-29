@@ -16,6 +16,7 @@ let local_config = { pkgs, ... }: {
     hostName = "vm";
   };
 
+  nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = "x86_64-linux";
 };
 in
@@ -29,6 +30,7 @@ in
       config.internal.nixosModules.os_base1
       config.internal.nixosModules.os_docker
       config.internal.nixosModules.os_pkgs1
+      config.internal.nixosModules.claude
       config.internal.nixosModules.max
       local_config
     ];

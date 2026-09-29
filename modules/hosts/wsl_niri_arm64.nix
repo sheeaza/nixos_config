@@ -14,7 +14,6 @@ let local_config = { pkgs, ... }: {
     pkgs.bashInteractive
     pkgs.sshfs
     pkgs.xclip
-    pkgs.claude-code
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -35,6 +34,7 @@ in
       config.internal.nixosModules.os_base1
       config.internal.nixosModules.os_docker
       config.internal.nixosModules.os_pkgs1
+      config.internal.nixosModules.claude
       config.internal.nixosModules.vs-code
       inputs.nixos-wsl.nixosModules.default
       local_config
