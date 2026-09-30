@@ -1,3 +1,3 @@
 function lla --wraps='ll -a' --description 'alias lla=ll -a'
-  ll -a $argv; 
+  ll -a $argv;
 end

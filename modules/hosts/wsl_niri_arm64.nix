@@ -16,7 +16,6 @@ let local_config = { pkgs, ... }: {
     pkgs.xclip
   ];
 
-  nixpkgs.config.allowUnfree = true;
   networking = {
     hostName = "wsl";
   };

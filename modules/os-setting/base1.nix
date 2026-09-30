@@ -7,12 +7,12 @@
 
     # The global useDHCP flag is deprecated, therefore explicitly set to false here.
     # Per-interface useDHCP will be mandatory in the future, so this generated config
-    # replicates the default behaviour.
+    # replicates the default behaviour. Per-interface DHCP belongs with the
+    # hardware module that knows the NIC name (see hw_vm for the VMware guests).
     # Enable networking
     networking = {
       networkmanager.enable = true;
       useDHCP = false;
-      interfaces.ens33.useDHCP = true;
       firewall.enable = false;
     };
 

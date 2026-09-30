@@ -16,7 +16,6 @@ let local_config = { pkgs, ... }: {
     hostName = "vm";
   };
 
-  nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = "x86_64-linux";
 };
 in
