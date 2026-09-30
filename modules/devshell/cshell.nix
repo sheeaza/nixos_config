@@ -10,7 +10,6 @@
         final.meson
         final.ninja
         final.python3
-        final.clang-tools
         final.valgrind
         final.clang
       ];
