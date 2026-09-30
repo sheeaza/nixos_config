@@ -94,6 +94,20 @@ _username() {
   printf '%s\n' "$username"
 }
 
+# _username plus the "!" root marker in a single call. The status line needs both
+# the name and a bold/blink "!" when it is root; calling _username twice meant
+# two full ps+awk(+ssh -G) pipelines per redraw. Job output is itself re-scanned
+# for #[...] styles, so the marker can be emitted from here.
+_username_marked() {
+  username=$(_username "$@")
+
+  if [ "$username" = "root" ]; then
+    printf '%s#[bold,blink]!#[default]\n' "$username"
+  else
+    printf '%s\n' "$username"
+  fi
+}
+
 _hostname() {
   pane_pid=${1:-$(tmux display -p '#{pane_pid}')}
   pane_tty=${2:-$(tmux display -p '#{b:pane_tty}')}

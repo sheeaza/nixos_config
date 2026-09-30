@@ -229,9 +229,7 @@ set -g status-right "#[fg=#080808,bg=#080808,none]\
 #[fg=#d70000,bg=#080808,none]\
 #[fg=#e4e4e4,bg=#d70000,none]\
  \
-#(@sh@ _username '#{pane_pid}' '#{b:pane_tty}' false)\
-#[fg=none]#[bg=none]#[bold,blink]\
-#{?#{==:#(@sh@ _username '#{pane_pid}' '#{b:pane_tty}' false),root},!,}\
+#(@sh@ _username_marked '#{pane_pid}' '#{b:pane_tty}' false)\
 #[default]\
 #[fg=#e4e4e4,bg=#d70000,none]\
  \
