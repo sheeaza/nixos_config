@@ -35,7 +35,8 @@ _is_true() {
 
 _pane_info() {
   pane_pid="$1"
-  ps -o user=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX,pid,ppid,args | awk -v pane_pid="$pane_pid" -v ssh="$(command -v ssh)" '
+  pane_tty="${2##/dev/}"
+  ps -t "$pane_tty" --sort=lstart -o user=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -o pid= -o ppid= -o command= | awk -v pane_pid="$pane_pid" -v ssh="$(command -v ssh)" '
     ((/ssh/ && !/-W/ && !/tsh proxy ssh/ && !/sss_ssh_knownhostsproxy/) || !/ssh/) && !/(^|[[:space:]\/])tee([[:space:]]|$)/ {
       user[$2] = $1; if (!child[$3]) child[$3] = $2; pid=$2; $1 = $2 = $3 = ""; command[pid] = substr($0,4)
     }
@@ -72,9 +73,10 @@ _ssh() {
 
 _username() {
   pane_pid=${1:-$(tmux display -p '#{pane_pid}')}
-  ssh_only=$2
+  pane_tty=${2:-$(tmux display -p '#{b:pane_tty}')}
+  ssh_only=$3
 
-  pane_info=$(_pane_info "$pane_pid")
+  pane_info=$(_pane_info "$pane_pid" "$pane_tty")
   command=${pane_info#*:}
   command_username=${command%%:*}
   command=${command#*:}
@@ -94,11 +96,12 @@ _username() {
 
 _hostname() {
   pane_pid=${1:-$(tmux display -p '#{pane_pid}')}
-  ssh_only=$2
-  full=$3
-  h_or_H=$4
+  pane_tty=${2:-$(tmux display -p '#{b:pane_tty}')}
+  ssh_only=$3
+  full=$4
+  h_or_H=$5
 
-  pane_info=$(_pane_info "$pane_pid")
+  pane_info=$(_pane_info "$pane_pid" "$pane_tty")
   command=${pane_info#*:}
   command_username=${command%%:*}
   command=${command#*:}
