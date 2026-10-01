@@ -6,19 +6,7 @@
   inputs,
   ...
 }:
-let local_config = { pkgs, ... }: {
-
-  wsl.enable = true;
-  # List packages installed in system profile. To search, run:
-  environment.systemPackages = [
-    pkgs.bashInteractive
-    pkgs.sshfs
-    pkgs.xclip
-  ];
-
-  networking = {
-    hostName = "wsl";
-  };
+let local_config = { ... }: {
   nixpkgs.hostPlatform = "x86_64-linux";
 };
 in
@@ -26,12 +14,12 @@ in
   flake.nixosConfigurations.wsl = inputs.pkgs-stable.lib.nixosSystem {
     modules = [
       config.internal.nixosModules.nixpkgs
+      config.internal.nixosModules.wsl_common
       config.internal.nixosModules.os_base1
       config.internal.nixosModules.os_kde
       config.internal.nixosModules.os_pkgs1
       config.internal.nixosModules.qm
       local_config
-      inputs.nixos-wsl.nixosModules.default
     ];
   };
 }
