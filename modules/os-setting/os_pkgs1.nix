@@ -15,6 +15,7 @@
       pkgs.tig
       pkgs.git
       pkgs.unstable.fzf
+      pkgs.unzip
     ];
     environment.sessionVariables.EDITOR = "vim";
   };
