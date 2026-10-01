@@ -115,6 +115,61 @@ assert_eq 'gr is mapped in normal mode'   "true" "$(has_map gr n)"
 assert_eq 'gh is mapped for hover'        "true" "$(has_map gh n)"
 assert_eq '<F2> is mapped for rename'     "true" "$(has_map '<F2>' n)"
 
+section 'no keymap stalls behind an ambiguous prefix'
+# A mapping that is a strict prefix of another does not misbehave -- it just goes
+# slow. Pressing it leaves nvim waiting 'timeoutlen' to see whether the longer
+# sequence is coming, so the shorter one fires up to a second late and the config
+# feels broken while testing fine everywhere else.
+#
+# This is easy to reintroduce without touching our own keymaps: neovim ships
+# defaults under the gr prefix (grn/gra/grr/gri/grt/grx as of 0.11), lsp_cfg.lua
+# deletes them to clear the way for gr, and a new release adding one more would
+# silently put the delay back. So rather than assert against a list of known
+# offenders, compute every prefix collision from the live keymap table.
+#
+# Only normal mode, and only keys a user actually types: <Plug>/<SNR> maps are
+# plugin-internal dispatch targets, and operator-pending prefixes are exempt
+# below.
+prefix_collisions=$(nv_lua '
+  -- Operator mappings are exempt: an operator already waits for a motion, so a
+  -- longer sequence sharing its prefix costs nothing a user can feel. gc/gcc is
+  -- neovims own stock comment pair and nests by design.
+  local allowed = { ["gc shadowed by gcc"] = true }
+  local out = {}
+  local maps = {}
+  for _, m in ipairs(vim.api.nvim_get_keymap("n")) do
+    -- <Plug> and <SNR> maps are plugin-internal dispatch targets, never typed.
+    if not m.lhs:match("^<Plug>") and not m.lhs:match("^<SNR>") then
+      maps[#maps + 1] = m.lhs
+    end
+  end
+  for _, a in ipairs(maps) do
+    for _, b in ipairs(maps) do
+      -- Strict prefix: b starts with a and is longer. Compared as plain text via
+      -- sub() rather than a pattern, so magic characters cannot match loosely.
+      if a ~= b and #a < #b and b:sub(1, #a) == a then
+        local pair = a .. " shadowed by " .. b
+        if not allowed[pair] then
+          out[#out + 1] = pair
+        end
+      end
+    end
+  end
+  table.sort(out)
+  io.write(table.concat(out, ", "))
+')
+assert_eq 'no normal-mode map is a strict prefix of another' "" "$prefix_collisions"
+
+# Keep the general check above honest: it would also pass if gr stopped being
+# mapped at all, so pin the specific regression that motivated it.
+assert_eq 'the default grx codelens map is gone' "false" "$(has_map grx n)"
+assert_eq 'the default gO symbol map is gone'    "false" "$(has_map gO n)"
+
+# timeoutlen governs mapping sequences; ttimeoutlen (set in nviminit.lua) only
+# covers terminal key codes. Record which one is actually in play so a future
+# reader does not conflate them while debugging a stall.
+assert_eq 'timeout is enabled' "true" "$(nv_lua 'io.write(tostring(vim.o.timeout))')"
+
 section 'filetype autocmds'
 # nviminit.lua forces *.h to c rather than letting nvim guess cpp.
 touch "$TMPDIR/probe.h"

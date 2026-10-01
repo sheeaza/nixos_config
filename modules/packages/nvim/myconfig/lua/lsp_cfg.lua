@@ -6,14 +6,21 @@ vim.lsp.config.clangd = {
 vim.lsp.enable({'clangd'})
 vim.lsp.log.set_level("off") -- prevent large log file
 
+-- Neovim's stock LSP maps all live under the gr prefix. Every one of them has to
+-- go, not just the ones whose keys we want back: as long as any grX survives, gr
+-- is an ambiguous prefix and our own gr (fzf-lua references) stalls for
+-- 'timeoutlen' -- a full second on the default -- while nvim waits to see
+-- whether another character is coming. grx was the one left behind here.
 vim.keymap.del('n', 'grn')
 vim.keymap.del({'n', 'v'}, 'gra')
 vim.keymap.del('n', 'grr')
 vim.keymap.del('n', 'grt')
 vim.keymap.del('n', 'gri')
+vim.keymap.del('n', 'grx')
 vim.keymap.del('i', '<c-s>')
+-- gO duplicates gs (fzf-lua document_symbols), so drop it too.
+vim.keymap.del('n', 'gO')
 -- vim.keymap.del('n', 'K')
--- vim.keymap.del('n', 'gO')
 
 -- Formatting selected code.
 vim.keymap.set('x', '<leader>=',function()
