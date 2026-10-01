@@ -17,8 +17,6 @@ let local_config = { pkgs, ... }: {
     pkgs.sshfs
   ];
 
-  programs.adb.enable = true;
-
   networking = {
     hostName = "vm";
   };
