@@ -1,0 +1,102 @@
+name: checks
+
+# Runs the regression checks in modules/checks/ on both target platforms.
+#
+# aarch64 runs natively on ubuntu-24.04-arm rather than under QEMU. That matters
+# for this suite specifically: the checks start a real tmux server and a real
+# headless nvim, so emulating them would be both slow and a weaker test than
+# running the actual ARM binaries.
+#
+# Both runner labels are free and unlimited on public repositories (4 CPU,
+# 16 GB RAM, 14 GB disk).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  # Lets you re-run the suite from the Actions tab without pushing -- useful for
+  # confirming whether a failure came from the config or from nixpkgs drift.
+  workflow_dispatch:
+
+# A newer push to the same ref makes an in-flight run obsolete. Cancel it rather
+# than paying for both.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  # Cheap gate: evaluates every flake output for BOTH systems without building
+  # anything, so an eval error in a host module (the vm_qm class of change) fails
+  # in about a minute instead of waiting on the full build matrix.
+  eval:
+    name: eval (all systems)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes fetch-tree
+            accept-flake-config = false
+
+      # --all-systems covers aarch64 too, which plain `nix flake check` skips as
+      # an "incompatible system". --no-build keeps it to evaluation only.
+      - run: nix flake check --all-systems --no-build --show-trace
+
+  checks:
+    name: ${{ matrix.name }}
+    needs: eval
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      # Report every platform's result. Without this a single ARM failure would
+      # cancel the x86 job and hide whether the problem is arch-specific.
+      fail-fast: false
+      matrix:
+        include:
+          - name: x86_64-linux
+            system: x86_64-linux
+            runner: ubuntu-latest
+          - name: aarch64-linux
+            system: aarch64-linux
+            runner: ubuntu-24.04-arm
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes fetch-tree
+            accept-flake-config = false
+            # The checks start a tmux server and run headless nvim; keep the
+            # sandbox on so CI exercises the same isolation the local runs did.
+            sandbox = true
+
+      # The runner ships ~14 GB of preinstalled toolchains this build has no use
+      # for. nvim's closure plus its treesitter grammars is the largest thing
+      # here, so reclaim the space before building rather than failing midway.
+      - name: Free up disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc \
+                      /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" || true
+          df -h /
+
+      # Each check is built as its own derivation rather than via
+      # `nix flake check`, which would also build dockerImage, dockerimg2 and
+      # wsl_arm64-tarball -- none of which these tests touch, and which together
+      # would not fit the runner's disk.
+      #
+      # -L streams the assertion output into the log, so a failure shows the
+      # expected/actual values inline instead of only a derivation hash.
+      - name: Run checks
+        run: |
+          nix build -L --no-link --print-build-logs \
+            '.#checks.${{ matrix.system }}.fish' \
+            '.#checks.${{ matrix.system }}.tmux' \
+            '.#checks.${{ matrix.system }}.nvim' \
+            '.#checks.${{ matrix.system }}.terminal'
