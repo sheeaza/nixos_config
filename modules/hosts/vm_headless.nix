@@ -29,6 +29,7 @@ in
       config.internal.nixosModules.os_docker
       config.internal.nixosModules.os_pkgs1
       config.internal.nixosModules.claude
+      config.internal.nixosModules.samba_project
       config.internal.nixosModules.max
       local_config
     ];
