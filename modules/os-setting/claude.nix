@@ -1,11 +1,11 @@
 {
   internal.nixosModules.claude = { pkgs, ... }: {
     environment.systemPackages = [
-      pkgs.claude-code
+      pkgs.unstable.claude-code
     ];
 
-    # claude-code is unfree; keep that fact with the package rather than
-    # relying on every host that imports this to have set it already.
+    # now unneeded, set in unstable pkg
+    # but keep it here, incase later switch to stable one
     nixpkgs.config.allowUnfree = true;
   };
 }

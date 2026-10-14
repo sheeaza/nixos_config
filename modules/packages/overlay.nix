@@ -3,6 +3,7 @@ let
   unstable_ov = final: prev: {
     unstable = import inputs.upkgs {
       system = final.stdenv.hostPlatform.system;
+      config.allowUnfree = true;
 
       overlays = [
         (final: prev: {
@@ -18,6 +19,7 @@ let
         config.internal.overlays.tmux
         config.internal.overlays.alacritty
         config.internal.overlays.niri-cfg
+        inputs.claude-code.overlays.default
       ];
     };
   };
