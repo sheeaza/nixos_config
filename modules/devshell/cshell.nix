@@ -12,6 +12,7 @@
         final.python3
         final.valgrind
         final.clang
+        final.pre-commit
       ];
     };
   };
