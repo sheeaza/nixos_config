@@ -12,5 +12,6 @@ in
       isNormalUser = true;
       extraGroups = [ "wheel" "adbusers" ]; # Enable ‘sudo’ for the user.
     };
+    nix.settings.trusted-users = [ "root" "@wheel" "${username}" ];
   };
 }

@@ -13,6 +13,8 @@
         final.valgrind
         final.clang
         final.pre-commit
+        final.python313Packages.pre-commit-hooks
+        final.clang-tools
       ];
     };
   };
