@@ -9,11 +9,10 @@
         final.gnumake
         final.meson
         final.ninja
-        final.python3
+        final.python3_cdev
         final.valgrind
         final.clang
         final.pre-commit
-        final.python313Packages.pre-commit-hooks
         final.clang-tools
       ];
     };

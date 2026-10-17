@@ -6,6 +6,8 @@
       inherit system;
       overlays = [
         config.internal.overlays.unstable
+        config.internal.overlays.ov_perfetto
+        config.internal.overlays.ov_python3_cdev
         config.internal.overlays.ov_cshell
         config.internal.overlays.ov_rustshell
         config.internal.overlays.ov_container_devc
@@ -19,6 +21,8 @@
       dockerImage = pkgs.container_devc;
       dockerimg2 = pkgs.container_devc_q;
       cshell = pkgs.cshell;
+      perfetto-py = pkgs.perfettoPy;
+      python3_cdev = pkgs.python3_cdev;
       rustshell = pkgs.rustshell;
       mynvim = pkgs.unstable.neovim;
       mytmux = pkgs.unstable.tmux;
