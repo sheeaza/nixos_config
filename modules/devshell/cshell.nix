@@ -3,7 +3,7 @@
     cshell = final.buildEnv {
       name = "cshell";
       paths = [
-        # pkgs.gcc
+        # final.gcc
         final.gdb
         final.cmake
         final.gnumake
