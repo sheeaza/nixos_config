@@ -14,6 +14,7 @@
         final.clang
         final.pre-commit
         final.clang-tools
+        final.linuxPackages.perf
       ];
     };
   };
