@@ -4,6 +4,7 @@
       name = "cshell";
       paths = [
         # final.gcc
+        # final.binutils
         final.gdb
         final.cmake
         final.gnumake
@@ -15,6 +16,8 @@
         final.pre-commit
         final.clang-tools
         final.linuxPackages.perf
+        final.perfetto
+        final.perfetto.tools
       ];
     };
   };
