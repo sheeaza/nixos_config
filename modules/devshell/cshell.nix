@@ -23,7 +23,7 @@ let
   };
 in
 {
-  internal.pkgOverlays = [ ov_cshell ];
+  internal.stableOverlays.cshell = ov_cshell;
 
   perSystem = { pkgs, ... }: {
     packages.cshell = pkgs.cshell;

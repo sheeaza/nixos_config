@@ -23,8 +23,8 @@ let
   };
 in
 {
-  internal.pkgOverlays = [ unstable_ov ];
+  internal.stableOverlays.unstable = unstable_ov;
   internal.nixosModules.nixpkgs = {
-    nixpkgs.overlays = [ unstable_ov ];
+    nixpkgs.overlays = lib.attrValues config.internal.stableOverlays;
   };
 }

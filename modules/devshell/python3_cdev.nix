@@ -9,5 +9,5 @@ let
   };
 in
 {
-  internal.pkgOverlays = [ ov_python3_cdev ];
+  internal.stableOverlays.python3_cdev = ov_python3_cdev;
 }

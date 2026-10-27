@@ -20,5 +20,5 @@ let
   };
 in
 {
-  internal.pkgOverlays = [ ov_perfetto ];
+  internal.stableOverlays.perfetto = ov_perfetto;
 }

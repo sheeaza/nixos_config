@@ -89,10 +89,10 @@ let
   };
 in
 {
-  internal.pkgOverlays = [
-    ov_container_devc
-    ov_container_devc_q
-  ];
+  internal.stableOverlays = {
+    container_devc = ov_container_devc;
+    container_devc_q = ov_container_devc_q;
+  };
 
   perSystem = { pkgs, ... }: {
     packages = {

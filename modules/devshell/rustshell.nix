@@ -37,7 +37,7 @@ let
   };
 in
 {
-  internal.pkgOverlays = [ ov_rustshell ];
+  internal.stableOverlays.rustshell = ov_rustshell;
 
   perSystem = { pkgs, ... }: {
     packages.rustshell = pkgs.rustshell;
