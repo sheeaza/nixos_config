@@ -110,6 +110,21 @@
             ALAC_WRAPPED_BIN = "${alacritty}/bin/alacritty";
           };
         };
+
+        # Every .nix file must already be what `nix fmt` would produce. Only the
+        # .nix files are pulled into the source so unrelated edits (lua, shell,
+        # lock file) don't invalidate it.
+        nixfmt =
+          let
+            src = pkgs.lib.fileset.toSource {
+              root = ../..;
+              fileset = pkgs.lib.fileset.fileFilter (file: file.hasExt "nix") ../..;
+            };
+          in
+          pkgs.runCommand "check-nixfmt" { nativeBuildInputs = [ pkgs.nixfmt ]; } ''
+            nixfmt --check $(find ${src} -name '*.nix')
+            touch $out
+          '';
       };
     };
 }

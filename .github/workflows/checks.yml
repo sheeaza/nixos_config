@@ -99,4 +99,5 @@ jobs:
             '.#checks.${{ matrix.system }}.fish' \
             '.#checks.${{ matrix.system }}.tmux' \
             '.#checks.${{ matrix.system }}.nvim' \
-            '.#checks.${{ matrix.system }}.terminal'
+            '.#checks.${{ matrix.system }}.terminal' \
+            '.#checks.${{ matrix.system }}.nixfmt'
