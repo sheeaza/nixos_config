@@ -63,13 +63,12 @@ let
         WorkingDir = "/home/${user}";
       };
     };
-in
-{
-  internal.overlays.ov_container_devc = final: prev: {
+
+  ov_container_devc = final: prev: {
     container_devc = mkDevcImage { pkgs = final; user = "max"; };
   };
 
-  internal.overlays.ov_container_devc_q = final: prev: {
+  ov_container_devc_q = final: prev: {
     container_devc_q = mkDevcImage {
       pkgs = final;
       user = "qm";
@@ -78,6 +77,19 @@ in
           mkdir -p $out/local/mnt/workspace
         '')
       ];
+    };
+  };
+in
+{
+  internal.pkgOverlays = [
+    ov_container_devc
+    ov_container_devc_q
+  ];
+
+  perSystem = { pkgs, ... }: {
+    packages = {
+      dockerImage = pkgs.container_devc;
+      dockerimg2 = pkgs.container_devc_q;
     };
   };
 }

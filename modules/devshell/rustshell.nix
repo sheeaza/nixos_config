@@ -1,5 +1,5 @@
-{
-  internal.overlays.ov_rustshell = final: prev: {
+let
+  ov_rustshell = final: prev: {
     rustshell = final.buildEnv {
       name = "rustshell";
       paths = [
@@ -34,5 +34,12 @@
         final.cargo
       ];
     };
+  };
+in
+{
+  internal.pkgOverlays = [ ov_rustshell ];
+
+  perSystem = { pkgs, ... }: {
+    packages.rustshell = pkgs.rustshell;
   };
 }

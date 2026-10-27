@@ -39,4 +39,8 @@ in
   internal.overlays.alacritty = final: prev: {
     alacritty = final.callPackage localfunc { alacritty = prev.alacritty; };
   };
+
+  perSystem = { pkgs, ... }: {
+    packages.myalacritty = pkgs.unstable.alacritty;
+  };
 }

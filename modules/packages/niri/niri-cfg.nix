@@ -23,4 +23,8 @@ in
   internal.overlays.niri-cfg = final: prev: {
     niri-cfg = final.callPackage localfunc {};
   };
+
+  perSystem = { pkgs, ... }: {
+    packages.myniricfg = pkgs.unstable.niri-cfg;
+  };
 }

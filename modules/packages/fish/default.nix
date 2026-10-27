@@ -89,4 +89,8 @@ in
   internal.overlays.fish = final: prev: {
     myfish = final.callPackage localfunc {};
   };
+
+  perSystem = { pkgs, ... }: {
+    packages.myfish = pkgs.unstable.myfish;
+  };
 }

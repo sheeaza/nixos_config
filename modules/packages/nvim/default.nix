@@ -75,4 +75,8 @@ in
       neovim = prev.neovim.override { waylandSupport = false; };
     };
   };
+
+  perSystem = { pkgs, ... }: {
+    packages.mynvim = pkgs.unstable.neovim;
+  };
 }

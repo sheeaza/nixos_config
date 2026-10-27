@@ -25,7 +25,7 @@ let
   };
 in
 {
-  internal.overlays.unstable = unstable_ov;
+  internal.pkgOverlays = [ unstable_ov ];
   internal.nixosModules.nixpkgs = {
     nixpkgs.overlays = [ unstable_ov ];
   };

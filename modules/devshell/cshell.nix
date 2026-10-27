@@ -1,5 +1,5 @@
-{
-  internal.overlays.ov_cshell = final: prev: {
+let
+  ov_cshell = final: prev: {
     cshell = final.buildEnv {
       name = "cshell";
       paths = [
@@ -15,10 +15,17 @@
         final.clang
         final.pre-commit
         final.clang-tools
-        final.linuxPackages.perf
+        final.perf
         final.perfetto
         final.perfetto.tools
       ];
     };
+  };
+in
+{
+  internal.pkgOverlays = [ ov_cshell ];
+
+  perSystem = { pkgs, ... }: {
+    packages.cshell = pkgs.cshell;
   };
 }

@@ -23,4 +23,8 @@ in
       local_config
     ];
   };
+
+  perSystem = { ... }: {
+    packages.wsl_arm64-tarball = config.flake.nixosConfigurations.wsl_arm64.config.system.build.tarballBuilder;
+  };
 }

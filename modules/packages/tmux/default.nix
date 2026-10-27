@@ -48,4 +48,8 @@ in
   internal.overlays.tmux = final: prev: {
     tmux = final.callPackage localfunc { tmux = prev.tmux; };
   };
+
+  perSystem = { pkgs, ... }: {
+    packages.mytmux = pkgs.unstable.tmux;
+  };
 }

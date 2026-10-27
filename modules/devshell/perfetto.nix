@@ -1,5 +1,5 @@
-{
-  internal.overlays.ov_perfetto = final: prev: {
+let
+  ov_perfetto = final: prev: {
     # Perfetto's Python package, from PyPI. Not in nixpkgs. The generated
     # protobuf classes it ships need the protobuf runtime, nothing else
     # is required.
@@ -18,4 +18,7 @@
       pythonImportsCheck = [ "perfetto.protos.perfetto.trace.perfetto_trace_pb2" ];
     };
   };
+in
+{
+  internal.pkgOverlays = [ ov_perfetto ];
 }
