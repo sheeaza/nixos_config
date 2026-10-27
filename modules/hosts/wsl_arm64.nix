@@ -6,10 +6,11 @@
   inputs,
   ...
 }:
-let local_config = { ... }: {
-  nixpkgs.buildPlatform = "x86_64-linux";
-  nixpkgs.hostPlatform = "aarch64-linux";
-};
+let
+  local_config = { ... }: {
+    nixpkgs.buildPlatform = "x86_64-linux";
+    nixpkgs.hostPlatform = "aarch64-linux";
+  };
 in
 {
   flake.nixosConfigurations.wsl_arm64 = inputs.pkgs-stable.lib.nixosSystem {
@@ -25,6 +26,7 @@ in
   };
 
   perSystem = { ... }: {
-    packages.wsl_arm64-tarball = config.flake.nixosConfigurations.wsl_arm64.config.system.build.tarballBuilder;
+    packages.wsl_arm64-tarball =
+      config.flake.nixosConfigurations.wsl_arm64.config.system.build.tarballBuilder;
   };
 }

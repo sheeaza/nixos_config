@@ -6,9 +6,10 @@
   inputs,
   ...
 }:
-let local_config = { ... }: {
-  nixpkgs.hostPlatform = "x86_64-linux";
-};
+let
+  local_config = { ... }: {
+    nixpkgs.hostPlatform = "x86_64-linux";
+  };
 in
 {
   flake.nixosConfigurations.wsl_headless = inputs.pkgs-stable.lib.nixosSystem {

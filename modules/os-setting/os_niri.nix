@@ -1,4 +1,4 @@
-{ inputs, ...}:
+{ inputs, ... }:
 {
   internal.nixosModules.os_niri = { pkgs, lib, ... }: {
     programs.niri = {

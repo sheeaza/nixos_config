@@ -1,6 +1,10 @@
 let
   mkDevcImage =
-    { pkgs, user, extraPaths ? [ ] }:
+    {
+      pkgs,
+      user,
+      extraPaths ? [ ],
+    }:
     pkgs.dockerTools.buildImage {
       name = "bundle";
       tag = "latest";
@@ -56,7 +60,8 @@ let
             [http]
                 sslCAInfo = /etc/ssl/certs/ca-bundle.crt
           '')
-        ] ++ extraPaths;
+        ]
+        ++ extraPaths;
       };
       config = {
         Cmd = [ "fish" ];
@@ -65,7 +70,10 @@ let
     };
 
   ov_container_devc = final: prev: {
-    container_devc = mkDevcImage { pkgs = final; user = "max"; };
+    container_devc = mkDevcImage {
+      pkgs = final;
+      user = "max";
+    };
   };
 
   ov_container_devc_q = final: prev: {

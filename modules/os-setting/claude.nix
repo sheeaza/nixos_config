@@ -1,5 +1,6 @@
 {
-  internal.nixosModules.claude = { lib, pkgs, ... }:
+  internal.nixosModules.claude =
+    { lib, pkgs, ... }:
     let
       settingsFile = ./claude-settings.json;
       # Tools claude code shells out to; prefixed onto PATH, not hardcoded in the JSON.

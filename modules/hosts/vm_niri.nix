@@ -3,21 +3,22 @@
   inputs,
   ...
 }:
-let local_config = { pkgs, ... }: {
-  # enable open vm tool
-  virtualisation.vmware.guest.enable = true;
+let
+  local_config = { pkgs, ... }: {
+    # enable open vm tool
+    virtualisation.vmware.guest.enable = true;
 
-  # List packages installed in system profile. To search, run:
-  environment.systemPackages = [
-    pkgs.unstable.lua-language-server
-  ];
+    # List packages installed in system profile. To search, run:
+    environment.systemPackages = [
+      pkgs.unstable.lua-language-server
+    ];
 
-  networking = {
-    hostName = "vm";
+    networking = {
+      hostName = "vm";
+    };
+
+    nixpkgs.hostPlatform = "x86_64-linux";
   };
-
-  nixpkgs.hostPlatform = "x86_64-linux";
-};
 in
 {
   flake.nixosConfigurations.vm_niri = inputs.pkgs-stable.lib.nixosSystem {

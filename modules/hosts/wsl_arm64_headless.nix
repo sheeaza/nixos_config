@@ -6,9 +6,10 @@
   inputs,
   ...
 }:
-let local_config = { ... }: {
-  nixpkgs.hostPlatform = "aarch64-linux";
-};
+let
+  local_config = { ... }: {
+    nixpkgs.hostPlatform = "aarch64-linux";
+  };
 in
 {
   flake.nixosConfigurations.wsl_arm64_headless = inputs.pkgs-stable.lib.nixosSystem {
