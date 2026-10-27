@@ -203,7 +203,7 @@ let
     };
 in
 {
-  internal.overlays.clangd = final: prev: {
+  internal.unstableOverlays.clangd = final: prev: {
     clangd = final.callPackage localfunc { };
   };
 }

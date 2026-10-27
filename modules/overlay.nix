@@ -18,7 +18,7 @@ let
         })
         inputs.claude-code.overlays.default
       ]
-      ++ lib.attrValues config.internal.overlays;
+      ++ lib.attrValues config.internal.unstableOverlays;
     };
   };
 in

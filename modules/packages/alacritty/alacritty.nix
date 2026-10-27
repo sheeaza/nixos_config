@@ -37,7 +37,7 @@ let
     wrap_alacritty;
 in
 {
-  internal.overlays.alacritty = final: prev: {
+  internal.unstableOverlays.alacritty = final: prev: {
     alacritty = final.callPackage localfunc { alacritty = prev.alacritty; };
   };
 

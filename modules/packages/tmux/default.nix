@@ -46,7 +46,7 @@ let
     wraptmux;
 in
 {
-  internal.overlays.tmux = final: prev: {
+  internal.unstableOverlays.tmux = final: prev: {
     tmux = final.callPackage localfunc { tmux = prev.tmux; };
   };
 

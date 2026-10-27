@@ -21,7 +21,7 @@ let
     niri-kdl;
 in
 {
-  internal.overlays.niri-cfg = final: prev: {
+  internal.unstableOverlays.niri-cfg = final: prev: {
     niri-cfg = final.callPackage localfunc { };
   };
 

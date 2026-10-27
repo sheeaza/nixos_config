@@ -4,7 +4,7 @@
   # PYTHONPATH, so the generator fails with "No module named 'nanopb'".
   # Wrap both entrypoints so the module is found without touching the
   # generator's own derivation.
-  internal.overlays.nanopb = final: prev: {
+  internal.unstableOverlays.nanopb = final: prev: {
     nanopb = final.symlinkJoin {
       name = "nanopb-${prev.nanopb.version}";
       paths = [ prev.nanopb ];

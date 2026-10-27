@@ -5,7 +5,7 @@
       type = lib.types.attrsOf lib.types.raw;
       default = { };
     };
-    overlays = lib.mkOption {
+    unstableOverlays = lib.mkOption {
       type = lib.types.attrsOf lib.types.raw;
       default = { };
     };

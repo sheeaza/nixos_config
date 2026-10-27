@@ -70,7 +70,7 @@ let
     nvim;
 in
 {
-  internal.overlays.neovim = final: prev: {
+  internal.unstableOverlays.neovim = final: prev: {
     neovim = final.callPackage localfunc { neovim = prev.neovim; };
     neovim-headless = final.callPackage localfunc {
       neovim = prev.neovim.override { waylandSupport = false; };

@@ -68,7 +68,7 @@ let
       });
 in
 {
-  internal.overlays.fish = final: prev: {
+  internal.unstableOverlays.fish = final: prev: {
     myfish = final.callPackage localfunc { };
   };
 

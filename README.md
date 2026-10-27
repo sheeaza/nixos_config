@@ -13,7 +13,7 @@ Each file registers what it provides into the `internal.*` options declared in
 | option                    | what goes in it                                          |
 | ------------------------- | -------------------------------------------------------- |
 | `internal.nixosModules.X` | a NixOS module, referenced by hosts as `...nixosModules.X` |
-| `internal.overlays.X`     | an overlay, applied to `pkgs.unstable` automatically     |
+| `internal.unstableOverlays.X` | an overlay, applied to `pkgs.unstable` automatically     |
 | `internal.pkgOverlays`    | overlays applied to the flake's own (stable) package set |
 
 Name a file after the module it registers.
@@ -24,7 +24,7 @@ Packages come from two sets: editors and daily-driver tools (`myfish`, `tmux`,
 ## Adding things
 
 - **A package**: create `modules/packages/<name>/default.nix` that sets
-  `internal.overlays.<name>`, plus `perSystem.packages.my<name>` to build it
+  `internal.unstableOverlays.<name>`, plus `perSystem.packages.my<name>` to build it
   with `nix build .#my<name>`. Nothing else needs editing.
 - **A host**: create `modules/hosts/<name>.nix` defining
   `flake.nixosConfigurations.<name>` from a list of
