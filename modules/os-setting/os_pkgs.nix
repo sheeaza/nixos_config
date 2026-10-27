@@ -1,5 +1,5 @@
 {
-  internal.nixosModules.os_pkgs1 = { pkgs, ... }: {
+  internal.nixosModules.os_pkgs = { pkgs, ... }: {
     # List packages installed in system profile. To search, run:
     environment.systemPackages = [
       pkgs.unstable.neovim

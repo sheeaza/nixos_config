@@ -32,7 +32,7 @@
     swapDevices = [ ];
 
     # ens33 is the NIC name VMware's virtual hardware presents, so the
-    # per-interface DHCP setting lives here rather than in os_base1 -- that
+    # per-interface DHCP setting lives here rather than in os_base -- that
     # module is shared with the wsl* hosts, which have no such interface.
     networking.interfaces.ens33.useDHCP = true;
 

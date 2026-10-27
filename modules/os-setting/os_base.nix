@@ -2,7 +2,7 @@ let
   flakeNixConfig = (import ../../flake.nix).nixConfig;
 in
 {
-  internal.nixosModules.os_base1 = { lib, pkgs, ... }: {
+  internal.nixosModules.os_base = { lib, pkgs, ... }: {
     documentation.enable = false;
 
     # Set your time zone.

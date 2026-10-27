@@ -16,9 +16,9 @@ in
     modules = [
       config.internal.nixosModules.nixpkgs
       config.internal.nixosModules.wsl_common
-      config.internal.nixosModules.os_base1
+      config.internal.nixosModules.os_base
       config.internal.nixosModules.os_kde
-      config.internal.nixosModules.os_pkgs1
+      config.internal.nixosModules.os_pkgs
       config.internal.nixosModules.qm
       local_config
     ];

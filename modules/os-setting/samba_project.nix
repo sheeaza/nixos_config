@@ -16,7 +16,7 @@
       # standalone server authenticates from its own smbpasswd file.
       winbindd.enable = false;
 
-      # Redundant while networking.firewall.enable is false in os_base1, but it
+      # Redundant while networking.firewall.enable is false in os_base, but it
       # keeps the share reachable if the firewall is ever turned back on.
       openFirewall = true;
 

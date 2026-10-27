@@ -30,10 +30,10 @@ in
       config.internal.nixosModules.nixpkgs
       config.internal.nixosModules.hw_vm
       config.internal.nixosModules.boot
-      config.internal.nixosModules.os_base1
+      config.internal.nixosModules.os_base
       config.internal.nixosModules.os_kde
       config.internal.nixosModules.os_docker
-      config.internal.nixosModules.os_pkgs1
+      config.internal.nixosModules.os_pkgs
       config.internal.nixosModules.qm
       local_config
     ];

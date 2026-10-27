@@ -60,7 +60,7 @@
           script = ./fish.sh;
           nativeBuildInputs = [
             # fzf and git are deliberately NOT in the myfish closure -- the system
-            # installs them separately through os_pkgs1. The vendored
+            # installs them separately through os_pkgs. The vendored
             # key-bindings.fish bails out with "fzf was not found in path" without
             # fzf, and fish_prompt's git segment needs git, so both must be on
             # PATH to reproduce a real login shell.

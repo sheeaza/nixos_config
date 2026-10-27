@@ -25,9 +25,9 @@ in
       config.internal.nixosModules.nixpkgs
       config.internal.nixosModules.boot
       config.internal.nixosModules.hw_vm
-      config.internal.nixosModules.os_base1
+      config.internal.nixosModules.os_base
       config.internal.nixosModules.os_docker
-      config.internal.nixosModules.os_pkgs1
+      config.internal.nixosModules.os_pkgs
       config.internal.nixosModules.claude
       config.internal.nixosModules.samba_project
       config.internal.nixosModules.max

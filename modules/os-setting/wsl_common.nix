@@ -23,7 +23,7 @@
         # mkDefault so a host that wants a distinct name can just set it.
         hostName = lib.mkDefault "wsl";
 
-        # os_base1 enables NetworkManager, which unconditionally switches on
+        # os_base enables NetworkManager, which unconditionally switches on
         # wpa_supplicant to drive wifi over DBus. WSL's network interfaces come
         # from the Windows host and none of them are wireless, so that is a
         # daemon with nothing to manage. mkForce because NetworkManager sets it

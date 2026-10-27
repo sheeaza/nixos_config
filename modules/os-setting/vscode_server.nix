@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  internal.nixosModules.vs-code = {
+  internal.nixosModules.vscode_server = {
     imports = [
       inputs.vscode-server.nixosModules.default
     ];
