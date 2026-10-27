@@ -9,7 +9,7 @@
         pkgs.ripgrep
         pkgs.bubblewrap
         pkgs.socat
-        pkgs.clangd
+        pkgs.unstable.clangd
       ];
       # Passed on every launch, layered over ~/.claude settings files.
       claude-code = pkgs.symlinkJoin {
