@@ -14,6 +14,7 @@ Each file registers what it provides into the `internal.*` options declared in
 | ----------------------------- | ---------------------------------------------------------- |
 | `internal.nixosModules.X`     | a NixOS module, referenced by hosts as `...nixosModules.X` |
 | `internal.unstableOverlays.X` | an overlay, applied to `pkgs.unstable` automatically       |
+| `internal.stableOverlays.X`   | (placeholder) an overlay for the flake's own (stable) set  |
 | `internal.pkgOverlays`        | overlays applied to the flake's own (stable) package set   |
 
 Name a file after the module it registers.
