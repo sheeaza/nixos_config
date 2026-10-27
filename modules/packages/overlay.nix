@@ -1,4 +1,4 @@
-{ inputs, config, ... }:
+{ inputs, config, lib, ... }:
 let
   unstable_ov = final: prev: {
     unstable = import inputs.upkgs {
@@ -11,16 +11,8 @@ let
            git = final.gitSlim;
          };}
         )
-        config.internal.overlays.git-minimal
-        config.internal.overlays.neovim
-        config.internal.overlays.openssh-minimal
-        config.internal.overlays.fish
-        config.internal.overlays.clangd
-        config.internal.overlays.tmux
-        config.internal.overlays.alacritty
-        config.internal.overlays.niri-cfg
         inputs.claude-code.overlays.default
-      ];
+      ] ++ lib.attrValues config.internal.overlays;
     };
   };
 in
