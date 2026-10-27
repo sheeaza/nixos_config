@@ -1,3 +1,6 @@
+let
+  flakeNixConfig = (import ../../flake.nix).nixConfig;
+in
 {
   internal.nixosModules.os_base1 = { lib, pkgs, ... }: {
     documentation.enable = false;
@@ -53,14 +56,14 @@
       # (every one of these reports 40, which would otherwise leave order to chance).
       # mkForce because NixOS otherwise appends this to the default list, which would
       # leave a duplicate cache.nixos.org entry and make the tail order incidental.
-      substituters = lib.mkForce [
-        "https://mirrors.ustc.edu.cn/nix-channels/store?priority=10"
-        "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store?priority=20"
-        "https://cache.nixos.org?priority=40"
-      ];
+      # The list itself lives in flake.nix's nixConfig (which must be a literal, so
+      # it can't be imported from here); read it back so the two never drift.
+      substituters = lib.mkForce flakeNixConfig.extra-substituters;
 
       # The mirrors proxy cache.nixos.org and serve its upstream signatures, so the
-      # default trusted key already covers them -- no extra key needed here.
+      # default trusted key already covers them; only third-party caches (e.g.
+      # claude-code) need an extra key, which also comes from nixConfig.
+      trusted-public-keys = flakeNixConfig.extra-trusted-public-keys;
 
       # Don't let a dead mirror stall the whole build; fail fast and move down the chain.
       connect-timeout = 5;
