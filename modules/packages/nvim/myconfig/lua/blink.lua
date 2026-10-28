@@ -30,7 +30,7 @@ require('blink.cmp').setup({
             },
         },
         keyword = {
-            range = 'prefix',  -- or 'full' for matching before and after the cursor
+            range = 'prefix',
         },
     },
     sources = {
@@ -38,7 +38,6 @@ require('blink.cmp').setup({
         providers = {
             buffer = {
                 opts = {
-                    -- or (recommended) filter to only "normal" buffers
                     get_bufnrs = function()
                         return vim.tbl_filter(function(bufnr)
                             return vim.bo[bufnr].buftype == ''
@@ -49,17 +48,7 @@ require('blink.cmp').setup({
         }
     },
     fuzzy = { implementation = "prefer_rust_with_warning" },
-    cmdline = {
-        enabled = false,
-        keymap = {
-            preset = 'inherit',
-        },
-        completion = {
-            menu = {
-                auto_show = true,
-            },
-        },
-    },
+    cmdline = { enabled = false },
 })
 -- cause dup char in tmux alactty
 -- vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { fg="#1E90FF", bg="NONE" })

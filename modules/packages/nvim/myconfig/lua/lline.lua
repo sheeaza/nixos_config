@@ -4,11 +4,7 @@ require('lualine').setup{
     section_separators = '',
   },
   sections = {
-    lualine_a = {
-      {
-        'mode',
-      }
-    },
+    lualine_a = { 'mode' },
     lualine_b = {'filename'},
     lualine_c = {},
     lualine_x = {'fileformat', 'encoding', 'filetype'},

@@ -1,15 +1,8 @@
 -- basic
 
-vim.cmd[[filetype plugin indent on]]
-vim.cmd[[syntax enable]]
-vim.cmd[[syntax on]]
 require('ttheme')
 require('basekey')
 
--- vim.opt.expandtab = false
--- vim.opt.softtabstop = 8
--- vim.opt.tabstop=8
--- vim.opt.shiftwidth = 8
 vim.opt.expandtab = true
 vim.opt.softtabstop=4
 vim.opt.tabstop=4
@@ -22,14 +15,11 @@ vim.opt.splitright = true
 vim.opt.ignorecase = true
 vim.opt.colorcolumn = '80'
 vim.opt.cursorline = true
--- cursorcolumn cause performance issue
 vim.opt.cursorcolumn = true
-vim.opt.ruler = true
 vim.opt.wrap = false
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.termguicolors = true
-vim.opt.hidden = true
 vim.opt.laststatus = 3
 vim.opt.mouse = ''
 vim.opt.ttimeoutlen = 100
@@ -43,14 +33,12 @@ vim.opt.pumheight = 15
 vim.api.nvim_create_autocmd(
     {"FocusGained", "BufEnter", "CursorHold", "CursorHoldI"},
     {
-	pattern = "*",
-	command = "if mode() != 'c' | checktime | endif",
+        command = "if mode() != 'c' | checktime | endif",
     })
 vim.api.nvim_create_autocmd(
     {"FileChangedShellPost"},
     {
-	pattern = "*",
-	command = "echohl WarningMsg | echo \"File changed on disk. Buffer reloaded.\" | echohl None",
+        command = "echohl WarningMsg | echo \"File changed on disk. Buffer reloaded.\" | echohl None",
     })
 
 -- *.h to c type

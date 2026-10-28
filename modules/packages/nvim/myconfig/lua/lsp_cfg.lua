@@ -11,21 +11,18 @@ vim.lsp.log.set_level("off") -- prevent large log file
 -- is an ambiguous prefix and our own gr (fzf-lua references) stalls for
 -- 'timeoutlen' -- a full second on the default -- while nvim waits to see
 -- whether another character is coming. grx was the one left behind here.
-vim.keymap.del('n', 'grn')
+for _, lhs in ipairs({ 'grn', 'grr', 'grt', 'gri', 'grx' }) do
+    vim.keymap.del('n', lhs)
+end
 vim.keymap.del({'n', 'v'}, 'gra')
-vim.keymap.del('n', 'grr')
-vim.keymap.del('n', 'grt')
-vim.keymap.del('n', 'gri')
-vim.keymap.del('n', 'grx')
 vim.keymap.del('i', '<c-s>')
 -- gO duplicates gs (fzf-lua document_symbols), so drop it too.
 vim.keymap.del('n', 'gO')
--- vim.keymap.del('n', 'K')
 
 -- Formatting selected code.
 vim.keymap.set('x', '<leader>=',function()
-    local start_row, _ = unpack(vim.api.nvim_buf_get_mark(0, "<"))
-    local end_row, _ = unpack(vim.api.nvim_buf_get_mark(0, ">"))
+    local start_row = unpack(vim.api.nvim_buf_get_mark(0, "<"))
+    local end_row = unpack(vim.api.nvim_buf_get_mark(0, ">"))
     vim.lsp.buf.format({
         range = {
             ["start"] = { start_row, 0 },
@@ -34,11 +31,11 @@ vim.keymap.set('x', '<leader>=',function()
         async = true,
     })
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', true)
-end, { desc = "Range Formatting", noremap = true, silent = true })
+end, { desc = "Range Formatting", silent = true })
 
 -- Remap for rename current word
-vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', {noremap = true, silent = true})
-vim.keymap.set('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', {noremap = true, silent = true})
+vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, {silent = true})
+vim.keymap.set('n', 'gh', vim.lsp.buf.hover, {silent = true})
 
 vim.diagnostic.config({
     virtual_text = {
