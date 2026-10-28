@@ -1,11 +1,14 @@
 { inputs, ... }:
 {
-  internal.unstableOverlays = {
-    claude-code = inputs.claude-code.overlays.default;
-    claude-code-wrapper = final: prev: {
-      claude-code = final.symlinkJoin {
+  internal.unstableOverlays.cus-claude-code =
+    final: prev:
+    let
+      base = (inputs.claude-code.overlays.default final prev).claude-code;
+    in
+    {
+      cus-claude-code = final.symlinkJoin {
         name = "claude-code";
-        paths = [ prev.claude-code ];
+        paths = [ base ];
         nativeBuildInputs = [ final.makeWrapper ];
         postBuild =
           let
@@ -28,8 +31,7 @@
           '';
       };
     };
-  };
   perSystem = { pkgs, ... }: {
-    packages.myclaude-code = pkgs.unstable.claude-code;
+    packages.myclaude-code = pkgs.unstable.cus-claude-code;
   };
 }

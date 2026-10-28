@@ -3,7 +3,7 @@
     { pkgs, ... }:
     {
       environment.systemPackages = [
-        pkgs.unstable.claude-code
+        pkgs.unstable.cus-claude-code
       ];
 
       # now unneeded, set in unstable pkg
