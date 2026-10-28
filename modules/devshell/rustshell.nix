@@ -9,7 +9,7 @@ let
         final.gnused
         final.procps
 
-        final.unstable.tmux
+        final.unstable.cus-tmux
         final.unstable.fish
         final.unstable.cus-nvim
 

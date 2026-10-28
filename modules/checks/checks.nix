@@ -47,9 +47,9 @@
 
       inherit (pkgs.unstable)
         myfish
-        tmux
+        cus-tmux
         cus-nvim
-        alacritty
+        cus-alacritty
         niri-cfg
         ;
     in
@@ -83,8 +83,8 @@
             pkgs.gawk
           ];
           env = {
-            TMUX_BIN = "${tmux}/bin/tmux";
-            TMUX_CLOSURE = closureOf tmux;
+            TMUX_BIN = "${cus-tmux}/bin/tmux";
+            TMUX_CLOSURE = closureOf cus-tmux;
           };
         };
 
@@ -104,10 +104,10 @@
           name = "terminal";
           script = ./terminal.sh;
           env = {
-            ALACRITTY = "${alacritty}/bin/alacritty";
+            ALACRITTY = "${cus-alacritty}/bin/alacritty";
             NIRI_CFG = niri-cfg;
             NIRI_BIN = "${pkgs.niri}/bin/niri";
-            ALAC_WRAPPED_BIN = "${alacritty}/bin/alacritty";
+            ALAC_WRAPPED_BIN = "${cus-alacritty}/bin/alacritty";
           };
         };
 

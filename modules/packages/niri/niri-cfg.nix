@@ -1,29 +1,20 @@
-let
-  localfunc =
-    {
-      symlinkJoin,
-      makeWrapper,
-      stdenv,
-      alacritty,
-      substitute,
-    }:
+{
+  internal.unstableOverlays.niri-cfg =
+    final: _prev:
     let
-      niri-kdl = substitute {
+      niri-kdl = final.substitute {
         name = "niri-kdl";
         src = ./config.kdl;
         substitutions = [
           "--replace-fail"
           "@alacritty@"
-          "${alacritty}/bin/alacritty"
+          "${final.cus-alacritty}/bin/alacritty"
         ];
       };
     in
-    niri-kdl;
-in
-{
-  internal.unstableOverlays.niri-cfg = final: prev: {
-    niri-cfg = final.callPackage localfunc { };
-  };
+    {
+      niri-cfg = niri-kdl;
+    };
 
   perSystem = { pkgs, ... }: {
     packages.myniricfg = pkgs.unstable.niri-cfg;

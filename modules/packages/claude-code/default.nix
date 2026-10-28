@@ -17,7 +17,7 @@
               final.ripgrep
               final.bubblewrap
               final.socat
-              final.clangd
+              final.cus-clangd
             ];
           in
           ''

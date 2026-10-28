@@ -4,7 +4,7 @@
     environment.systemPackages = [
       pkgs.unstable.cus-nvim
 
-      pkgs.unstable.tmux
+      pkgs.unstable.cus-tmux
 
       pkgs.unstable.myfish
 

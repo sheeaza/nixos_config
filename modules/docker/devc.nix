@@ -21,7 +21,7 @@ let
               pkgs.unstable.coreutils
 
               pkgs.unstable.neovim-headless
-              pkgs.unstable.tmux
+              pkgs.unstable.cus-tmux
               pkgs.unstable.myfish
 
               pkgs.unstable.tree

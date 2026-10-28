@@ -8,7 +8,7 @@
         ctag = "${final.universal-ctags}/bin/ctags";
       };
       lsp-cfg = final.replaceVars ./myconfig/lua/lsp_cfg.lua {
-        clangd = "${final.clangd}/bin/clangd";
+        clangd = "${final.cus-clangd}/bin/clangd";
       };
 
       # treesitter = final.vimPlugins.nvim-treesitter.withAllGrammars; #this will cause lag

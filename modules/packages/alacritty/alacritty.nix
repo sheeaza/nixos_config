@@ -1,20 +1,11 @@
-let
-  localfunc =
-    {
-      alacritty,
-      alacritty-theme,
-      symlinkJoin,
-      makeWrapper,
-      stdenv,
-      replaceVars,
-    }:
+{
+  internal.unstableOverlays.cus-alacritty =
+    final: _prev:
     let
-      alac_toml = replaceVars ./alacritty.toml {
-        ala-theme = "${alacritty-theme}";
+      alac_toml = final.replaceVars ./alacritty.toml {
+        ala-theme = "${final.alacritty-theme}";
       };
-    in
-    let
-      alacrittyconfig = stdenv.mkDerivation {
+      alacrittyconfig = final.stdenv.mkDerivation {
         name = "alacritty_cfg";
         phases = [ "installPhase" ];
         installPhase = ''
@@ -22,26 +13,21 @@ let
           cp ${alac_toml} $out/alacritty.toml;
         '';
       };
-    in
-    let
-      wrap_alacritty = symlinkJoin {
+      wrap_alacritty = final.symlinkJoin {
         name = "alacritty";
-        paths = [ alacritty ];
-        buildInputs = [ makeWrapper ];
+        paths = [ final.alacritty ];
+        buildInputs = [ final.makeWrapper ];
         postBuild = ''
           wrapProgram $out/bin/alacritty \
           --add-flags "--config-file ${alacrittyconfig}/alacritty.toml"
         '';
       };
     in
-    wrap_alacritty;
-in
-{
-  internal.unstableOverlays.alacritty = final: prev: {
-    alacritty = final.callPackage localfunc { alacritty = prev.alacritty; };
-  };
+    {
+      cus-alacritty = wrap_alacritty;
+    };
 
   perSystem = { pkgs, ... }: {
-    packages.myalacritty = pkgs.unstable.alacritty;
+    packages.myalacritty = pkgs.unstable.cus-alacritty;
   };
 }

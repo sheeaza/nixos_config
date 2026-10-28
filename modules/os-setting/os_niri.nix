@@ -36,7 +36,7 @@
 
     environment.systemPackages = [
       pkgs.xwayland-satellite
-      pkgs.unstable.alacritty
+      pkgs.unstable.cus-alacritty
       pkgs.bibata-cursors
     ];
   };
