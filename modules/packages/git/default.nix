@@ -1,7 +1,7 @@
 {
   internal.unstableOverlays.git-minimal = final: prev: {
-    gitSlim = prev.gitMinimal.override {
-      curl = prev.curlMinimal.override {
+    gitSlim = final.gitMinimal.override {
+      curl = final.curlMinimal.override {
         http3Support = false;
         pslSupport = false;
         scpSupport = false;
