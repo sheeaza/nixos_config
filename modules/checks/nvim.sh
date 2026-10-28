@@ -74,6 +74,15 @@ for lang in c lua vimdoc rust cpp; do
         "$(nv_lua "io.write(tostring(vim.treesitter.language.add('$lang')))")"
 done
 
+# nvim-treesitter's main branch never starts highlighting on its own;
+# treesitter.lua does it from a FileType autocmd. Without that the parsers
+# above are installed but unused.
+printf 'int main(void) { return 0; }\n' > "$TMPDIR/probe.c"
+assert_eq 'treesitter highlights a c buffer' "true" \
+    "$("$NVIM" --headless "$TMPDIR/probe.c" \
+        -c 'lua io.write(tostring(vim.treesitter.highlighter.active[vim.api.nvim_get_current_buf()] ~= nil))' \
+        -c 'qa!' 2>/dev/null)"
+
 section 'baked store paths (fzf_lua.lua, lsp_cfg.lua)'
 # These three are @markers@ substituted at build time. A stale marker or a
 # relative name would only surface the first time the feature is used.

@@ -1,10 +1,6 @@
-require'nvim-treesitter'.setup {
-  highlight = {
-    enable = true,
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-}
+-- nvim-treesitter (main branch) only ships parsers and queries; highlighting
+-- has to be started per buffer. Limited to the grammars pinned in default.nix.
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'c', 'cpp', 'lua', 'rust' },
+    callback = function() vim.treesitter.start() end,
+})
