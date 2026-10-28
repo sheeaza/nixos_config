@@ -18,6 +18,9 @@
               final.nodejs
               final.procps
               final.ripgrep
+              final.fd
+              final.jq
+              final.python3
               final.bubblewrap
               final.socat
               final.cus-clangd
