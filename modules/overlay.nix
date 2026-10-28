@@ -16,7 +16,6 @@ let
             git = final.gitSlim;
           };
         })
-        inputs.claude-code.overlays.default
       ]
       ++ lib.attrValues config.internal.unstableOverlays;
     };
