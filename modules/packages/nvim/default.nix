@@ -4,8 +4,6 @@ let
       neovim,
       vimPlugins,
       vimUtils,
-      stdenv,
-      lua-language-server,
       replaceVars,
       ripgrep,
       clangd,
@@ -21,8 +19,7 @@ let
       lsp-cfg = replaceVars ./myconfig/lua/lsp_cfg.lua {
         clangd = "${clangd}/bin/clangd";
       };
-    in
-    let
+
       # treesitter = vimPlugins.nvim-treesitter.withAllGrammars; #this will cause lag
       treesitter = vimPlugins.nvim-treesitter.withPlugins (p: [
         # these are mandatory,
@@ -33,6 +30,7 @@ let
         p.rust
         p.cpp
       ]);
+
       nviminit = vimUtils.buildVimPlugin {
         name = "nviminit";
         src = ./myconfig;
@@ -50,28 +48,23 @@ let
         ];
       };
     in
-    let
-      nvim = neovim.override {
-        withPython3 = false;
-        withRuby = false;
-        configure = {
-          packages.mypack = with vimPlugins; {
-            start = [
-              nerdcommenter
-              nviminit
-            ];
-          };
-          customRC = ''
-            lua require('nviminit')
-          '';
-        };
+    neovim.override {
+      withPython3 = false;
+      withRuby = false;
+      configure = {
+        packages.mypack.start = [
+          vimPlugins.nerdcommenter
+          nviminit
+        ];
+        customRC = ''
+          lua require('nviminit')
+        '';
       };
-    in
-    nvim;
+    };
 in
 {
   internal.unstableOverlays.neovim = final: prev: {
-    neovim = final.callPackage localfunc { neovim = prev.neovim; };
+    neovim = final.callPackage localfunc { inherit (prev) neovim; };
     neovim-headless = final.callPackage localfunc {
       neovim = prev.neovim.override { waylandSupport = false; };
     };
