@@ -54,18 +54,11 @@ let
         propagatedBuildInputs = builtins.filter (p: (p.pname or "") != "man-db") old.propagatedBuildInputs;
       });
 
-      _wrapFish = wrapFish.override {
-        fish = fishNoMan;
+      fishWrapped = (wrapFish.override { fish = fishNoMan; }) {
+        pluginPkgs = [ bundle ];
       };
     in
-    (_wrapFish {
-      pluginPkgs = [
-        bundle
-      ];
-    }).overrideAttrs
-      (_: {
-        passthru.shellPath = "/bin/fish";
-      });
+    fishWrapped.overrideAttrs { passthru.shellPath = "/bin/fish"; };
 in
 {
   internal.unstableOverlays.fish = final: prev: {
