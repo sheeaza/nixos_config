@@ -11,7 +11,7 @@ let
 
         final.unstable.tmux
         final.unstable.fish
-        final.unstable.neovim
+        final.unstable.cus-nvim
 
         final.bashInteractive
 

@@ -2,7 +2,7 @@
   internal.nixosModules.os_pkgs = { pkgs, ... }: {
     # List packages installed in system profile. To search, run:
     environment.systemPackages = [
-      pkgs.unstable.neovim
+      pkgs.unstable.cus-nvim
 
       pkgs.unstable.tmux
 

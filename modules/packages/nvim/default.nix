@@ -1,27 +1,18 @@
-let
-  localfunc =
-    {
-      neovim,
-      vimPlugins,
-      vimUtils,
-      replaceVars,
-      ripgrep,
-      clangd,
-      universal-ctags,
-      fzf,
-    }:
+{
+  internal.unstableOverlays.cus-nvim =
+    final: _prev:
     let
-      fzf-lua-cfg = replaceVars ./myconfig/lua/fzf_lua.lua {
-        rg = "${ripgrep}/bin/rg";
-        fzf = "${fzf}/bin/fzf";
-        ctag = "${universal-ctags}/bin/ctags";
+      fzf-lua-cfg = final.replaceVars ./myconfig/lua/fzf_lua.lua {
+        rg = "${final.ripgrep}/bin/rg";
+        fzf = "${final.fzf}/bin/fzf";
+        ctag = "${final.universal-ctags}/bin/ctags";
       };
-      lsp-cfg = replaceVars ./myconfig/lua/lsp_cfg.lua {
-        clangd = "${clangd}/bin/clangd";
+      lsp-cfg = final.replaceVars ./myconfig/lua/lsp_cfg.lua {
+        clangd = "${final.clangd}/bin/clangd";
       };
 
-      # treesitter = vimPlugins.nvim-treesitter.withAllGrammars; #this will cause lag
-      treesitter = vimPlugins.nvim-treesitter.withPlugins (p: [
+      # treesitter = final.vimPlugins.nvim-treesitter.withAllGrammars; #this will cause lag
+      treesitter = final.vimPlugins.nvim-treesitter.withPlugins (p: [
         # these are mandatory,
         p.c
         p.lua
@@ -31,14 +22,14 @@ let
         p.cpp
       ]);
 
-      nviminit = vimUtils.buildVimPlugin {
+      nviminit = final.vimUtils.buildVimPlugin {
         name = "nviminit";
         src = ./myconfig;
         postInstall = ''
           cp ${fzf-lua-cfg} $out/lua/fzf_lua.lua
           cp ${lsp-cfg} $out/lua/lsp_cfg.lua
         '';
-        dependencies = with vimPlugins; [
+        dependencies = with final.vimPlugins; [
           lualine-nvim
           onedark-nvim
           flash-nvim
@@ -48,29 +39,27 @@ let
         ];
       };
     in
-    neovim.override {
-      withPython3 = false;
-      withRuby = false;
-      configure = {
-        packages.mypack.start = [
-          vimPlugins.nerdcommenter
-          nviminit
-        ];
-        customRC = ''
-          lua require('nviminit')
-        '';
+    {
+      cus-nvim = final.neovim.override {
+        withPython3 = false;
+        withRuby = false;
+        configure = {
+          packages.mypack.start = [
+            final.vimPlugins.nerdcommenter
+            nviminit
+          ];
+          customRC = ''
+            lua require('nviminit')
+          '';
+        };
       };
     };
-in
-{
-  internal.unstableOverlays.neovim = final: prev: {
-    neovim = final.callPackage localfunc { inherit (prev) neovim; };
-    neovim-headless = final.callPackage localfunc {
-      neovim = prev.neovim.override { waylandSupport = false; };
-    };
+
+  internal.unstableOverlays.headless-nvim = final: _prev: {
+    neovim-headless = final.cus-nvim.override { waylandSupport = false; };
   };
 
   perSystem = { pkgs, ... }: {
-    packages.mynvim = pkgs.unstable.neovim;
+    packages.mynvim = pkgs.unstable.cus-nvim;
   };
 }

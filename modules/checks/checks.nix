@@ -48,7 +48,7 @@
       inherit (pkgs.unstable)
         myfish
         tmux
-        neovim
+        cus-nvim
         alacritty
         niri-cfg
         ;
@@ -92,8 +92,8 @@
           name = "nvim";
           script = ./nvim.sh;
           env = {
-            NVIM = "${neovim}/bin/nvim";
-            NVIM_CLOSURE = closureOf neovim;
+            NVIM = "${cus-nvim}/bin/nvim";
+            NVIM_CLOSURE = closureOf cus-nvim;
           };
         };
 
