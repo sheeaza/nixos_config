@@ -1,4 +1,8 @@
 {
+  internal.unstableOverlays.tig = final: prev: {
+    tig = prev.tig.override { git = final.gitSlim; };
+  };
+
   internal.unstableOverlays.git-minimal = final: prev: {
     gitSlim = final.gitMinimal.override {
       curl = final.curlMinimal.override {

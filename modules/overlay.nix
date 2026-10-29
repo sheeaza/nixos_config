@@ -10,14 +10,7 @@ let
       system = final.stdenv.hostPlatform.system;
       config.allowUnfree = true;
 
-      overlays = [
-        (final: prev: {
-          tig = prev.tig.override {
-            git = final.gitSlim;
-          };
-        })
-      ]
-      ++ lib.attrValues config.internal.unstableOverlays;
+      overlays = lib.attrValues config.internal.unstableOverlays;
     };
   };
 in
