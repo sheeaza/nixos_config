@@ -59,6 +59,10 @@
     neovim-headless = final.cus-nvim.override { waylandSupport = false; };
   };
 
+  internal.nixosModules.os_pkgs = { pkgs, ... }: {
+    environment.systemPackages = [ pkgs.unstable.cus-nvim ];
+  };
+
   perSystem = { pkgs, ... }: {
     packages.mynvim = pkgs.unstable.cus-nvim;
   };

@@ -53,6 +53,10 @@
       myfish = fishWrapped.overrideAttrs { passthru.shellPath = "/bin/fish"; };
     };
 
+  internal.nixosModules.os_pkgs = { pkgs, ... }: {
+    environment.systemPackages = [ pkgs.unstable.myfish ];
+  };
+
   perSystem = { pkgs, ... }: {
     packages.myfish = pkgs.unstable.myfish;
   };

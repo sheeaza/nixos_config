@@ -37,6 +37,10 @@
       cus-tmux = wraptmux;
     };
 
+  internal.nixosModules.os_pkgs = { pkgs, ... }: {
+    environment.systemPackages = [ pkgs.unstable.cus-tmux ];
+  };
+
   perSystem = { pkgs, ... }: {
     packages.mytmux = pkgs.unstable.cus-tmux;
   };

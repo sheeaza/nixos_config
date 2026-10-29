@@ -2,7 +2,7 @@
 {
   options.internal = {
     nixosModules = lib.mkOption {
-      type = lib.types.attrsOf lib.types.raw;
+      type = lib.types.attrsOf lib.types.deferredModule;
       default = { };
     };
     unstableOverlays = lib.mkOption {
